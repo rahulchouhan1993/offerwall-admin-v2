@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <title>Document</title>
+    <style>
+/* The container */
+
+.radioBx{display: block; position: relative; padding-left: 35px; margin-bottom: 12px; cursor: pointer; font-size: 22px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; position: absolute; right: 10px; top: 20px;}
+.radioBx input{position:absolute;opacity:0;cursor:pointer;height:0;width:0;}
+
+.checkmark{position:absolute;top:0;left:0;height:30px;width:30px;background-color:#E6E6E6; border:1px solid #D4D4D4; border-radius: 40px;}
+
+.radioBx:hover input ~ .checkmark{background-color:#f2f2f2;}
+
+.radioBx input:checked ~ .checkmark{background-color:#E36F3D; border-color:#E36F3D}
+
+.checkmark:after{content:"";position:absolute;display:none;}
+
+.radioBx input:checked ~ .checkmark:after{display:block;}
+
+.radioBx .checkmark:after{ left: 11px; top: 7px; width: 6px; height: 11px; border: solid white; border-width: 0 2px 2px 0; -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg);}
+
+</style>
+
+</head>
+<body>
+    <div class="bg-[#f2f2f2] p-[15px] md:p-[35px]">
+        <div class="bg-[#fff] p-[15px] md:p-[20px] lg:p-[40px] rounded-[8px] md:rounded-[10px]">
+            <h2 class="mb-[20px] text-[20px] text-[#1A1A1A] font-[600] ">
+                App blocker 
+            </h2>  
+            <div class="flex flex-wrap items-center gap-[10px] ">
+                <div class="relative flex flex-col items-start justify-center gap-[8px] px-[25px] rounded-[10px] bg-[#F6F6F6] border-[1px] border-[#E6E6E6] w-[100%] max-w-[290px] h-[320px] active:bg-[#FFF3ED] active:border-[#FED5C3]  hover:bg-[#FFF3ED] hover:border-[#FED5C3]">
+                    <label class="radioBx">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+
+                    <div class="mb-[15px]">
+                        <img src="vpn.png" alt="img">
+                    </div>
+                    <h2 class="text-[18px] text-[#1A1A1A] font-[700] leading-[20px] ">Block VPN Acces</h2>
+                    <p class="text-[14px] text-[#898989] font-[600]">User can not access App with VPN.</p>
+                </div>
+
+                <div class="relative flex flex-col items-start justify-center gap-[8px] px-[25px] rounded-[10px] bg-[#F6F6F6] border-[1px] border-[#E6E6E6] w-[100%] max-w-[290px] h-[320px] active:bg-[#FFF3ED] active:border-[#FED5C3]  hover:bg-[#FFF3ED] hover:border-[#FED5C3]">
+                    <label class="radioBx">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+
+                    <div class="mb-[15px]">
+                        <img src="rooted.png" alt="img">
+                    </div>
+                    <h2 class="text-[18px] text-[#1A1A1A] font-[700] leading-[20px] ">Block Rooted Devices</h2>
+                    <p class="text-[14px] text-[#898989] font-[600]">App will not work on Rooted device.</p>
+                </div>
+
+                <div class="relative flex flex-col items-start justify-center gap-[8px] px-[25px] rounded-[10px] bg-[#F6F6F6] border-[1px] border-[#E6E6E6] w-[100%] max-w-[290px] h-[320px] active:bg-[#FFF3ED] active:border-[#FED5C3]  hover:bg-[#FFF3ED] hover:border-[#FED5C3]">
+                    <label class="radioBx">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+
+                    <div class="mb-[15px]">
+                        <img src="termux.png" alt="img">
+                    </div>
+                    <h2 class="text-[18px] text-[#1A1A1A] font-[700] leading-[20px] ">Termux Block</h2>
+                    <p class="text-[14px] text-[#898989] font-[600]">If Developer mode is enabled in device then app not work.</p>
+                </div>
+
+                <div class="relative flex flex-col items-start justify-center gap-[8px] px-[25px] rounded-[10px] bg-[#F6F6F6] border-[1px] border-[#E6E6E6] w-[100%] max-w-[290px] h-[320px] active:bg-[#FFF3ED] active:border-[#FED5C3]  hover:bg-[#FFF3ED] hover:border-[#FED5C3]">
+                    <label class="radioBx">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+
+                    <div class="mb-[15px]">
+                        <img src="emul.png" alt="img">
+                    </div>
+                    <h2 class="text-[18px] text-[#1A1A1A] font-[700] leading-[20px] ">Emulator Block</h2>
+                    <p class="text-[14px] text-[#898989] font-[600]">App will not work on android emulator</p>
+                </div>
+
+                <div class="relative flex flex-col items-start justify-center gap-[8px] px-[25px] rounded-[10px] bg-[#F6F6F6] border-[1px] border-[#E6E6E6] w-[100%] max-w-[290px] h-[320px] active:bg-[#FFF3ED] active:border-[#FED5C3]  hover:bg-[#FFF3ED] hover:border-[#FED5C3]">
+                    <label class="radioBx">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+
+                    <div class="mb-[15px]">
+                        <img src="country.png" alt="img">
+                    </div>
+                    <h2 class="text-[18px] text-[#1A1A1A] font-[700] leading-[20px] ">Country Block</h2>
+                    <p class="text-[14px] text-[#898989] font-[600]">App will not work on Defined Country</p>
+                    <select name="" id="" class="w-[100%] py-[8px] px-[8px] text-[14px] text-[#4D4D4D] bg-[#F6F6F6] border border-[#E6E6E6]">
+                        <option value="">Select Country</option>
+                        <option value="">Select Country 2</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
