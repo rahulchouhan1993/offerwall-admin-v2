@@ -9,6 +9,11 @@ body.active .head-logo{width:70px;}
 body.active .sidebar{width:70px;padding-left:5px;padding-right:5px;}
 body.active .sidebar a,body.active .sidebar h2{font-size:0;transition:all ease .3s;justify-content:center;}
 .sidebar a.active { color: #ce68ce;}
+
+
+
+.loginBx { height: 100vh; background: url(../../public/images/loginbanner.jpg) 0 0 no-repeat; background-size: cover;}
+
 .head-logo{transition:width 0.25s ease,background 0.25s ease;-webkit-transition:width 0.25s ease,background 0.25s ease;height:80px;}
 .dashboardContainer{-webkit-transition:width 0.25s ease,margin 0.25s ease;transition:width 0.25s ease,margin 0.25s ease;width:calc(100% - 290px);min-height:calc(100vh - 70px);display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;}
 body.active .dashboardContainer{width:calc(100% - 70px);}
@@ -121,6 +126,7 @@ button#hs-dropdown-toggle img{width:25px;height:25px;}
 .bluebg{background:conic-gradient(from 116deg at 71% 37%,#42C5FF,#2DB0E8);}
 .orangebg{background:conic-gradient(from 116deg at 71% 37%,#EF7947,#E16C39);}
 .greenbg{background:conic-gradient(from 116deg at 71% 37%,#88E528,#78CE1F);}
+.loginBx { height: 100%; }
 }
 @media(max-width:576px){.head-logo{width:160px;padding-left:10px !important;padding-right:10px !important;}
 body.active .head-logo{width:160px;}
