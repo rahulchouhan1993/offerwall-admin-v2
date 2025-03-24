@@ -98,7 +98,7 @@ class UsersController extends Controller
                     ]);
                     $details = [
                         'name' => $request->name,
-                        'email' => 'r.chouhan64@gmail.com',
+                        'email' => $request->email,
                         'password' => $randomPassword,
                     ];
                     Mail::to('r.chouhan64@gmail.com')->send(new NewAccountMail($details));

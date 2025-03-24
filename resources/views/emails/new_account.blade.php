@@ -5,7 +5,7 @@
                 <tr>
                     <td style="text-align: center; padding:0 0 30px 0" align="center">
                         <a href="#">
-                            <img src="https://offerwallxxx.com/images/logo.png" alt="">
+                            <img src="https://offawall.com/images/logo-offerwall-login.png" alt="">
                         </a>
                     </td>
                 </tr>
@@ -41,7 +41,7 @@
                     </td>
 
                     <td style="padding: 0 0 20px 0">
-                        <p style="margin: 1px; font-size: 14px; color: #ffffff;">https://affiliate.offerwallxxx.com/</p>
+                        <p style="margin: 1px; font-size: 14px; color: #ffffff;">https://affiliate.offawall.com/</p>
                     </td>
                 </tr>
 
@@ -87,7 +87,7 @@
 
                 <tr>
                     <td style="padding: 0 0 20px 0;">
-                        <p style="margin: 1px; font-size: 14px; color: #ffffff;">Warm regards, <br> <span style="color:e888de; padding-top:8px;display: block;">The Offerwall Team</span></p>
+                        <p style="margin: 1px; font-size: 14px; color: #ffffff;">Warm regards, <br> <span style="color:e888de; padding-top:8px;display: block;">The Offawall Team</span></p>
                     </td>
                 </tr>
                 <tr>
