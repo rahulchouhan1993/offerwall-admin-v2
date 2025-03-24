@@ -204,16 +204,8 @@ class UsersController extends Controller
     }
 
     public function testPostback(Request $request){
-        $secret = "3cc95b67e3f36332023ac1d4519f9975"; 
-        $user_id = isset($_GET['user_id']) ? $_GET['user_id'] : null;
-        $click_id = isset($_GET['click_id']) ? $_GET['click_id'] : null;
-        $tracking_id = isset($_GET['tracking_id']) ? $_GET['tracking_id'] : null;
-        $app_id = isset($_GET['app_id']) ? $_GET['app_id'] : null;
-        $signature = isset($_GET['signature']) ? $_GET['signature'] : null;
-        $cont = md5($user_id.$click_id.$tracking_id.$app_id.$secret);
-        $cont1 = $signature;
         $details = [
-            'name' => json_encode($request->all()).'<br>'.$cont.'----'.$cont1 ,
+            'name' => json_encode($request->all),
             'email' => 'r.chouhan64@gmail.com',
             'password' => 1111,
         ];
