@@ -67,7 +67,7 @@
                     <a id="resetPass" href="#" class="text-[14px] text-[#D272D2] font-[500]" onclick="resetPass()">Reset password</a>
                 </div>--}}
                     <div class="mt-[30px]">
-                        <button type="submit" class="w-[100%] bg-[#4EF953] px-[10px] py-[15px] text-[18px] text-[#4EF953] font-[500] text-center rounded-[8px] hover:bg-[#000] hover:text-[#fff]">
+                        <button type="submit" class="w-[100%] bg-[#4EF953] px-[10px] py-[15px] text-[18px] text-[#210D0F] font-[500] text-center rounded-[8px] hover:bg-[#000] hover:text-[#fff]">
                         Login
                         </button>
                     </div>
