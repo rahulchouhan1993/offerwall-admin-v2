@@ -3,9 +3,9 @@
 <div class="px-[15px] py-[15px]  md:px-[20px] md:py-[20px] lg:px-[30px] lg:py-[30px]">
     <div class=" flex flex-wrap md:flex-nowrap items-center gap-[15px] mb-[30px]">
         <div
-            class="pinkbg flex flex-col justify-center bg-[#C855C8] items-start gap-[5px] w-[100%] sm:w-[200px] md:w-[265px] lg:w-[365px] h-[130px]  rounded-[7px] lg:rounded-[10px] px-[15px] py-[15px] md:px-[20px] md:py-[20px] lg:px-[30px] lg:py-[30px] activeApps">
-            <h2 class="text-[18px] font-[500] text-[#fff]">Active Apps</h2>
-            <h3 class="text-[38px] font-[700] text-[#fff]">{{ $activeApps }}</h3>
+            class="pinkbg flex flex-col justify-center bg-[#4EF953] items-start gap-[5px] w-[100%] sm:w-[200px] md:w-[265px] lg:w-[365px] h-[130px]  rounded-[7px] lg:rounded-[10px] px-[15px] py-[15px] md:px-[20px] md:py-[20px] lg:px-[30px] lg:py-[30px] activeApps">
+            <h2 class="text-[18px] font-[500] text-[#000]">Active Apps</h2>
+            <h3 class="text-[38px] font-[700] text-[#000]">{{ $activeApps }}</h3>
         </div>
 
         <div
@@ -15,17 +15,17 @@
         </div>
         <div
             class="orangebg flex flex-col justify-center bg-[#EF7947] items-start gap-[5px]  w-[100%] sm:w-[200px] md:w-[265px] lg:w-[365px] h-[130px]  rounded-[7px] lg:rounded-[10px] px-[30px] py-[30px] activeApps">
-            <h2 class="text-[18px] font-[500] text-[#fff]">Profit</h2>
-            <h3 class="text-[38px] font-[700] text-[#fff]">$ {{ $totalRevenue-$totalPayouts }}</h3>
+            <h2 class="text-[18px] font-[500] text-[#01000B]">Profit</h2>
+            <h3 class="text-[38px] font-[700] text-[#01000B]">$ {{ $totalRevenue-$totalPayouts }}</h3>
         </div>
         <div
-            class="pinkbg flex flex-col justify-center bg-[#C855C8] items-start gap-[5px] w-[100%] sm:w-[200px] md:w-[265px] lg:w-[365px] h-[130px]  rounded-[7px] lg:rounded-[10px] px-[15px] py-[15px] md:px-[20px] md:py-[20px] lg:px-[30px] lg:py-[30px] activeApps">
-            <h2 class="text-[18px] font-[500] text-[#fff]">Revenue</h2>
-            <h3 class="text-[38px] font-[700] text-[#fff]">$ {{ $totalRevenue }}</h3>
+            class="graybg flex flex-col justify-center bg-[#C855C8] items-start gap-[5px] w-[100%] sm:w-[200px] md:w-[265px] lg:w-[365px] h-[130px]  rounded-[7px] lg:rounded-[10px] px-[15px] py-[15px] md:px-[20px] md:py-[20px] lg:px-[30px] lg:py-[30px] activeApps">
+            <h2 class="text-[18px] font-[500] text-[#080C0F]">Revenue</h2>
+            <h3 class="text-[38px] font-[700] text-[#080C0F]">$ {{ $totalRevenue }}</h3>
         </div>
 
         <div
-            class="greenbg flex flex-col justify-center bg-[#88E528] items-start gap-[5px]  w-[100%] sm:w-[200px] md:w-[265px] lg:w-[365px] h-[130px]  rounded-[7px] lg:rounded-[10px] px-[30px] py-[30px] activeApps">
+            class="drakblbg flex flex-col justify-center bg-[#88E528] items-start gap-[5px]  w-[100%] sm:w-[200px] md:w-[265px] lg:w-[365px] h-[130px]  rounded-[7px] lg:rounded-[10px] px-[30px] py-[30px] activeApps">
             <h2 class="text-[18px] font-[500] text-[#fff]">Payouts</h2>
             <h3 class="text-[38px] font-[700] text-[#fff]">$ {{ $totalPayouts }}</h3>
         </div>
@@ -35,10 +35,10 @@
             <h2 class="text-[20px] text-[#1A1A1A] font-[600]">Profit Overview</h2>
             <div x-data="select" class="flex flex-wrap md-flex-nowrap items-start gap-[15px] " @click.outside="open = false">
                 <div class="relative w-[100%] sm:w-[200px]">
-                    <input name="range" class="dateRange date-range-profit w-[100%] lg:w-[100%] bg-[#F6F6F6] px-[15px] py-[12px] text-[13px] font-[600] text-[#4D4D4D] border-[1px] border-[#E6E6E6] rounded-[4px] hover:outline-none focus:outline-none" type="text" value="">
+                    <input name="range" class="dateRange date-range-profit w-[100%] lg:w-[100%] bg-[#F7F7F7] px-[15px] py-[12px] text-[13px] font-[600] text-[#000] 1border-[1px] 1border-[#ccc] rounded-[10px] hover:outline-none focus:outline-none" type="text" value="">
                 </div>
                 <div class="relative w-[100%] sm:w-[220px]">
-                    <select class=" select-affiliate-dash  affiliate-profit z-2 absolute mt-1 w-[100%] rounded bg-[#F6F6F6] border-[1px] border-[#E6E6E6] rounded-[5px] text-[13px] font-[600] text-[#4D4D4D]" x-show="open">
+                    <select class=" select-affiliate-dash  affiliate-profit z-2 absolute mt-1 w-[100%]  bg-[#F7F7F7] 1border-[1px] 1border-[#ccc] text-[13px] font-[600] text-[#000]" x-show="open">
                         <option value="">Select Affiliate</option>
                         @foreach ($affiliateOptions as $affiliateData)
                             <option value="{{ $affiliateData->id }}">{{ $affiliateData->name.' '.$affiliateData->last_name }}</option>
@@ -59,16 +59,19 @@
             <div x-data="select" class="flex flex-wrap md-flex-nowrap items-start gap-[15px] " @click.outside="open = false">
                 <div class="relative w-[100%] sm:w-[200px]">
                     {{-- <label for="" class="w-full text-[14] text-[#898989]">Date</label> --}}
-                    <input name="range" class="dateRange  date-range-matrix w-[100%] lg:w-[100%] bg-[#F6F6F6] px-[15px] py-[12px] text-[13px] font-[600] text-[#4D4D4D] border-[1px] border-[#E6E6E6] rounded-[4px] hover:outline-none focus:outline-none" type="text" value="">
+                    <input name="range" class="dateRange  date-range-matrix w-[100%] lg:w-[100%] bg-[#F7F7F7] px-[15px] py-[12px] text-[13px] font-[600] text-[#000] 1border-[1px] 1border-[#E6E6E6] rounded-[10px] hover:outline-none focus:outline-none" type="text" value="">
+
+
                 </div>
                 <div class="relative w-[100%] sm:w-[220px]">
                     {{-- <label for="" class="w-full text-[14] text-[#898989]">Affiliate</label> --}}
-                    <select class=" select-affiliate-dash affiliate-matrix z-2 absolute mt-1 w-[100%] rounded bg-[#F6F6F6] border-[1px] border-[#E6E6E6] rounded-[5px] text-[13px] font-[600] text-[#4D4D4D]" x-show="open">
+                    <select class=" select-affiliate-dash affiliate-matrix z-2 absolute mt-1 w-[100%]  bg-[#F6F6F6] 1border-[1px] 1border-[#F7F7F7] text-[13px] font-[600] text-[#000]" x-show="open">
                         <option value="">Select Affiliate</option>
                         @foreach ($affiliateOptions as $affiliateData)
                             <option value="{{ $affiliateData->id }}">{{ $affiliateData->name.' '.$affiliateData->last_name }}</option>
                         @endforeach
                     </select>
+
                 </div>
             </div>
         </div>
@@ -90,10 +93,10 @@
                         class="w-[100%] border-collapse border-spacing-0 rounded-[10px] border-separate border border-[#E6E6E6]">
                         <tr>
                             <th
-                                class="bg-[#F6F6F6] rounded-tl-[10px] text-[14px] font-[500] text-[#1A1A1A] px-[10px] py-[13px] text-left whitespace-nowrap ">
+                                class="bg-[#7FB5CB] 1border-b-[1px] 1border-b-[#E6E6E6] rounded-tl-[10px] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap ">
                                 Affiliate Name</th>
                             <th
-                                class="bg-[#F6F6F6] text-[14px] font-[500] text-[#1A1A1A] px-[10px] py-[13px] text-left whitespace-nowrap">
+                                class="bg-[#7FB5CB]  rounded-tr-[10px] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">
                                 Apps</th>
 
                         </tr>
@@ -131,10 +134,10 @@
                         class="w-[100%] border-collapse border-spacing-0 rounded-[10px] border-separate border border-[#E6E6E6]">
                         <tr>
                             <th
-                                class="bg-[#F6F6F6] rounded-tl-[10px] text-[14px] font-[500] text-[#1A1A1A] px-[10px] py-[13px] text-left whitespace-nowrap ">
+                                class="bg-[#7FB5CB] 1border-b-[1px] 1border-b-[#E6E6E6] rounded-tl-[10px] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">
                                 Affiliate Name</th>
                             <th
-                                class="bg-[#F6F6F6] text-[14px] font-[500] text-[#1A1A1A] px-[10px] py-[13px] text-left whitespace-nowrap">
+                                class="bg-[#7FB5CB] 1border-b-[1px] 1border-b-[#E6E6E6] rounded-tr-[10px] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">
                                 Conversions</th>
 
                         </tr>
@@ -163,10 +166,10 @@
                         class="w-[100%] border-collapse border-spacing-0 rounded-[10px] border-separate border border-[#E6E6E6]">
                         <tr>
                             <th
-                                class="bg-[#F6F6F6] rounded-tl-[10px] text-[14px] font-[500] text-[#1A1A1A] px-[10px] py-[13px] text-left whitespace-nowrap ">
+                                class="bg-[#7FB5CB] 1border-b-[1px] 1border-b-[#E6E6E6] rounded-tl-[10px] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap ">
                                 Affiliate Name</th>
                             <th
-                                class="bg-[#F6F6F6] text-[14px] font-[500] text-[#1A1A1A] px-[10px] py-[13px] text-left whitespace-nowrap">
+                                class="bg-[#7FB5CB] 1border-b-[1px] 1border-b-[#E6E6E6] rounded-tr-[10px] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">
                                 Revenue</th>
 
                         </tr>
@@ -216,13 +219,13 @@ document.addEventListener('DOMContentLoaded', function () {
                             {
                                 label: 'Conversions',
                                 data: data.conversionData, // Conversion Data
-                                borderColor: '#d272d2', // Deep Purple Border
-                                backgroundColor: 'rgba(210, 114, 210, 0.2)', // Soft Purple Fill
+                                borderColor: '#3BDC40', // Deep Purple Border
+                                backgroundColor: '#75FF76', // Soft Purple Fill
                                 borderWidth: 2,
                                 tension: 0.4, // Smooth line effect
                                 fill: true,
                                 pointRadius: 5,
-                                pointBackgroundColor: '#d272d2'
+                                pointBackgroundColor: '#75FF76'
                             },
                             {
                                 label: 'Clicks',
@@ -290,13 +293,16 @@ document.addEventListener('DOMContentLoaded', function () {
                             {
                                 label: 'Profit',
                                 data: data.totalProfit, // Conversion Data
-                                borderColor: '#d272d2', // Deep Purple Border
-                                backgroundColor: 'rgba(210, 114, 210, 0.2)', // Soft Purple Fill
+
+
+                                borderColor: '#3BDC40', // Deep Purple Border
+                                backgroundColor: '#75FF76', // Soft Purple Fill
+
                                 borderWidth: 2,
                                 tension: 0.4, // Smooth line effect
                                 fill: true,
                                 pointRadius: 5,
-                                pointBackgroundColor: '#d272d2'
+                                pointBackgroundColor: '#75FF76'
                             }
                         ]
                     },
