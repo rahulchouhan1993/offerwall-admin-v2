@@ -81,7 +81,7 @@ form#filterConversions{width:100%;}
 
 
 /* new css */
-.btn-active { background: #ce68ce; color: #fff;}
+.btn-active { background: #4EF953; color: #000;}
 .bigcontent { max-width: 150px; /* Adjust as needed */
     white-space: nowrap;
     overflow: hidden;
