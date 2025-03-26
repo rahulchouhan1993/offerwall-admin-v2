@@ -5,7 +5,7 @@
                 <tr>
                     <td style="text-align: center; padding:0 0 30px 0" align="center">
                         <a href="#">
-                            <img src="https://offawall.com/images/logo-offerwall-login.png" alt="">
+                            <img src="https://offawall.com/images/logo.png" alt="">
                         </a>
                     </td>
                 </tr>

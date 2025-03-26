@@ -6,7 +6,7 @@
         <div class="max-w-[450px] w-[100%] px-[20px] py-[35px] md:px-[40px] md:py-[65px] bg-[#fff] rounded-[10px] md:rounded-[15px]">
         <div class=" flex items-center justify-center mb-[20px] md:mb-[50px]">
                 <a href="#">
-                    <img src="images/logo-offerwall-login.png" alt="logo">
+                    <img src="/images/logo.png?2343" alt="logo">
                 </a>
             </div>
             <script>

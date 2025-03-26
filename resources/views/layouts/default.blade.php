@@ -7,7 +7,7 @@
 	<meta name="googlebot" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>XXX-Admin | {{ $pageTitle }}</title>
+    <title>Admin | {{ $pageTitle }}</title>
     <!-- Fonts -->
     <link rel="icon" type="image/x-icon" href="/images/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />

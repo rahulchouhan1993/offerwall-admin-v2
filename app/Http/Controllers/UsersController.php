@@ -101,7 +101,7 @@ class UsersController extends Controller
                         'email' => $request->email,
                         'password' => $randomPassword,
                     ];
-                    Mail::to('r.chouhan64@gmail.com')->send(new NewAccountMail($details));
+                    Mail::to('support@makamobile.com')->send(new NewAccountMail($details));
                     return redirect()->back()->with('success', 'User added successfully!');
                 }
             }else{
