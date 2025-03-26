@@ -230,8 +230,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             {
                                 label: 'Clicks',
                                 data: data.clickData, // Clicks Data
-                                borderColor: '#ff6384', // Red Border
-                                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                borderColor: '#8CCEE2', // Red Border
+                                backgroundColor: '#7BB7C9',
                                 borderWidth: 2,
                                 tension: 0.4,
                                 fill: true,
