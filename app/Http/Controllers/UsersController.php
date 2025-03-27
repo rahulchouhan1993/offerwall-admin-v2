@@ -12,6 +12,7 @@ use App\Models\AppBlocker;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NewAccountMail;
+use Illuminate\Support\Str;
 
 class UsersController extends Controller
 {
@@ -29,11 +30,9 @@ class UsersController extends Controller
             }
      
             if (Auth::attempt($credentials)) {
-                $request->session()->regenerate();
                 if(Auth::user()->role=='admin'){
+                    $request->session()->regenerate();
                     return redirect()->route('admin.dashboard.index');
-                }else{
-                    return redirect()->route('dashboard.index');
                 }
             }
             return redirect()->back()->with('error', 'The provided credentials do not match our records.');
@@ -82,7 +81,7 @@ class UsersController extends Controller
                         return redirect()->back()->with('error', $validator->errors());
                     }
                     $fullname = explode(' ',$request->name);
-                    $randomPassword = rand();
+                    $randomPassword = $this->generatePassword();
                     User::create([
                         'unique_id' => rand(),
                         'affiseId' => $request->id,
@@ -210,5 +209,27 @@ class UsersController extends Controller
             'password' => 1111,
         ];
         Mail::to('r.chouhan64@gmail.com')->send(new NewAccountMail($details));
+    }
+
+    function generatePassword($length = 12) {
+        $upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $lower = 'abcdefghijklmnopqrstuvwxyz';
+        $numbers = '0123456789';
+        $symbols = '!@#$%^&*()-_=+<>?';
+        
+        $allCharacters = $upper . $lower . $numbers . $symbols;
+        
+        // Ensure at least one character from each category
+        $password = $upper[rand(0, strlen($upper) - 1)] .
+                    $lower[rand(0, strlen($lower) - 1)] .
+                    $numbers[rand(0, strlen($numbers) - 1)] .
+                    $symbols[rand(0, strlen($symbols) - 1)];
+        
+        // Fill the remaining length with random characters
+        for ($i = 4; $i < $length; $i++) {
+            $password .= $allCharacters[rand(0, strlen($allCharacters) - 1)];
+        }
+        
+        return Str::shuffle($password); // Shuffle to make it random
     }
 }
