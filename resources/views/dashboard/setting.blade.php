@@ -70,9 +70,9 @@
                 </div> --}}
 
                 <div class="flex gap-[10px] md:gap-[20px] mt-[10px]">
-                    <button type="submit" class="flex items-center justify-center w-[110px] md:w-[170px] px-[4px] py-[12px] md:px-[15px] md:py-[15px] rounded-[5px] bg-[#D272D2]  hover:bg-[#000] text-[12px] md:text-[14px] font-[500] text-[#fff] hover:text-[#fff]">Save Changes</button>
+                    <button type="submit" class="flex items-center justify-center w-[110px] md:w-[170px] px-[4px] py-[12px] md:px-[15px] md:py-[15px] rounded-[5px] bg-[#49FB53]  text-[12px] md:text-[14px] font-[500] text-[#000]">Save Changes</button>
 
-                    <button class="flex items-center justify-center w-[110px] md:w-[170px] px-[4px] py-[12px] md:px-[15px] md:py-[15px] rounded-[5px] bg-[#F5EAF5]  hover:bg-[#000] text-[14px] font-[500] text-[#D272D2] hover:text-[#fff]">Cancel</button>
+                    <button class="flex items-center justify-center w-[110px] md:w-[170px] px-[4px] py-[12px] md:px-[15px] md:py-[15px] rounded-[5px] bg-[#ffe3e3]  text-[14px] font-[500] text-[#f00000]">Cancel</button>
                 </div>
             </div>
         </form>

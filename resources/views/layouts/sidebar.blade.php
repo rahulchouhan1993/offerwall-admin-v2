@@ -41,7 +41,7 @@
       </svg>
         Apps
         @if($pendingApps>0)
-        <div class="w-[22px] h-[22px] bg-[#d272d2] flex justify-center items-center absolute top-[11px] left-[90px] rounded-[50px] text-[11px] font-[600] text-[#fff]">{{ $pendingApps }}</div>
+        <div class="w-[22px] h-[22px] bg-[#49FB53] flex justify-center items-center absolute top-[11px] left-[90px] rounded-[50px] text-[11px] font-[600] text-[#000]">{{ $pendingApps }}</div>
         @endif
       </a>
       <a href="{{ route('admin.users.appblocker') }}"

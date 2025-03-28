@@ -29,7 +29,7 @@
                             href="{{ route('profile') }}"><i class="ri-settings-5-line"></i> Settings</a>
 
                      
-                        <a class="flex items-center gap-x-3.5 py-[10px] px-[10px] text-[13px] text-[#F23765] font-[600] hover:bg-[#f2f2f2] focus:outline-none focus:bg-[f2f2f2]"
+                        <a class="flex items-center gap-x-3.5 py-[10px] px-[10px] text-[13px] text-[#67899A] font-[600] hover:bg-[#f2f2f2] focus:outline-none focus:bg-[f2f2f2]"
                             href="{{ route('users.logout') }}"><i class="ri-logout-box-r-line"></i> Sign Out</a>
 
                     </div>

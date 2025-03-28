@@ -85,7 +85,7 @@
                 </div>
 
                 <div class="flex gap-[10px] md:gap-[20px]">
-                    <button type="submit" class="w-[120px] bg-[#D272D2] px-[10px] py-[11px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#fff] text-center">Save Changes</button>
+                    <button type="submit" class="w-[120px] bg-[#49FB53] px-[10px] py-[11px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#000] text-center">Save Changes</button>
                 </div>
             </div>
         </form>
