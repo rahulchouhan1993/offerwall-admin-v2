@@ -40,7 +40,7 @@ use App\Models\User;
                         @elseif($affiliate['status']=='on moderation')
                             <td class="text-[12px] font-[500] text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap  border-b-[1px] border-b-[#E6E6E6]"><div class="text-[#d4f23d]">On Moderation</div></td>
                         @elseif($affiliate['status']=='not active')
-                            <td class="text-[12px] font-[500] text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap border-b-[1px] border-b-[#E6E6E6]"><div class="text-[#30c2ee]">Not Active</div></td>
+                            <td class="text-[12px] font-[500] text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap border-b-[1px] border-b-[#E6E6E6]"><div class="text-[#ced3d6]">Not Active</div></td>
                         @endif
 
                         @php

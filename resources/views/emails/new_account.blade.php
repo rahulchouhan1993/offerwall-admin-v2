@@ -18,7 +18,7 @@
             <table cellspacing="0" cellpedding="0" width="100%">
                 <tr>
                     <td style="padding: 0 0 20px 0;">
-                        <p style="margin: 1px; font-size: 14px; color: #ffffff;">Hello {{ $detail['name'] }},</p>
+                        <p style="margin: 1px; font-size: 14px; color: #ffffff;">Hello {{ $detail['name'] ?? '' }},</p>
                     </td>
                 </tr>
 
@@ -37,7 +37,7 @@
             <table cellspacing="0" cellpedding="0" width="100%">
                 <tr>
                     <td style="padding: 0 0 20px 0; max-width: 150px;">
-                        <p style="margin: 1px; font-size: 14px; color: #e888de;">Login URL:</p>
+                        <p style="margin: 1px; font-size: 14px; color: #4ef953;">Login URL:</p>
                     </td>
 
                     <td style="padding: 0 0 20px 0">
@@ -47,21 +47,21 @@
 
                 <tr>
                     <td style="padding: 0 0 20px 0; max-width: 150px;">
-                        <p style="margin: 1px; font-size: 14px; color: #e888de;">Email:</p>
+                        <p style="margin: 1px; font-size: 14px; color: #4ef953;">Email:</p>
                     </td>
 
                     <td style="padding: 0 0 20px 0">
-                        <p style="margin: 1px; font-size: 14px; color: #ffffff;">{{ $detail['email'] }}</p>
+                        <p style="margin: 1px; font-size: 14px; color: #ffffff;">{{ $detail['email'] ?? '' }}</p>
                     </td>
                 </tr>
 
                 <tr>
                     <td style="padding: 0 0 20px 0; max-width: 150px;">
-                        <p style="margin: 1px; font-size: 14px; color: #e888de;">Password:</p>
+                        <p style="margin: 1px; font-size: 14px; color: #4ef953;">Password:</p>
                     </td>
 
                     <td style="padding: 0 0 20px 0">
-                        <p style="margin: 1px; font-size: 14px; color: #ffffff;">{{ $detail['password'] }}</p>
+                        <p style="margin: 1px; font-size: 14px; color: #ffffff;">{{ $detail['password'] ?? '' }}</p>
                     </td>
                 </tr>
 
@@ -87,7 +87,7 @@
 
                 <tr>
                     <td style="padding: 0 0 20px 0;">
-                        <p style="margin: 1px; font-size: 14px; color: #ffffff;">Warm regards, <br> <span style="color:e888de; padding-top:8px;display: block;">The Offawall Team</span></p>
+                        <p style="margin: 1px; font-size: 14px; color: #ffffff;">Warm regards, <br> <span style="color:4ef953; padding-top:8px;display: block;">The Offawall Team</span></p>
                     </td>
                 </tr>
                 <tr>
