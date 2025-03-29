@@ -4,7 +4,7 @@
 
 <div
     class='flex flex-wrap lg:flex-nowrap gap-[20px] w-[100%] items-start px-[15px] py-[15px]  md:px-[20px] md:py-[20px] lg:px-[30px] lg:py-[30px] bg-[#F6F6F6]'>
-    <div class='w-[100%] lg:w-[60%] bg-[#fff] p-[20px] rounded-[10px]'>
+    <div class='w-[100%] lg:w-[70%] bg-[#fff] p-[20px] rounded-[10px]'>
         <form method="post">
             @csrf
             <div class='flex flex-col gap-[15px] mb-[25px]'>
@@ -172,13 +172,13 @@
 
             <div class='mt-[8px]'>
                 <button
-                    class='px-[10px] py-[10px] w-[160px] flex justify-center text-center text-[15px] text-[#fff] bg-[#D272D2] rounded-[8px]'>Save
+                    class='px-[10px] py-[10px] w-[160px] flex justify-center text-center text-[15px] text-[#00] bg-[#49FB53] rounded-[8px]'>Save
                     Template</button>
             </div>
         </form>
     </div>
 
-    <div class='flex w-[100%] lg:w-[40%] sticky top-[100px]'>
+    <div class='flex w-[100%] lg:w-[30%] sticky top-[100px]'>
         <!-- New HTML Sidebar -->
         <div style="width:100%; bg-[#e06060] p-[10px] rounded-[5px] bodyBg-colordy">
             <div style=" display:flex;flex-direction: column; align-items: start; width: 100%;">

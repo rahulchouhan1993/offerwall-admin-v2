@@ -86,7 +86,7 @@
                         @endphp
                           <label class="flex items-center gap-[8px] text-sm text-gray-700">
                              <input type="checkbox" name="countryselected[]" {{ $checkd }} class="peer hidden" value="{{ $country->iso }}" />
-                             <div class=" peer-checked:bg-[#D272D2] inline-block w-4 h-4 border border-gray-400 relative">
+                             <div class=" peer-checked:bg-[#49FB53] inline-block w-4 h-4 border border-gray-400 relative">
                                 <svg class="peer-checked:block hidden w-4 h-4 text-blue-500 absolute top-[5px] left-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                 </svg>
