@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 tension: 0.4,
                                 fill: true,
                                 pointRadius: 5,
-                                pointBackgroundColor: '#ff6384'
+                                pointBackgroundColor: '#7BB7C9'
                             }
                         ]
                     },

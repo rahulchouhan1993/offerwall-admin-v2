@@ -43,7 +43,7 @@ class ChartController extends Controller
                 $monthKey = $labelKey[$monthName];
 
                 // Count conversions
-                if (!is_null($tracking->conversion_id)) {
+                if (!is_null($tracking->conversion_id) && $tracking->status==1) {
                     $conversionData[$monthKey] += 1;
                 }
 
@@ -88,6 +88,7 @@ class ChartController extends Controller
         
         // Initialize both datasets with zero values
         $totalProfit = array_fill(0, 12, 0);
+        $trackingStats->where('status',1);
         $trackingStats = $trackingStats->get();
         if ($trackingStats->isNotEmpty()) {
             foreach ($trackingStats as $tracking) {

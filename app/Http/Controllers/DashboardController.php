@@ -18,8 +18,8 @@ class DashboardController extends Controller
         $pageTitle = 'Dashboard';
         $activeApps = App::where('status',1)->count();
         $allAffiliatesCount = User::where('role','affiliate')->count();
-        $totalRevenue = Tracking::sum('revenue');
-        $totalPayouts = Tracking::sum('payout');
+        $totalRevenue = Tracking::where('status',1)->sum('revenue');
+        $totalPayouts = Tracking::where('status',1)->sum('payout');
 
         // affiliate leaderboard
         $affiliateByApp = User::where('status', '1')
@@ -36,13 +36,13 @@ class DashboardController extends Controller
         $affiliateByRevenue = User::where('status', '1') // Active users
             ->where('role', 'affiliate') // Only affiliates
             ->whereHas('trackings', function ($query) {
-                $query->whereNotNull('conversion_id'); // Ensure there is a valid conversion
+                $query->whereNotNull('conversion_id')->where('status', 1); // Ensure there is a valid conversion
             })
             ->withCount(['trackings' => function ($query) {
-                $query->whereNotNull('conversion_id'); // Count only valid conversions
+                $query->whereNotNull('conversion_id')->where('status', 1); // Count only valid conversions
             }])
             ->withSum(['trackings' => function ($query) {
-                $query->whereNotNull('conversion_id'); // Sum only for valid conversions
+                $query->whereNotNull('conversion_id')->where('status', 1); // Sum only for valid conversions
             }], 'revenue') // Sum the revenue column
             ->orderByDesc('trackings_sum_revenue') // Sort by highest revenue
         ->get();

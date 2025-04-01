@@ -60,7 +60,7 @@ class ReportsController extends Controller
 
         $trackingStats->selectRaw("
             COUNT(*) as total_click,
-            COUNT(CASE WHEN conversion_id IS NOT NULL THEN 1 END) as total_conversions,
+            COUNT(CASE WHEN conversion_id IS NOT NULL AND status=1 THEN 1 END) as total_conversions,
             SUM(revenue) as total_revenue,
             SUM(payout) as total_payout
         ");
