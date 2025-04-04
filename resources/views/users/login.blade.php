@@ -72,7 +72,7 @@
                         </button>
                     </div>
                 </form>
-                <div class="flex items-center justify-between gap-[15px] mt-[60px]">
+                {{-- <div class="flex items-center justify-between gap-[15px] mt-[60px]">
                     <div class="w-[48%] h-[1px] bg-[#ccc]"></div>
                     <div class="text-[14px] font-[500] text-[#898989]">OR</div>
                     <div class="w-[48%] h-[1px] bg-[#ccc]"></div>
@@ -82,7 +82,7 @@
                     <a href="#" class="text-[#4EF953] underline hover:text-[#000] hover:no-underline ">
                     Sign Up
                     </a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

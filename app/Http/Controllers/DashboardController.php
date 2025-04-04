@@ -67,6 +67,8 @@ class DashboardController extends Controller
             $templateColor->offerText = $request->offerText;
             $templateColor->offerButtonBg = $request->offerButtonBg;
             $templateColor->offerButtonText = $request->offerButtonText;
+            $templateColor->offerBadgeBg = $request->offerBadgeBg;
+            $templateColor->offerBadgeText = $request->offerBadgeText;
             $templateColor->footerBg = $request->footerBg;
             $templateColor->footerText = $request->footerText;
             $templateColor->save();
@@ -117,6 +119,7 @@ class DashboardController extends Controller
             $settingsData->conversion_report = ($request->conversion=='on') ? 1 : 0;
             $settingsData->postback_report = ($request->postback=='on') ? 1 : 0;
             $settingsData->privacy_policy = ($request->privacy_policy=='on') ? 1 : 0;
+            $settingsData->blocked_categories = $request->blocked_categories ?? NULL;
             if ($request->hasFile('default_image')) {
                 $file = $request->file('default_image');
                 $filename = time() . '.' . $file->getClientOriginalExtension();

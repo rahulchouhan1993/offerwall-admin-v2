@@ -138,6 +138,32 @@
                                 value="{{ $templateColor->offerButtonText }}" />
                         </div>
                     </div>
+
+                    <div class="relative flex flex-col gap-[5px]">
+                        <label class='text-[14] text-[#898989] mb-[2px]'>Badge BG Color</label>
+                        <div class='flex gap-[10px] bg-[#fff] p-[6px] rounded-[8px] border-[1px] border-[#e5e7eb] rounded-[4px]'
+                            cltype='bg'>
+                            <input class='min-w-[30px] h-[30px] commonColourPicker' type="color" name="offerBadgeBg"
+                                pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$"
+                                value="{{ $templateColor->offerBadgeBg }}" />
+                            <input class='w-[100%] commonColourNumber' type="text"
+                                pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$"
+                                value="{{ $templateColor->offerBadgeBg }}" />
+                        </div>
+                    </div>
+
+                    <div class="relative flex flex-col gap-[5px]">
+                        <label class='text-[14] text-[#898989] mb-[2px]'>Badge Text Color</label>
+                        <div class='flex gap-[10px] bg-[#fff] p-[6px] rounded-[8px] border-[1px] border-[#e5e7eb] rounded-[4px]'
+                            cltype='text'>
+                            <input class='min-w-[30px] h-[30px] commonColourPicker' type="color" name="offerBadgeText"
+                                pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$"
+                                value="{{ $templateColor->offerBadgeText }}" />
+                            <input class='w-[100%] commonColourNumber' type="text"
+                                pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$"
+                                value="{{ $templateColor->offerBadgeText }}" />
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -219,10 +245,11 @@
                             style="width: calc(100% - 90px); display: flex; align-items: center; justify-content: space-between;">
                             <div style="width: calc(100% - 90px);">
                                 <h2 class="offerText-colordy" style="margin: 0 0 10px; font-weight: 600; font-size: 12px; color: #212121;">Name Of The Offer</h2>
-                                <!-- <p style="margin: 0; font-size: 13px; font-weight: 400; line-height: 21px; color: #212121;">Download and install IN&nbsp;- Desktop</p> -->
-                                <!-- <div style="margin: 10px 0 0; padding: 11px; background: #d0bbe2; border-left: 2px solid #d59dfb;">
-                            <p style="margin: 0; font-size: 13px; color: #2f2d2d;">IN - Desktop</p>
-                            </div> -->
+                                <div style="display:flex;gap: 10px;align-items: center;">
+                                    <div style="display:flex; flex-wrap:wrap; gap:4px; font-size: 10px;color:red">
+                                        <div class="offerBadgeBg-colordy offerBadgeText-colordy" style="background:#00fc42; text-align:center; padding:4px 10px; border-radius:5px; font-size:10px;color:red">Device</div> 
+                                    </div>
+                                 </div>
                             </div>
 
                             <div style="min-width: 50px;">

@@ -51,6 +51,10 @@
                     <h2 class="lg:w-[200px] md:w-[155px] text-[16px] text-[#4D4D4D] font-[600]">LinkedIn</h2>
                     <input type="text" name="linkedin" class="flex w-full px-[15px] py-[12px] rounded-[5px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{{ $settingsData->linkedin }}">
                 </div>
+                <div class="flex flex-col gap-[10px] mt-[40px]">
+                    <h2 class="text-[16px] text-[#4D4D4D] font-[600]">Disabled Offer Categories (Make sure you add exact name of categories comma seperated without any spaces)</h2>
+                    <textarea required name="blocked_categories" class="flex px-[15px] py-[12px] min-h-[150px] rounded-[5px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" >{{ $settingsData->blocked_categories }}</textarea>
+                </div>
                 <div class="flex flex-col justify-start items-start flex-wrap md:flex-nowrap gap-[20px] mb-[15px]">
                     <h2 class="w-full text-[16px] text-[#4D4D4D] font-[600]">Default Offer Image (100 * 100px)</h2>
                     <input type="file" name="default_image" class="flex w-full px-[15px] py-[12px] rounded-[5px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" >
