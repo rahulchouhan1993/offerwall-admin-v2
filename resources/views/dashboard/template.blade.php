@@ -247,7 +247,7 @@
                                 <h2 class="offerText-colordy" style="margin: 0 0 10px; font-weight: 600; font-size: 12px; color: #212121;">Name Of The Offer</h2>
                                 <div style="display:flex;gap: 10px;align-items: center;">
                                     <div style="display:flex; flex-wrap:wrap; gap:4px; font-size: 10px;color:red">
-                                        <div class="offerBadgeBg-colordy offerBadgeText-colordy" style="background:#00fc42; text-align:center; padding:4px 10px; border-radius:5px; font-size:10px;color:red">Device</div> 
+                                        <div class="offerBadgeBg-colordy offerBadgeText-colordy" style="background:#00fc42; text-align:center; padding:4px 10px; border-radius:5px; font-size:10px;color:red">Category</div> 
                                     </div>
                                  </div>
                             </div>
