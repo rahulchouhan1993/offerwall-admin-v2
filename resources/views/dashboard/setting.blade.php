@@ -8,7 +8,31 @@
             </div>
             <form method="POST" enctype="multipart/form-data">
             @csrf
-                <div class="flex items-center justify-start flex-wrap md:flex-nowrap gap-[20px] mb-[15px]">
+                <div class="flex flex-col justify-start items-start flex-wrap md:flex-nowrap">
+                    <h2 class="w-[100%] md:w-[155px] text-[16px] text-[#4D4D4D] font-[600]">Meta Title</h2>
+                    <input type="text" name="meta_title" class="flex w-full px-[15px] py-[12px] rounded-[5px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{{ $settingsData->meta_title }}">
+                </div>
+                <div class="flex flex-col mt-[20px]">
+                    <h2 class="text-[16px] text-[#4D4D4D] font-[600]">Meta Description</h2>
+                    <textarea required name="meta_description" class="flex px-[15px] py-[12px] min-h-[150px] rounded-[5px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" >{{ $settingsData->meta_description }}</textarea>
+                </div>
+                <div class="flex flex-col justify-start items-start flex-wrap md:flex-nowrap mt-[20px]">
+                    <h2 class="w-[100%] md:w-[155px] text-[16px] text-[#4D4D4D] font-[600]">Offerwall Alias</h2>
+                    <input type="text" name="offer_alias" class="flex w-full px-[15px] py-[12px] rounded-[5px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{{ $settingsData->offer_alias }}">
+                </div>
+                <div class="flex flex-col justify-start items-start flex-wrap md:flex-nowrap mt-[20px]">
+                    <h2 class="w-[100%] md:w-[155px] text-[16px] text-[#4D4D4D] font-[600]">Support Email</h2>
+                    <input type="text" name="support_email" class="flex w-full px-[15px] py-[12px] rounded-[5px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{{ $settingsData->support_email }}">
+                </div>
+                <div class="flex flex-col justify-start items-start flex-wrap md:flex-nowrap mt-[20px]">
+                    <h2 class="w-[100%] md:w-[155px] text-[16px] text-[#4D4D4D] font-[600]">Telegram Link</h2>
+                    <input type="text" name="twitter" class="flex w-full px-[15px] py-[12px] rounded-[5px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{{ $settingsData->twitter }}">
+                </div>
+                <div class="flex flex-col justify-start items-start flex-wrap md:flex-nowrap mt-[20px]">
+                    <h2 class="lg:w-[200px] md:w-[155px] text-[16px] text-[#4D4D4D] font-[600]">LinkedIn</h2>
+                    <input type="text" name="linkedin" class="flex w-full px-[15px] py-[12px] rounded-[5px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{{ $settingsData->linkedin }}">
+                </div>
+                <div class="flex items-center justify-start flex-wrap md:flex-nowrap mt-[20px] mb-[15px]">
                     <h2 class="w-[160px] text-[16px] text-[#4D4D4D]  font-[600]">Conversion Report</h2>
                     <div class="switch">
                         <label class="switch">
@@ -17,7 +41,7 @@
                             </label>
                     </div>
                 </div>
-                <div class="flex items-center justify-start flex-wrap md:flex-nowrap gap-[20px] mb-[15px]">
+                <div class="flex items-center justify-start flex-wrap md:flex-nowrap mt-[20px] mb-[20px]">
                     <h2 class="w-[160px] text-[16px] text-[#4D4D4D] font-[600]">Postback Report</h2>
                     <div class="switch">
                         <label class="switch">
@@ -26,7 +50,7 @@
                             </label>
                     </div>
                 </div>
-                <div class="flex items-center justify-start flex-wrap md:flex-nowrap gap-[20px] mb-[15px]">
+                <div class="flex items-center justify-start flex-wrap md:flex-nowrap mt-[20px] mb-[15px]">
                     <h2 class="w-[160px] text-[16px] text-[#4D4D4D] font-[600]">Privacy Policy</h2>
                     <div class="switch">
                         <label class="switch">
@@ -35,44 +59,19 @@
                             </label>
                     </div>
                 </div>
-                <div class="flex flex-col justify-start items-start flex-wrap md:flex-nowrap gap-[20px] mb-[15px]">
-                    <h2 class="w-[100%] md:w-[155px] text-[16px] text-[#4D4D4D] font-[600]">Support Email</h2>
-                    <input type="text" name="support_email" class="flex w-full px-[15px] py-[12px] rounded-[5px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{{ $settingsData->support_email }}">
-                </div>
-                <div class="flex flex-col justify-start items-start flex-wrap md:flex-nowrap gap-[20px] mb-[15px]">
-                    <h2 class="w-[100%] md:w-[155px] text-[16px] text-[#4D4D4D] font-[600]">Telegram Link</h2>
-                    <input type="text" name="twitter" class="flex w-full px-[15px] py-[12px] rounded-[5px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{{ $settingsData->twitter }}">
-                </div>
-                {{-- <div class="flex flex-col justify-start items-start flex-wrap md:flex-nowrap gap-[20px] mb-[15px]">
-                    <h2 class="w-[100%] md:w-[155px] text-[16px] text-[#4D4D4D] font-[600]">Facebook Link</h2>
-                    <input type="text" name="facebook" class="w-full flex px-[15px] py-[12px] rounded-[5px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{{ $settingsData->facebook }}">
-                </div> --}}
-                <div class="flex flex-col justify-start items-start flex-wrap md:flex-nowrap gap-[20px] mb-[15px]">
-                    <h2 class="lg:w-[200px] md:w-[155px] text-[16px] text-[#4D4D4D] font-[600]">LinkedIn</h2>
-                    <input type="text" name="linkedin" class="flex w-full px-[15px] py-[12px] rounded-[5px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{{ $settingsData->linkedin }}">
-                </div>
-                <div class="flex flex-col gap-[10px] mt-[40px]">
+                <div class="flex flex-col mt-[30px]">
                     <h2 class="text-[16px] text-[#4D4D4D] font-[600]">Disabled Offer Categories (Make sure you add exact name of categories comma seperated without any spaces)</h2>
                     <textarea required name="blocked_categories" class="flex px-[15px] py-[12px] min-h-[150px] rounded-[5px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" >{{ $settingsData->blocked_categories }}</textarea>
                 </div>
-                <div class="flex flex-col justify-start items-start flex-wrap md:flex-nowrap gap-[20px] mb-[15px]">
+                <div class="flex flex-col justify-start items-start flex-wrap md:flex-nowrap mt-[20px]">
                     <h2 class="w-full text-[16px] text-[#4D4D4D] font-[600]">Default Offer Image (100 * 100px)</h2>
                     <input type="file" name="default_image" class="flex w-full px-[15px] py-[12px] rounded-[5px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" >
                     <img height="100px" width="100px" src="{{  $settingsData->default_image }}">
                 </div>
-                <div class="flex flex-col gap-[10px] mt-[40px]">
+                <div class="flex flex-col mt-[30px]">
                     <h2 class="text-[16px] text-[#4D4D4D] font-[600]">Default Offer Description</h2>
                     <textarea required name="default_description" class="flex px-[15px] py-[12px] min-h-[150px] rounded-[5px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" >{{ $settingsData->default_description }}</textarea>
                 </div>
-                {{-- <div class="flex flex-col gap-[10px] mt-[40px]">
-                    <h2 class="text-[16px] text-[#4D4D4D] font-[600]">Default Offer Info Description</h2>
-                    <textarea required name="default_info" class="flex px-[15px] py-[12px] min-h-[150px] rounded-[5px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" >{{ $settingsData->default_info }}</textarea>
-                </div> --}}
-                {{-- <div class="flex flex-col gap-[10px] mt-[40px]">
-                    <h2 class="text-[16px] text-[#4D4D4D] font-[600]">Content</h2>
-                    <textarea required name="content" class="flex px-[15px] py-[12px] min-h-[150px] rounded-[5px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" >{{ $settingsData->content }}</textarea>
-                </div> --}}
-
                 <div class="flex gap-[10px] md:gap-[20px] mt-[10px]">
                     <button type="submit" class="flex items-center justify-center w-[110px] md:w-[170px] px-[4px] py-[12px] md:px-[15px] md:py-[15px] rounded-[5px] bg-[#49FB53]  text-[12px] md:text-[14px] font-[500] text-[#000]">Save Changes</button>
 

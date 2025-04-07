@@ -110,6 +110,9 @@ class DashboardController extends Controller
         $pageTitle = 'Settings';
         $settingsData = Setting::find(1);
         if($request->isMethod('post')){
+            $settingsData->meta_title = $request->meta_title;
+            $settingsData->meta_description = $request->meta_description;
+            $settingsData->offer_alias = $request->offer_alias;
             $settingsData->default_description = $request->default_description;
             $settingsData->default_info = $request->default_info;
             $settingsData->support_email = $request->support_email;

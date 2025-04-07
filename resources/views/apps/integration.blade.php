@@ -73,7 +73,7 @@
                     
                     <code class="flex items-center justify-center bg-[#1E233B] h-[100%] xl:h-[125px] rounded-[8px] px-[15px] py-[15px] text-[14px] text-[#FFFFFF]"  data-lang="html">
                         
-                            &lt;iframe style="width:100%; height:800px; border:0; padding:0; margin:0;" scrolling="yes" frameborder="0" src="{{ env('OFFRWALL_URL') }}/wall?apiKey={{ auth()->user()->api_key }}&wallId={{ $appDetail->appId }}">&gt;&lt;/iframe&gt;
+                            &lt;iframe style="width:100%; height:800px; border:0; padding:0; margin:0;" scrolling="yes" frameborder="0" src="{{ env('OFFRWALL_URL') }}/wall?apiKey={{ $affiliateDetails->api_key }}&wallId={{ $appDetail->appId }}">&gt;&lt;/iframe&gt;
                    
                     </code>
                 </div>
