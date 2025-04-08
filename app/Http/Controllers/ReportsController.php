@@ -19,7 +19,9 @@ class ReportsController extends Controller
         $allRegisteredAffiliates = User::where('status',1)->where('role','affiliate')->get();
         $trackingStats = Tracking::query();
         $requestedParams = $request->all();
-        
+        if(!isset($requestedParams['sort']) || !isset($requestedParams['order'])){
+            return redirect()->route('admin.report.statistics',['sort'=>'element','order'=>'asc']);
+        }
         $requestedParams['groupBy'] = $requestedParams['groupBy'] ?? 'hour';
         $requestedParams['range'] = $requestedParams['range'] ?? date('m/d/Y', strtotime('-6 days')).' - '.date('m/d/Y');
         // Apply date range filter
@@ -101,6 +103,19 @@ class ReportsController extends Controller
             }
         }
         $allStatistics = $trackingStats->get();
+        $sortBy = $request->get('sort', 'element');
+        $order = $request->get('order', 'asc');
+
+        $allStatistics = $allStatistics->sortBy(function ($item) use ($sortBy) {
+            switch ($sortBy) {
+                case 'cvr':
+                    return ($item->total_click > 0) ? ($item->total_conversions / $item->total_click) * 100 : 0;
+                case 'epc':
+                    return ($item->total_click > 0) ? ($item->total_payout / $item->total_click) : 0;
+                default:
+                    return $item->$sortBy ?? null;
+            }
+        }, SORT_REGULAR, $order === 'desc');
         $graphData = [];
         if($allStatistics->isNotEmpty()){
             foreach($allStatistics as $k => $v){

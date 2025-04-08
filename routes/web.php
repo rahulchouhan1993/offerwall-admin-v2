@@ -19,6 +19,8 @@ Route::middleware('auth')->group(function () {
     // Settings
     Route::match(['post','get'],'/profile', [DashboardController::class, 'profile'])->name('profile');
     Route::match(['post','get'],'/template', [DashboardController::class, 'template'])->name('template');
+    Route::get('/contact-inquiry', [DashboardController::class, 'inquiry'])->name('inquiry');
+    Route::get('/contact-status/{id}', [DashboardController::class, 'contactstatus'])->name('contactstatus');
 
     // User Management
     Route::get('/affiliates', [UsersController::class, 'affiliates'])->name('admin.users.affiliates');

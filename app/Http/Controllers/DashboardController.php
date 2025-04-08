@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\App;
+use App\Models\Contact;
 use App\Models\Template;
 use App\Models\Setting;
 use App\Models\Tracking;
@@ -135,5 +136,22 @@ class DashboardController extends Controller
             return redirect()->back()->with('success','Setting Updated Successfully');
         }
         return view('dashboard.setting',compact('settingsData','pageTitle'));
+    }
+
+    public function inquiry(){
+        $pageTitle = 'Inquries';
+        $allInquries = Contact::orderByDesc('id')->get();
+        return view('dashboard.inquiry',compact('allInquries','pageTitle'));
+    }
+
+    public function contactstatus($id){
+        $details = Contact::find($id);
+        if($details->status==0){
+            $details->status = 1;
+        }else{
+            $details->status = 0;
+        }
+        $details->save();
+        return redirect()->back()->with('success', 'Status Updated Successfully!!');
     }
 }

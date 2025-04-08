@@ -1,6 +1,8 @@
 @php
     use App\Models\App;
+    use App\Models\Contact;
     $pendingApps = App::where('status',0)->count();
+    $pendingContact = Contact::where('status',0)->count();
 @endphp
 <div class="bg-[#210D0F] pl-[20px] pr-[20px] 2xl:pl-[20px] 2xl:pr-[20px] py-[10px] 2xl:py-[10px] pt-[2px] sidebar">
    <div class="mb-[20px] 2xl:mb-[50px]">
@@ -73,6 +75,16 @@
            <path d="M5 5H15V7H5V5Z" fill="currentColor"/>
            </svg>
          Template
+      </a>
+      <a href="{{ route('inquiry') }}"
+         class="relative group flex items-center gap-[10px] px-[10px] py-[10px] text-[16px] font-[400] text-[#FFFAFD] hover:text-[#4EF953] @if(Route::currentRouteName()=='inquiry') active @endif">
+         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 16 16" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16ZM8 5C7.17157 5 6.5 5.67157 6.5 6.5V7H4.5V6.5C4.5 4.567 6.067 3 8 3C9.933 3 11.5 4.567 11.5 6.5C11.5 8.433 9.933 10 8 10H7V8H8C8.82843 8 9.5 7.32843 9.5 6.5C9.5 5.67157 8.82843 5 8 5ZM9 11V13H7V11H9Z" fill="currentColor"/>
+            </svg>
+         Inquiries
+         @if($pendingContact>0)
+         <div class="w-[22px] h-[22px] bg-[#49FB53] flex justify-center items-center absolute top-[11px] left-[105px] rounded-[50px] text-[11px] font-[600] text-[#000]">{{ $pendingContact }}</div>
+         @endif
       </a>
       {{-- <a href="{{ route('report.status') }}"
          class="group flex items-center gap-[10px] px-[10px] py-[10px] text-[16px] font-[400] text-[#FFFAFD] hover:text-[#4EF953] @if(Route::currentRouteName()=='report.status') active @endif">

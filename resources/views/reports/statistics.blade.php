@@ -1,5 +1,20 @@
 @extends('layouts.default')
 @section('content')
+@php
+   $currentSort = request('sort');
+   $currentOrder = request('order', 'asc');
+   function sortLink($column, $label) {
+      $order = request('sort') === $column && request('order') === 'asc' ? 'desc' : 'asc';
+      $url = request()->fullUrlWithQuery(['sort' => $column, 'order' => $order]);
+      $arrow = '';
+      
+      if (request('sort') === $column) {
+         $arrow = $order === 'asc' ? '↑' : '↓';
+      }
+
+      return "<a href=\"$url\" class=\"hover:underline\">$label $arrow</a>";
+   }
+@endphp
 <div class="bg-[#f2f2f2] p-[15px] md:p-[35px]">
     <div class="bg-[#fff] p-[15px] md:p-[20px] rounded-[10px] mb-[20px]">
        <div class="flex items-center justify-between gap-[25px] w-[100%]  mb-[15px]">
@@ -7,6 +22,8 @@
           <button class="w-[100px] md:w-[110px] lg:w-[140px] bg-[#49FB53] px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#000] text-center" id="exportCsvBtn">Export</button>
        </div>
        <form method="get" id="filterStats" >
+         <input type="hidden" name="sort" value="{{ $currentSort }}">
+         <input type="hidden" name="order" value="{{ $currentOrder }}">
        <div class="flex flex-col items-center justify-center gap-[15px]">
           <div class="w-full flex flex-col gap-[10px]">
             <div class="w-[100%] flex flex-col lg:flex-row items-start lg:items-center justify-start gap-[10px]">
@@ -113,29 +130,29 @@
                 <tr>
                    <th
                       class="bg-[#7FB5CB] rounded-tl-[10px] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap ">
-                      {{ $headingArray[$requestedParams['groupBy'] ?? ''] ?? 'Hour' }}
+                      {!! sortLink('element', $headingArray[$requestedParams['groupBy'] ?? ''] ?? 'Hour') !!}
                    </th>
    
                    <th
                       class="bg-[#7FB5CB] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">
-                      Clicks
+                      {!! sortLink('total_click', 'Clicks') !!}
                    </th>
                    <th
                       class="bg-[#7FB5CB] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">
-                      Conversions
+                      {!! sortLink('total_conversions', 'Conversions') !!}
                    </th>
                    <th
                       class="bg-[#7FB5CB] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">
-                      CVR
+                      {!! sortLink('cvr', 'CVR') !!}
                    </th>
                    <th
                       class="bg-[#7FB5CB] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">
-                      EPC
+                      {!! sortLink('epc', 'EPC') !!}
                    </th>
                    
                    <th
                       class="bg-[#7FB5CB] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap rounded-tr-[10px]">
-                      Payout
+                      {!! sortLink('total_payout', 'Payout') !!}
                    </th>
                 </tr>
                 @if($allStatistics->isNotEmpty())
