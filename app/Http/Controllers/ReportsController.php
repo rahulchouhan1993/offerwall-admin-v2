@@ -219,6 +219,8 @@ class ReportsController extends Controller
                     $row['conversions'], 
                     $row['cvr'], 
                     $row['epc'], 
+                    $row['revenue'],
+                    $row['payout'],
                     $row['earnings']
                 ]);
             }

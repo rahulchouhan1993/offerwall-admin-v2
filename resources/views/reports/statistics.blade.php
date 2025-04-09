@@ -118,7 +118,9 @@
                '2' => 'Conversions',
                '3' => 'CVR',
                '4' => 'EPC',
-               '5' => 'Payout',
+               '5' => 'Revenue',
+               '6' => 'Payout',
+               '7' => 'Earnings',
             ],
             'data' => []
          ]; 
@@ -149,10 +151,18 @@
                       class="bg-[#7FB5CB] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">
                       {!! sortLink('epc', 'EPC') !!}
                    </th>
+                   <th
+                      class="bg-[#7FB5CB] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">
+                      {!! sortLink('total_revenue', 'Revenue') !!}
+                   </th>
                    
                    <th
-                      class="bg-[#7FB5CB] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap rounded-tr-[10px]">
+                      class="bg-[#7FB5CB] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">
                       {!! sortLink('total_payout', 'Payout') !!}
+                   </th>
+                   <th
+                      class="bg-[#7FB5CB] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">
+                      {!! sortLink('total_payout', 'Earnings') !!}
                    </th>
                 </tr>
                 @if($allStatistics->isNotEmpty())
@@ -177,7 +187,9 @@
                    @php 
                      $confirmCount = $stats->total_conversions ?? 0; 
                      $trafficCount = $stats->total_click ?? 0;
-                     $totalEarnings = $stats->total_payout ?? 0;
+                     $totalRevenue = $stats->total_revenue ?? 0;
+                     $totalPayouts = $stats->total_payout ?? 0;
+                     $totalEarnings = $totalRevenue - $totalPayouts;
                      if($trafficCount>0){
                         $percentage = number_format(($confirmCount / $trafficCount) * 100, 2).' %';
                      }else{
@@ -194,6 +206,18 @@
                       $ {{ rtrim(rtrim(sprintf("%.4f", ($totalEarnings/$trafficCount)), '0'), '.');  }}
                    </td>
                    @php $exportedData['data'][$key]['epc'] = '$'.rtrim(rtrim(sprintf("%.4f", ($totalEarnings/$trafficCount)), '0'), '.'); @endphp
+
+
+                   <td
+                      class="border-b-[1px] border-b-[#E6E6E6] text-[14px] font-[500] text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap ">
+                      $ {{ rtrim(rtrim(sprintf("%.4f", ($totalRevenue)), '0'), '.');  }}
+                   </td>
+                   @php $exportedData['data'][$key]['revenue'] = '$'.rtrim(rtrim(sprintf("%.4f", ($totalRevenue)), '0'), '.'); @endphp
+                   <td
+                      class="border-b-[1px] border-b-[#E6E6E6] text-[14px] font-[500] text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap ">
+                      $ {{ rtrim(rtrim(sprintf("%.4f", ($totalPayouts)), '0'), '.');  }}
+                   </td>
+                   @php $exportedData['data'][$key]['payout'] = '$'.rtrim(rtrim(sprintf("%.4f", ($totalPayouts)), '0'), '.'); @endphp
                    <td
                       class="border-b-[1px] border-b-[#E6E6E6] text-[14px] font-[500] text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap ">
                       $ {{ rtrim(rtrim(sprintf("%.4f", ($totalEarnings)), '0'), '.');  }}
