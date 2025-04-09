@@ -10,7 +10,7 @@
                         <tr>
                             <th class="bg-[#7FB5CB] rounded-tl-[10px] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">Name</th>
                             <th class="bg-[#7FB5CB] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">Email</th>
-                            <th class="bg-[#7FB5CB] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">Message</th>
+                            <th class="max-w-[250px] bg-[#7FB5CB] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">Message</th>
                             <th class="bg-[#7FB5CB] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">Status</th>
                             <th class="bg-[#7FB5CB] rounded-tr-[10px] text-[12px] font-medium text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">Created</th>
                         </tr>
@@ -21,7 +21,9 @@
                         <tr>
                             <td class="text-[12px] font-medium text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap border-b border-[#E6E6E6]">{{ $inqury->name }}</td>
                             <td class="text-[12px] font-medium text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap border-b border-[#E6E6E6]">{{ $inqury->email }}</td>
-                            <td class="text-[12px] font-medium text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap border-b border-[#E6E6E6]">{{ $inqury->message }}</td>
+                            <td class="max-w-[250px] text-[12px] font-medium text-[#808080] px-[10px] py-[10px] text-left whitespace-normal border-b border-[#E6E6E6]">
+                                {{ $inqury->message }}
+                            </td>
                             <td class="text-[12px] font-medium text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap border-b border-[#E6E6E6]">
                                 @if($inqury->status == 1)
                                     <a href="{{ route('contactstatus', ['id' => $inqury->id]) }}" class="w-[15px] h-[15px] rounded-[5px] flex items-center text-[17px] text-white">
