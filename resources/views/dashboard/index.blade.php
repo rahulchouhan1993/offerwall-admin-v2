@@ -2,7 +2,7 @@
 @section('content') 
 <div class="px-[15px] py-[15px]  md:px-[20px] md:py-[20px] xl:px-[30px] xl:py-[30px]">
     <form method="get">
-        <div x-data="select" class="flex flex-wrap md-flex-nowrap items-start gap-[15px] " @click.outside="open = false">
+        <div x-data="select" class="flex flex-wrap md-flex-nowrap items-start gap-[15px] justify-end mb-[25px]" @click.outside="open = false">
             <div class="relative w-[100%] sm:w-[200px]">
                 <input name="range" class="date-range-profit w-[100%] lg:w-[100%] bg-[#F6F6F6] px-[15px] py-[12px] text-[13px] font-[600] text-[#4D4D4D] border-[1px] border-[#E6E6E6] rounded-[4px] hover:outline-none focus:outline-none" type="text" value="{{ request('range') }}">
             </div>
@@ -14,7 +14,7 @@
                     @endforeach
                 </select>
             </div>
-            <div class="relative w-[100%] sm:w-[200px]">
+            <div class="relative">
                 <button type="submit" class="w-[100px] md:w-[110px] lg:w-[140px] bg-[#49FB53] px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#000] text-center">Filter</button>
             </div>
         </div>
