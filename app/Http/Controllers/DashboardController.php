@@ -33,30 +33,30 @@ class DashboardController extends Controller
         $affiliateId = $request->input('affiliate_id');
     
         // App Statistics
-        $activeApps = App::where('status', 1);
+        $activeApps = Tracking::where('status',1);
         if ($startDate) {
-            $activeApps->whereDate('created_at', '>=', $startDate);
+            $activeApps->whereDate('click_time', '>=', $startDate);
         }
         if ($endDate) {
-            $activeApps->whereDate('created_at', '<=', $endDate);
+            $activeApps->whereDate('click_time', '<=', $endDate);
         }
         if ($affiliateId) {
-            $activeApps->where('affiliateId', $affiliateId);
+            $activeApps->where('user_id', $affiliateId);
         }
-        $activeApps = $activeApps->count();
+        $activeApps = $activeApps->distinct('user_id')->count();
     
         // Affiliate Statistics
-        $allAffiliatesCount = User::where('role','affiliate');
+        $allAffiliatesCount = Tracking::where('status',1);
         if ($startDate) {
-            $allAffiliatesCount->whereDate('created_at', '>=', $startDate);
+            $allAffiliatesCount->whereDate('click_time', '>=', $startDate);
         }
         if ($endDate) {
-            $allAffiliatesCount->whereDate('created_at', '<=', $endDate);
+            $allAffiliatesCount->whereDate('click_time', '<=', $endDate);
         }
         if ($affiliateId) {
-            $allAffiliatesCount->where('id', $affiliateId); // probably should match id
+            $allAffiliatesCount->where('user_id', $affiliateId); // probably should match id
         }
-        $allAffiliatesCount = $allAffiliatesCount->count();
+        $allAffiliatesCount = $allAffiliatesCount->distinct('app_id')->count();
     
         // Revenue Statistics
         $totalRevenue = Tracking::where('status',1);
@@ -241,5 +241,10 @@ class DashboardController extends Controller
         }
         $details->save();
         return redirect()->back()->with('success', 'Status Updated Successfully!!');
+    }
+
+    public function deleteContact($id){
+        Contact::find($id)->delete();
+        return redirect()->back()->with('success', 'Record Deleted Successfully!!');
     }
 }

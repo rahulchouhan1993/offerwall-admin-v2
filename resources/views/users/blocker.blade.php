@@ -16,7 +16,7 @@
               <div class="mb-[15px]">
                  <img src="/images/vpn.png" alt="img">
               </div>
-              <h2 class="text-[18px] text-[#1A1A1A] font-[700] leading-[20px] ">Block VPN Acces</h2>
+              <h2 class="text-[18px] text-[#1A1A1A] font-[700] leading-[20px] ">Block VPN Access</h2>
               <p class="text-[14px] text-[#898989] font-[600]">User can not access the app with VPN enabled.</p>
            </div>
            <div class="relative flex flex-col items-start justify-start gap-[8px] px-[10px] md:px-[15px] xl:px-[25px] pt-[60px] xl:pt-[80px] rounded-[10px] bg-[#F6F6F6] border-[1px] border-[#42E947] w-[100%] sm:w-[48%] lg:w-[32%] 2xl:w-[20%] h-[320px] active:bg-[#CCFDCE] active:border-[#FED5C3]  hover:bg-[#CCFDCE] hover:border-[#42E947]">
