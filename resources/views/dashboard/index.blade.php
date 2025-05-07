@@ -62,24 +62,7 @@
         <div class="bg-[#fff] px-[15px] py-[15px] xl:px-[30px] xl:py-[30px] rounded-[8px] lg:rounded-[10px]">
             <div class="flex justify-between gap-[10px] items-center flex-wrap md-flex-nowrap mb-[25px]">
                 <h2 class="text-[20px] text-[#1A1A1A] font-[600]">Conversion Matrix</h2>
-                <div x-data="select" class="flex flex-wrap md-flex-nowrap items-start gap-[15px] " @click.outside="open = false">
-                    <div class="relative w-[100%] sm:w-[200px]">
-                        {{-- <label for="" class="w-full text-[14] text-[#898989]">Date</label> --}}
-                        <input name="range" class="dateRange  date-range-matrix w-[100%] lg:w-[100%] bg-[#F7F7F7] px-[15px] py-[12px] text-[13px] font-[600] text-[#000] 1border-[1px] 1border-[#E6E6E6] rounded-[10px] hover:outline-none focus:outline-none" type="text" value="">
-
-
-                    </div>
-                    <div class="relative w-[100%] sm:w-[220px]">
-                        {{-- <label for="" class="w-full text-[14] text-[#898989]">Affiliate</label> --}}
-                        <select class=" select-affiliate-dash affiliate-matrix z-2 absolute mt-1 w-[100%]  bg-[#F6F6F6] 1border-[1px] 1border-[#F7F7F7] text-[13px] font-[600] text-[#000]" x-show="open">
-                            <option value="">Select Affiliate</option>
-                            @foreach ($affiliateOptions as $affiliateData)
-                                <option value="{{ $affiliateData->id }}">{{ $affiliateData->name.' '.$affiliateData->last_name }}</option>
-                            @endforeach
-                        </select>
-
-                    </div>
-                </div>
+                
             </div>
             <div class="w-full">
                 <canvas class="w-full" id="roundedLineChart"></canvas>

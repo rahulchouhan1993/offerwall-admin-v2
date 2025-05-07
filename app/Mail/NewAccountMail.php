@@ -27,7 +27,7 @@ class NewAccountMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'New Account Mail',
+            subject: 'Welcome to Offawall',
         );
     }
 

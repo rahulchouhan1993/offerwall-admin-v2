@@ -100,7 +100,7 @@ class UsersController extends Controller
                         'email' => $request->email,
                         'password' => $randomPassword,
                     ];
-                    Mail::to('support@makamobile.com')->send(new NewAccountMail($details));
+                    Mail::to($request->email)->send(new NewAccountMail($details));
                     return redirect()->back()->with('success', 'User added successfully!');
                 }
             }else{
@@ -230,6 +230,6 @@ class UsersController extends Controller
             $password .= $allCharacters[rand(0, strlen($allCharacters) - 1)];
         }
         
-        return Str::shuffle($password); // Shuffle to make it random
+        return str_shuffle($password); // Shuffle to make it random
     }
 }
