@@ -89,6 +89,15 @@
    
 </div>
 <script>
+    $(document).ready(function() {
+        setInterval(() => {
+            fetch('/refresh-csrf')
+                .then(response => response.json())
+                .then(data => {
+                    document.querySelector('input[name="_token"]').value = data.csrf;
+                });
+        }, 5 * 60 * 1000); // every 5 minutes
+    });
     function resetPass() {
     var element = document.getElementById("loginForm");
     element.classList.add("hide");

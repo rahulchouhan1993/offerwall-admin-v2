@@ -9,6 +9,9 @@ use App\Http\Controllers\AppsController;
 //Users Routes
 Route::match(['post','get'],'/',[UsersController::class,'login'])->name('login');
 Route::get('/test-postback', [UsersController::class, 'testPostback'])->name('test.pb');
+Route::get('/refresh-csrf', function () {
+    return response()->json(['token' => csrf_token()]);
+});
 // Routes with Auth Middleware
 Route::middleware('auth')->group(function () {
     Route::get('/logout',[UsersController::class,'logout'])->name('users.logout');

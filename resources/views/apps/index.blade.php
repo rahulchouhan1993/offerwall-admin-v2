@@ -80,7 +80,7 @@
                     </td>
                     @if( $apps->status==1)
                     <td class="text-[14px] font-[500] text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap ">
-                        <a href="{{ route('apps.status',['id'=>$apps->id]) }}" class="inline-flex bg-[#F3FEE7] border border-[#BCEE89] rounded-[5px] px-[10px] py-[4px] text-[12px] font-[600] text-[#6EBF1A] text-center uppercase">Aprroved</a>
+                        <a href="{{ route('apps.status',['id'=>$apps->id]) }}" class="inline-flex bg-[#F3FEE7] border border-[#BCEE89] rounded-[5px] px-[10px] py-[4px] text-[12px] font-[600] text-[#6EBF1A] text-center uppercase">Approved</a>
                      </td>
                     @else
                     <td class="text-[14px] font-[500] text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap ">

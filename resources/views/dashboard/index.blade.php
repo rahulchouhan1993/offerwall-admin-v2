@@ -128,7 +128,7 @@
                         <tr>
                             <td
                                 class="max-w-[500px] text-[14px] font-[500] text-[#808080] px-[10px] py-[10px] text-left whitespace-normal border-b-[1px] border-b-[#E6E6E6] ">
-                                {{ $detailedStats->name.' '.$detailedStats->name }}</td>
+                                {{ $detailedStats->name.' '.$detailedStats->last_name }}</td>
                             <td
                                 class="max-w-[500px] text-[14px] font-[500] text-[#808080] px-[10px] py-[10px] text-left whitespace-normal  border-b-[1px] border-b-[#E6E6E6]">
                                $ {{ $detailedStats->trackings_sum_payout }}</td>
@@ -160,7 +160,7 @@
                         <tr>
                             <td
                                 class="max-w-[500px] text-[14px] font-[500] text-[#808080] px-[10px] py-[10px] text-left whitespace-normal border-b-[1px] border-b-[#E6E6E6] ">
-                                {{ $detailedStats->name.' '.$detailedStats->name }}</td>
+                                {{ $detailedStats->name.' '.$detailedStats->last_name }}</td>
                             <td
                                 class="max-w-[500px] text-[14px] font-[500] text-[#808080] px-[10px] py-[10px] text-left whitespace-normal  border-b-[1px] border-b-[#E6E6E6]">
                                 $ {{ $detailedStats->trackings_sum_profit }}</td>

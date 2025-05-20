@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('trackings', function (Blueprint $table) {
-            $table->string('webmaster_id')->default(null)->after('id');
+            $table->string('webmaster_id')->default(null)->after('id')->nullable(true);
         });
     }
 
