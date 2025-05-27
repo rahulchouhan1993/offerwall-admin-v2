@@ -44,5 +44,36 @@
 
         
     </div>
+
+    <br>
+    
+    <div class="flex flex-col lg:flex-row justify-between items-start gap-[15px] w-[100%] ">
+        <div class="w-[100%] lg:w-[100%] bg-[#fff] p-[15px] md:p-[20px] rounded-[10px]">
+            <div class="flex items-center justify-between gap-[10px] mb-[20px]">
+                <h2 class="text-[20px] text-[#1A1A1A] font-[600]">Offers Parameters and values</h2>
+            </div>
+            <div class="flex w-[100%] bg-[#fff] p-[15px] md:p-[20px] rounded-[10px]">
+                <div class="flex flex-col gap-[15px] w-[100%] ">
+                    <div class="flex flex-wrap xl:flex-nowrap gap-[20px] w-[100%">
+                        <div class="flex flex-col gap-[5px] w-[100%] md:w-[100%]">
+                            <label for="" class="text-[14] text-[#898989]">Sub 1</label>
+                            <input type="text" disabled class="flex px-[15px] py-[12px] rounded-[5px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{tracking_id}">
+                        </div>
+                        
+                        <div class="flex flex-col gap-[5px] w-[100%] md:w-[100%]">
+                            <label for="" class="text-[14] text-[#898989]">Sub 2</label>
+                            <input type="text" disabled class="flex px-[15px] py-[12px] rounded-[5px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{platform_alias_name}">
+                        </div>
+
+                        <div class="flex flex-col gap-[5px] w-[100%] md:w-[100%]">
+                            <label for="" class="text-[14] text-[#898989]">Sub 3</label>
+                            <input type="text" disabled class="flex px-[15px] py-[12px] rounded-[5px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{app_id}">
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @stop

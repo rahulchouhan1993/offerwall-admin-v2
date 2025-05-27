@@ -60,7 +60,8 @@
           <div class="w-[100%] overflow-x-scroll tableScroll">
              <table class="w-[100%] border-collapse border-spacing-0 rounded-[10px] border-separate border border-[#E6E6E6]">
                 <tr>
-                   <th class="bg-[#7FB5CB] rounded-tl-[10px] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap  ">Affiliate Name</th>
+                  <th class="bg-[#7FB5CB] rounded-tl-[10px] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">#ID</th>
+                   <th class="bg-[#7FB5CB] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap ">Affiliate Name</th>
                    <th class="bg-[#7FB5CB] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap ">App Name</th>
                    <th class="bg-[#7FB5CB] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">Admin Status</th>
                    <th class="bg-[#7FB5CB] text-[14px] font-[500] text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">Affiliate Status</th>
@@ -71,6 +72,9 @@
                 @if($allApps && $allApps->isNotEmpty())
                 @foreach ($allApps as $apps)
                 <tr>
+                  <td class="text-[14px] font-[500] text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap ">
+                       <strong>{{ $apps->id }}</strong>
+                    </td>
                     <td class="max-w-[500px] text-[14px] font-[500] text-[#808080] px-[10px] py-[10px] text-left whitespace-normal ">
                        <strong>{{ $apps->users->name.' '.$apps->users->last_name }}</strong>
                     </td>
