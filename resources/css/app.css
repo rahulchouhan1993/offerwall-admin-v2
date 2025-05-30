@@ -95,7 +95,12 @@ form#filterConversions{width:100%;}
     width: auto;
     max-width: 300px; /* Set a max width for readability */
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);}
-
+.select2-container--default .select2-selection--multiple .select2-selection__choice__display {
+    color: black !important;
+}
+.affiliate-select-section span.select2.select2-container.select2-container--default{
+height: 50px;
+}
 
 
 /* Responsvie */

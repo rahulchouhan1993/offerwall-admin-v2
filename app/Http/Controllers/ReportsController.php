@@ -7,6 +7,7 @@ use App\Models\Setting;
 use App\Models\App;
 use App\Models\User;
 use App\Models\Tracking;
+use App\Models\FeaturedOffer;
 use Illuminate\Support\Facades\Http;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
@@ -182,18 +183,58 @@ class ReportsController extends Controller
         echo $returnOptions;die;
     }
     
-    public function reportStatus(Request $request){
-        $pageTitle = 'Report Status';
-        $adminDetails = User::find(1);
-        if($request->isMethod('post')){
-            $adminDetails->conversion_report = ($request->conversion=='on') ? 1 : 0;
-            $adminDetails->postback_report = ($request->postback=='on') ? 1 : 0;
-            $adminDetails->contet = $request->content;
-            $adminDetails->save();
+    public function featuredOffer(Request $request){
+        $pageTitle = 'Featured Offer';
 
-            redirect()->back()->with('success', 'Details Updated!!');
+        //Manage Post
+        if($request->isMethod('post')){
+            $postData = $request['group-a'];
+            $updatedIds = [];
+            if(!empty($postData)){
+                foreach($postData as $k =>$v){
+                    if($v['offer_id']>0 && !empty($v['webmasters'])){
+                        if($v['rec_id']>0){
+                            $newEntity = FeaturedOffer::find($v['rec_id']);
+                        }else{
+                            $newEntity = new FeaturedOffer();
+                        }
+                        $newEntity->offer_id = $v['offer_id'];
+                        $newEntity->affiliates = implode(',',$v['webmasters']);
+                        $newEntity->save();
+                        $updatedIds[] = $newEntity->id;
+                    }
+                }
+            }
+            if(!empty($updatedIds)){
+                FeaturedOffer::whereNotIn('id',$updatedIds)->delete();
+            }
+            return redirect()->back()->with('success','Featured Offers Updated');
         }
-        return view('reports.status',compact('pageTitle','adminDetails'));
+        //End
+
+        $offerSettings = Setting::find(1);
+        $allFeatOffer = FeaturedOffer::get();
+        $allAffiliates = User::select('id', 'name', 'last_name', 'affise_api_key')
+            ->where('role', 'affiliate')
+            ->where('status', 1)
+            ->groupBy('id', 'name', 'last_name', 'affise_api_key')
+            ->get()
+        ->mapWithKeys(function ($user) {
+            return [$user->id => $user->name . ' ' . $user->last_name];
+        });
+
+        $allOffers = [];
+        $url = $offerSettings->affise_endpoint . "offers?sort[epc]=desc&limit=5000";
+        $response = HTTP::withHeaders([
+            'API-Key' => $offerSettings->affise_api_key,
+        ])->get($url);
+        if ($response->successful()) {
+            $allOffers = $response->json();
+        }else{
+            die('No offer found');
+        }
+
+        return view('dashboard.featured',compact('pageTitle','allAffiliates','allOffers','allFeatOffer'));
     }
 
     public function exportReport(Request $request){
@@ -230,5 +271,46 @@ class ReportsController extends Controller
        
 
         return response()->stream($callback, 200, $headers);
+    }
+
+    public function getOfferAffiliate(Request $request){
+        $offerSettings = Setting::find(1);
+        $offerId = $request->offer;
+        $url = "https://api-makamobile.affise.com/3.1/offers/{$offerId}/privacy";
+        $response = HTTP::withHeaders([
+            'API-Key' => $offerSettings->affise_api_key,
+        ])->get($url);
+        $enabledUsers = [];
+        $disabledUsers = [];
+        $updatedEnabledUsers = [];
+        if ($response->successful()) {
+            $assignedAffiliates = $response->json();
+            if(isset($assignedAffiliates['affiliates_enabled']) && !empty($assignedAffiliates['affiliates_enabled'])){
+                $enabledUsers = $assignedAffiliates['affiliates_enabled'];
+            }
+            if(isset($assignedAffiliates['affiliates_disabled']) && !empty($assignedAffiliates['affiliates_disabled'])){
+                $disabledUsers = $assignedAffiliates['affiliates_disabled'];
+            }
+            $updatedEnabledUsers = array_values(array_diff($enabledUsers, $disabledUsers));
+            $allAffiliates = User::select('id', 'name', 'last_name', 'affise_api_key')
+            ->where('role', 'affiliate')
+            ->where('status', 1)
+            ->whereIn('affiseId', $updatedEnabledUsers)
+            ->groupBy('id', 'name', 'last_name', 'affise_api_key')
+            ->get()
+            ->mapWithKeys(function ($user) {
+                return [$user->id => $user->name . ' ' . $user->last_name];
+            });
+            $responseData = [
+                'data' => $allAffiliates
+            ];
+        }else{
+            $responseData = [
+                'data' => []
+            ];
+        }
+        
+
+        return response()->json($responseData);
     }
 }

@@ -86,8 +86,8 @@
          <div class="w-[22px] h-[22px] bg-[#49FB53] flex justify-center items-center absolute top-[11px] left-[105px] rounded-[50px] text-[11px] font-[600] text-[#000]">{{ $pendingContact }}</div>
          @endif
       </a>
-      {{-- <a href="{{ route('report.status') }}"
-         class="group flex items-center gap-[10px] px-[10px] py-[10px] text-[16px] font-[400] text-[#FFFAFD] hover:text-[#4EF953] @if(Route::currentRouteName()=='report.status') active @endif">
+      <a href="{{ route('featured.offer') }}"
+         class="group flex items-center gap-[10px] px-[10px] py-[10px] text-[16px] font-[400] text-[#FFFAFD] hover:text-[#4EF953] @if(Route::currentRouteName()=='featured.offer') active @endif">
          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 16 15"  fill="none">
             <path d="M14 0H2V4H14V0Z" fill="currentColor"/>
             <path d="M2 6H7V10H2V6Z" fill="currentColor"/>
@@ -95,8 +95,8 @@
             <path d="M9 12H14V16H9V12Z" fill="currentColor"/>
             <path d="M14 6H9V10H14V6Z" fill="currentColor"/>
             </svg>
-         Report Status
-      </a> --}}
+         Featured Offer
+      </a>
       <a href="{{ route('settings') }}"
          class="group flex items-center gap-[10px] px-[10px] py-[10px] text-[16px] font-[400] text-[#FFFAFD] hover:text-[#4EF953] @if(Route::currentRouteName()=='settings') active @endif">
          <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">

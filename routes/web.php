@@ -35,9 +35,10 @@ Route::middleware('auth')->group(function () {
     // Reports
     Route::get('/statistics', [ReportsController::class, 'statistics'])->name('admin.report.statistics');
     Route::get('/report-permission', [ReportsController::class, 'permission'])->name('admin.report.permission');
-    Route::match(['post','get'],'/report-status', [ReportsController::class, 'reportStatus'])->name('report.status');
+    Route::match(['post','get'],'/featured-offer', [ReportsController::class, 'featuredOffer'])->name('featured.offer');
     Route::match(['post','get'],'/settings', [DashboardController::class, 'settings'])->name('settings');
     Route::post('/export-report', [ReportsController::class, 'exportReport'])->name('report.export');
+    Route::get('/getOfferAffiliate', [ReportsController::class, 'getOfferAffiliate'])->name('getOfferAffiliate');
 
     // Apps
     Route::match(['post','get'],'/app-blocker', [UsersController::class, 'appBlocker'])->name('admin.users.appblocker');

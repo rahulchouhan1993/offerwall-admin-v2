@@ -69,7 +69,6 @@
                             <label for="" class="text-[14] text-[#898989]">Sub 3</label>
                             <input type="text" disabled class="flex px-[15px] py-[12px] rounded-[5px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{app_id}">
                         </div>
-                        
                     </div>
                 </div>
             </div>
