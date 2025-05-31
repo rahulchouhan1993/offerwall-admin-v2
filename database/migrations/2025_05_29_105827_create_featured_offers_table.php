@@ -7,13 +7,15 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations. 
      */
     public function up(): void
     {
         Schema::create('featured_offers', function (Blueprint $table) {
             $table->id();
             $table->integer('offer_id')->nullable();
+            $table->string('devices')->nullable();
+            $table->mediumText('countries')->nullable();
             $table->longText('affiliates')->nullable();
             $table->timestamps();
         });

@@ -1,6 +1,6 @@
 $(document).ready(function() {
     "use strict";
-    $(".repeater").repeater({
+    $(".repeater").repeater({ 
         defaultValues: {
             "textarea-input": "foo",
             "text-input": "bar",
@@ -13,6 +13,18 @@ $(document).ready(function() {
             $(this).find('.affiliate-select').html(''); 
             $('.affiliate-select').select2({
                 placeholder: "Select an affiliate",
+                allowClear: true
+            });
+            $('.country-select').select2({
+                placeholder: "Select country",
+                allowClear: true 
+            });
+            $('.device-select').select2({
+                placeholder: "Select device",
+                allowClear: true
+            });
+             $('.offer-option').select2({
+                placeholder: "Select an offer",
                 allowClear: true
             });
             $(this).slideDown()

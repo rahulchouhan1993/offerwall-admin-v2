@@ -95,7 +95,7 @@
             <path d="M9 12H14V16H9V12Z" fill="currentColor"/>
             <path d="M14 6H9V10H14V6Z" fill="currentColor"/>
             </svg>
-         Featured Offer
+         Featured Offer 
       </a>
       <a href="{{ route('settings') }}"
          class="group flex items-center gap-[10px] px-[10px] py-[10px] text-[16px] font-[400] text-[#FFFAFD] hover:text-[#4EF953] @if(Route::currentRouteName()=='settings') active @endif">

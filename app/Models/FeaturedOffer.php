@@ -8,6 +8,8 @@ class FeaturedOffer extends Model
 {
     protected $fillable = [
         'offer_id',
-        'affiliates'
+        'affiliates',
+        'countries',
+        'devices' 
     ];
 }

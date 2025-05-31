@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Setting;
 use App\Models\App;
+use App\Models\Country;
 use App\Models\User;
 use App\Models\Tracking;
 use App\Models\FeaturedOffer;
@@ -180,7 +181,7 @@ class ReportsController extends Controller
             }
         }
         
-        echo $returnOptions;die;
+        echo $returnOptions;die; 
     }
     
     public function featuredOffer(Request $request){
@@ -200,6 +201,8 @@ class ReportsController extends Controller
                         }
                         $newEntity->offer_id = $v['offer_id'];
                         $newEntity->affiliates = implode(',',$v['webmasters']);
+                        $newEntity->countries = implode(',',$v['countries']);
+                        $newEntity->devices = implode(',',$v['devices']);
                         $newEntity->save();
                         $updatedIds[] = $newEntity->id;
                     }
@@ -211,7 +214,7 @@ class ReportsController extends Controller
             return redirect()->back()->with('success','Featured Offers Updated');
         }
         //End
-
+        $allCountries = Country::get();
         $offerSettings = Setting::find(1);
         $allFeatOffer = FeaturedOffer::get();
         $allAffiliates = User::select('id', 'name', 'last_name', 'affise_api_key')
@@ -234,7 +237,7 @@ class ReportsController extends Controller
             die('No offer found');
         }
 
-        return view('dashboard.featured',compact('pageTitle','allAffiliates','allOffers','allFeatOffer'));
+        return view('dashboard.featured',compact('allCountries','pageTitle','allAffiliates','allOffers','allFeatOffer'));
     }
 
     public function exportReport(Request $request){
