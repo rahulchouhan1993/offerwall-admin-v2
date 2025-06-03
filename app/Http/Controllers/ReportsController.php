@@ -203,6 +203,7 @@ class ReportsController extends Controller
                         $newEntity->affiliates = implode(',',$v['webmasters']);
                         $newEntity->countries = implode(',',$v['countries']);
                         $newEntity->devices = implode(',',$v['devices']);
+                        $newEntity->operating_system = implode(',',$v['operating_system']);
                         $newEntity->save();
                         $updatedIds[] = $newEntity->id;
                     }

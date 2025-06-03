@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('offer_id')->nullable();
             $table->string('devices')->nullable();
             $table->mediumText('countries')->nullable();
+            $table->string('operating_system')->nullable();
             $table->longText('affiliates')->nullable();
             $table->timestamps();
         });

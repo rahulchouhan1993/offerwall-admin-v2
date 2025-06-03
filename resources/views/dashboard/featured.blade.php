@@ -65,7 +65,7 @@
                                         @if($allOffers['pagination']['total_count']>0)
                                             @foreach ($allOffers['offers'] as $offerKey =>$offerVal )
                                                 @if($offerVal['status']=='active') 
-                            <option value="{{ $offerVal['offer_id'] }}" @if($featOffer->offer_id==$offerVal['offer_id']) selected @endif >{{ $offerVal['title'] }}</option>
+                            <option value="{{ $offerVal['offer_id'] }}" @if($featOffer->offer_id==$offerVal['offer_id']) selected @endif >{{ $offerVal['offer_id'] }} - {{ $offerVal['title'] }}</option>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -92,6 +92,19 @@
                                          <option @if(in_array('desktop',$allSelectedDevices)) selected @endif  value="desktop">Desktop</option>
                                          <option @if(in_array('mobile',$allSelectedDevices)) selected @endif  value="mobile">Mobile</option>
                                          <option @if(in_array('tablet',$allSelectedDevices)) selected @endif  value="tablet">Tablet</option>
+                                    </select>
+                                </div>
+                                <div class="md:flex-wrap flex flex-col gap-[10px] w-full md:w-[48%] xl:w-[48%] ">
+                                    <label for="" class="flex items-center gap-[5px] text-[14] text-[#898989]">Operating System<div class="text-[#F23765] mt-[-2px]">*</div> <input type="checkbox" class="check-all"> Select All</label>
+                                    <select name="operating_system" required class="operating-select flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" multiple>
+                                        @php $allSelectedOs = explode(',',$featOffer->operating_system); @endphp
+                                       
+                                         <option @if(in_array('Mac OS X',$allSelectedOs)) selected @endif  value="Mac OS X">Mac OS X</option>
+                                         <option @if(in_array('macOS',$allSelectedOs)) selected @endif  value="macOS">macOS</option>
+                                         <option @if(in_array('Windows',$allSelectedOs)) selected @endif  value="Windows">Windows</option>
+                                         <option @if(in_array('Android',$allSelectedOs)) selected @endif  value="Android">Android</option>
+                                         <option @if(in_array('iOS',$allSelectedOs)) selected @endif  value="iOS">iOS</option>
+                                         <option @if(in_array('iPadOS',$allSelectedOs)) selected @endif  value="iPadOS">iPadOS</option>
                                     </select>
                                 </div>
                                 @php 
@@ -122,7 +135,7 @@
                                     @if($allOffers['pagination']['total_count']>0)
                                         @foreach ($allOffers['offers'] as $offerKey =>$offerVal )
                                             @if($offerVal['status']=='active') 
-                        <option value="{{ $offerVal['offer_id'] }}" >{{ $offerVal['title'] }}</option>
+                        <option value="{{ $offerVal['offer_id'] }}" >{{ $offerVal['offer_id'] }} - {{ $offerVal['title'] }}</option>
                                             @endif
                                         @endforeach
                                     @endif
@@ -144,6 +157,17 @@
                                         <option value="desktop">Desktop</option>
                                         <option value="mobile">Mobile</option>
                                         <option value="tablet">Tablet</option>
+                                </select>
+                            </div>
+                            <div class="md:flex-wrap flex flex-col gap-[10px] w-full md:w-[48%] xl:w-[48%] ">
+                                <label for="" class="flex items-center gap-[5px] text-[14] text-[#898989]">Operating System<div class="text-[#F23765] mt-[-2px]">*</div> <input type="checkbox" class="check-all"> Select All</label>
+                                <select name="operating_system" required class="operating-select flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" multiple>
+                                        <option value="Mac OS X">Mac OS X</option>
+                                        <option value="macOS">macOS</option>
+                                        <option value="Windows">Windows</option>
+                                        <option value="Android">Android</option>
+                                        <option value="iOS">iOS</option>
+                                        <option value="iPadOS">iPadOS</option>
                                 </select>
                             </div>
                             <div class="md:flex-wrap affiliate-select-section flex flex-col gap-[10px] w-full md:w-[92%] xl:w-[48%] ">
@@ -212,6 +236,10 @@
     });
     $('.device-select').select2({
       placeholder: "Select device",
+      allowClear: true
+    });
+    $('.operating-select').select2({
+      placeholder: "Select OS",
       allowClear: true
     });
     $('.offer-option').select2({

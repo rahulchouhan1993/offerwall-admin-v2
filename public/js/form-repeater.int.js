@@ -23,6 +23,10 @@ $(document).ready(function() {
                 placeholder: "Select device",
                 allowClear: true
             });
+            $('.operating-select').select2({
+                placeholder: "Select OS",
+                allowClear: true
+            });
              $('.offer-option').select2({
                 placeholder: "Select an offer",
                 allowClear: true

@@ -10,6 +10,7 @@ class FeaturedOffer extends Model
         'offer_id',
         'affiliates',
         'countries',
-        'devices' 
+        'devices',
+        'operating_system' 
     ];
 }
