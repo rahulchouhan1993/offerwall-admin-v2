@@ -162,4 +162,14 @@ class AppsController extends Controller
         $pageTitle = 'Test-Postback';
         return view('apps.test-postback',compact('pageTitle'));
     }
+
+    public function invoices(){
+        $pageTitle = 'Invoices';
+        return view('apps.invoices',compact('pageTitle'));
+    }
+
+    public function paymentDetails(){
+        $pageTitle = 'Payment Details';
+        return view('apps.payment-details',compact('pageTitle'));
+    }
 }

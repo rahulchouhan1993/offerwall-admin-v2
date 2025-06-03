@@ -49,6 +49,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/update-status/{id}', [AppsController::class, 'updateStatus'])->name('apps.status');
     Route::match(['get','post'],'/template/{id}', [AppsController::class, 'template'])->name('apps.template');
     
+    //Invoices
+    Route::get('/invoices', [AppsController::class, 'invoices'])->name('apps.invoices');
+    Route::get('/payment-details', [AppsController::class, 'paymentDetails'])->name('payment.details');
+
+
     // Chart Data
     Route::get('/chart-data', [ChartController::class, 'chartData'])->name('chart.data');
     Route::get('/chart-profit', [ChartController::class, 'chartDataProfit'])->name('chart.profit');
