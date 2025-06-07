@@ -10,7 +10,7 @@
         max-width: none;
     }
 </style>
-<div class="bg-[#f2f2f2] p-[15px] md:p-[35px]">
+<div class="bg-[#f2f2f2] p-[15px] md:p-[35px] custom_form_design">
     <form method="POST">
         @csrf
         <input type="hidden" id="original_app_url" >
@@ -55,11 +55,11 @@
                             }
                             @endphp
 
-                            <div data-repeater-item class="flex-wrap mb-[50px] border-[1px] p-[15px] rounded-[10px] flex gap-[15px] w-full">
+                            <div data-repeater-item class="relative flex-wrap mb-[50px] border-[1px] p-[15px] rounded-[10px] flex gap-[15px] w-full">
                                 <input type="hidden" name="rec_id" value="{{ $featOffer->id }}">
-                                <div class="md:flex-wrap flex flex-col gap-[10px] w-full md:w-[48%] xl:w-[48%] ">
-                                    <label for="" class="flex items-center gap-[5px] text-[14] text-[#898989]">Offer<div class="text-[#F23765] mt-[-2px]">*</div></label>
-                                    <select name="offer_id" required class="flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none offer-option">
+                                <div class="md:flex-wrap flex flex-col gap-[5px] w-full md:w-[48%] xl:w-[48%] ">
+                                    <label for="" class="flex items-center gap-[5px] text-[14px] text-[#898989]">Offer<div class="text-[#F23765] mt-[-2px]">*</div></label>
+                                    <select name="offer_id" required class="flex px-[15px] py-[15px] rounded-[10px] bg-transparent text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none offer-option">
                                         
                                         
                                         @if($allOffers['pagination']['total_count']>0)
@@ -71,8 +71,8 @@
                                         @endif
                                     </select>
                                 </div>
-                                <div class="md:flex-wrap flex flex-col gap-[10px] w-full md:w-[48%] xl:w-[48%] ">
-                                    <label for="" class="flex items-center gap-[5px] text-[14] text-[#898989]">Country<div class="text-[#F23765] mt-[-2px]">*</div>
+                                <div class="md:flex-wrap flex flex-col gap-[5px] w-full md:w-[48%] xl:w-[48%] ">
+                                    <label for="" class="flex items-center gap-[5px] text-[14px] text-[#898989]">Country<div class="text-[#F23765] mt-[-2px]">*</div>
                                     <input type="checkbox" class="check-all"> Select All
                                     </label>
                                     <select name="countries" required class="country-select flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" multiple>
@@ -84,8 +84,8 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="md:flex-wrap flex flex-col gap-[10px] w-full md:w-[48%] xl:w-[48%] ">
-                                    <label for="" class="flex items-center gap-[5px] text-[14] text-[#898989]">Devices<div class="text-[#F23765] mt-[-2px]">*</div> <input type="checkbox" class="check-all"> Select All</label>
+                                <div class="md:flex-wrap flex flex-col gap-[5px] w-full md:w-[48%] xl:w-[48%] ">
+                                    <label for="" class="flex items-center gap-[5px] text-[14px] text-[#898989]">Devices<div class="text-[#F23765] mt-[-2px]">*</div> <input type="checkbox" class="check-all"> Select All</label>
                                     <select name="devices" required class="device-select flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" multiple>
                                         @php $allSelectedDevices = explode(',',$featOffer->devices); @endphp
                                        
@@ -94,8 +94,8 @@
                                          <option @if(in_array('tablet',$allSelectedDevices)) selected @endif  value="tablet">Tablet</option>
                                     </select>
                                 </div>
-                                <div class="md:flex-wrap flex flex-col gap-[10px] w-full md:w-[48%] xl:w-[48%] ">
-                                    <label for="" class="flex items-center gap-[5px] text-[14] text-[#898989]">Operating System<div class="text-[#F23765] mt-[-2px]">*</div> <input type="checkbox" class="check-all"> Select All</label>
+                                <div class="md:flex-wrap flex flex-col gap-[5px] w-full md:w-[48%] xl:w-[48%] ">
+                                    <label for="" class="flex items-center gap-[5px] text-[14px] text-[#898989]">Operating System<div class="text-[#F23765] mt-[-2px]">*</div> <input type="checkbox" class="check-all"> Select All</label>
                                     <select name="operating_system" required class="operating-select flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" multiple>
                                         @php $allSelectedOs = explode(',',$featOffer->operating_system); @endphp
                                        
@@ -110,8 +110,8 @@
                                 @php 
                                     $selectedAffiliaets = explode(',',$featOffer->affiliates); 
                                 @endphp
-                                <div class="md:flex-wrap affiliate-select-section flex flex-col gap-[10px] w-full md:w-[92%] xl:w-[48%] ">
-                                    <label for="" class="flex items-center gap-[5px] text-[14] text-[#898989]">Affiliates <div class="text-[#F23765] mt-[-2px]">*</div> <input type="checkbox" class="check-all"> Select All</label>
+                                <div class="md:flex-wrap affiliate-select-section flex flex-col gap-[5px] w-full md:w-[92%] xl:w-[48%] ">
+                                    <label for="" class="flex items-center gap-[5px] text-[14px] text-[#898989]">Affiliates <div class="text-[#F23765] mt-[-2px]">*</div> <input type="checkbox" class="check-all"> Select All</label>
                                     <select name="webmasters" required class="affiliate-select flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" multiple>
                                         
                                         @if($allAffiliates->isNotEmpty())
@@ -121,16 +121,18 @@
                                         @endif
                                     </select>
                                 </div>
-                                <div class="flex items-start md:w-[5%] xl:w-[5%] ">
-                                    <a href="javascript:void(0);" data-repeater-delete class="items-centre flex  rounded-[10px] text-[14px] font-[500] text-[#f00000] text-center" > <svg style="width:30px; height:30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z"></path></svg> </a>
+                                <div class="absolute top-[10px] right-[10px]">
+                                    <a href="javascript:void(0);" data-repeater-delete class="items-centre flex  rounded-[10px] text-[14px] font-[500] text-[#f00000] text-center" > <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3 18C2.45 18 1.97933 17.8043 1.588 17.413C1.19667 17.0217 1.00067 16.5507 1 16V3H0V1H5V0H11V1H16V3H15V16C15 16.55 14.8043 17.021 14.413 17.413C14.0217 17.805 13.5507 18.0007 13 18H3ZM5 14H7V5H5V14ZM9 14H11V5H9V14Z" fill="#F24822"/>
+                                        </svg> </a>
                                 </div>  
                             </div> 
                         @endforeach
                     @else
                         <div data-repeater-item class="flex-wrap mb-[50px] border-[1px] p-[15px] rounded-[10px] flex gap-[15px] w-full">
                             <input type="hidden" name="rec_id" value="0">
-                            <div class="md:flex-wrap flex flex-col gap-[10px] w-full md:w-[48%] xl:w-[48%] ">
-                                <label for="" class="flex items-center gap-[5px] text-[14] text-[#898989]">Offer<div class="text-[#F23765] mt-[-2px]">*</div></label>
+                            <div class="md:flex-wrap flex flex-col gap-[5px] w-full md:w-[48%] xl:w-[48%] ">
+                                <label for="" class="flex items-center gap-[5px] text-[14px] text-[#898989]">Offer<div class="text-[#F23765] mt-[-2px]">*</div></label>
                                 <select name="offer_id" required class="flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none offer-option">
                                     @if($allOffers['pagination']['total_count']>0)
                                         @foreach ($allOffers['offers'] as $offerKey =>$offerVal )
@@ -141,8 +143,8 @@
                                     @endif
                                 </select>
                             </div>
-                            <div class="md:flex-wrap flex flex-col gap-[10px] w-full md:w-[48%] xl:w-[48%] ">
-                                <label for="" class="flex items-center gap-[5px] text-[14] text-[#898989]">Country<div class="text-[#F23765] mt-[-2px]">*</div>
+                            <div class="md:flex-wrap flex flex-col gap-[5px] w-full md:w-[48%] xl:w-[48%] ">
+                                <label for="" class="flex items-center gap-[5px] text-[14px] text-[#898989]">Country<div class="text-[#F23765] mt-[-2px]">*</div>
                                 <input type="checkbox" class="check-all"> Select All
                                 </label>
                                 <select name="countries" required class="country-select flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" multiple>
@@ -151,16 +153,16 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="md:flex-wrap flex flex-col gap-[10px] w-full md:w-[48%] xl:w-[48%] ">
-                                <label for="" class="flex items-center gap-[5px] text-[14] text-[#898989]">Devices<div class="text-[#F23765] mt-[-2px]">*</div> <input type="checkbox" class="check-all"> Select All</label>
+                            <div class="md:flex-wrap flex flex-col gap-[5px] w-full md:w-[48%] xl:w-[48%] ">
+                                <label for="" class="flex items-center gap-[5px] text-[14px] text-[#898989]">Devices<div class="text-[#F23765] mt-[-2px]">*</div> <input type="checkbox" class="check-all"> Select All</label>
                                 <select name="devices" required class="device-select flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" multiple>
                                         <option value="desktop">Desktop</option>
                                         <option value="mobile">Mobile</option>
                                         <option value="tablet">Tablet</option>
                                 </select>
                             </div>
-                            <div class="md:flex-wrap flex flex-col gap-[10px] w-full md:w-[48%] xl:w-[48%] ">
-                                <label for="" class="flex items-center gap-[5px] text-[14] text-[#898989]">Operating System<div class="text-[#F23765] mt-[-2px]">*</div> <input type="checkbox" class="check-all"> Select All</label>
+                            <div class="md:flex-wrap flex flex-col gap-[5px] w-full md:w-[48%] xl:w-[48%] ">
+                                <label for="" class="flex items-center gap-[5px] text-[14px] text-[#898989]">Operating System<div class="text-[#F23765] mt-[-2px]">*</div> <input type="checkbox" class="check-all"> Select All</label>
                                 <select name="operating_system" required class="operating-select flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" multiple>
                                         <option value="Mac OS X">Mac OS X</option>
                                         <option value="macOS">macOS</option>
@@ -170,13 +172,15 @@
                                         <option value="iPadOS">iPadOS</option>
                                 </select>
                             </div>
-                            <div class="md:flex-wrap affiliate-select-section flex flex-col gap-[10px] w-full md:w-[92%] xl:w-[48%] ">
-                                <label for="" class="flex items-center gap-[5px] text-[14] text-[#898989]">Affiliates <div class="text-[#F23765] mt-[-2px]">*</div> <input type="checkbox" class="check-all"> Select All</label>
+                            <div class="md:flex-wrap affiliate-select-section flex flex-col gap-[5px] w-full md:w-[92%] xl:w-[48%] ">
+                                <label for="" class="flex items-center gap-[5px] text-[14px] text-[#898989]">Affiliates <div class="text-[#F23765] mt-[-2px]">*</div> <input type="checkbox" class="check-all"> Select All</label>
                                 <select name="webmasters" required class="affiliate-select flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" multiple>
                                 </select>
                             </div>
-                            <div class="flex items-start md:w-[5%] xl:w-[5%] ">
-                                <a href="javascript:void(0);" data-repeater-delete class="items-centre flex  rounded-[10px] text-[14px] font-[500] text-[#f00000] text-center" > <svg style="width:30px; height:30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z"></path></svg> </a>
+                            <div class="absolute top-[10px] right-[10px]">
+                                <a href="javascript:void(0);" data-repeater-delete class="items-centre flex  rounded-[10px] text-[14px] font-[500] text-[#f00000] text-center" > <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 18C2.45 18 1.97933 17.8043 1.588 17.413C1.19667 17.0217 1.00067 16.5507 1 16V3H0V1H5V0H11V1H16V3H15V16C15 16.55 14.8043 17.021 14.413 17.413C14.0217 17.805 13.5507 18.0007 13 18H3ZM5 14H7V5H5V14ZM9 14H11V5H9V14Z" fill="#F24822"/>
+                                    </svg> </a>
                             </div>  
                         </div> 
                     @endif
