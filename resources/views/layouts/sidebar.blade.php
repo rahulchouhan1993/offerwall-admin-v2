@@ -95,7 +95,7 @@
                </svg>
             Inquiries
             @if($pendingContact>0)
-            <div class="w-[22px] [body.active_&]:w-[15px] h-[22px] [body.active_&]:h-[15px] bg-[#49FB53] flex justify-center items-center absolute top-[0px] right-[-27px] [body.active_&]:right-[0px] rounded-[50px] text-[11px] [body.active_&]:text-[8px] font-[600] text-[#000]">{{ $pendingContact }}</div>
+            <div class="w-[22px] [body.active_&]:w-[15px] h-[22px] [body.active_&]:h-[15px] bg-[#49FB53] flex justify-center items-center absolute top-[0px] right-[-20px] md:right-[-27px] [body.active_&]:md:right-[0px] rounded-[50px] text-[11px] [body.active_&]:text-[8px] font-[600] text-[#000]">{{ $pendingContact }}</div>
             @endif
          </span>
       </a>

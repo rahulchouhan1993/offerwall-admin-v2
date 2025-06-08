@@ -143,6 +143,9 @@ height: 50px;
     align-items: center;
 }
 
+.custom_filter .select2-container--default .select2-selection--single {
+    height: 41.5px;
+}
 /* Responsvie */
 @media(max-width:1535px){.sidebar{width:230px;}
 .head-w-cal{width:calc(100% - 230px);}

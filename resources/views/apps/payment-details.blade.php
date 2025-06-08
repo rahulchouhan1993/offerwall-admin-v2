@@ -6,7 +6,7 @@
         <div class="bg-[#fff] p-[15px] md:p-[20px] rounded-[8px] md:rounded-[10px]">
 
             <div
-                class="my-[20px] p-[15px] rounded-[8px] md:rounded-[10px] flex flex-wrap items-center grid grid-cols-2 bg-[#f7f7f7]">
+                class="my-[20px] p-[15px] rounded-[8px] md:rounded-[10px] grid grid-cols-1 md:grid-cols-2 bg-[#f7f7f7]">
                 <div class="">
                     <strong>Name:</strong> ahdouhiho
                 </div>
