@@ -55,7 +55,7 @@
                             }
                             @endphp
 
-                            <div data-repeater-item class="relative flex-wrap mb-[50px] border-[1px] p-[15px] rounded-[10px] flex gap-[15px] w-full">
+                            <div data-repeater-item class="relative flex-wrap mb-[20px] md:mb-[50px] border-[1px] p-[15px] rounded-[10px] flex gap-[15px] w-full">
                                 <input type="hidden" name="rec_id" value="{{ $featOffer->id }}">
                                 <div class="md:flex-wrap flex flex-col gap-[5px] w-full md:w-[48%] xl:w-[48%] ">
                                     <label for="" class="flex items-center gap-[5px] text-[14px] text-[#898989]">Offer<div class="text-[#F23765] mt-[-2px]">*</div></label>
@@ -129,7 +129,7 @@
                             </div> 
                         @endforeach
                     @else
-                        <div data-repeater-item class="flex-wrap mb-[50px] border-[1px] p-[15px] rounded-[10px] flex gap-[15px] w-full">
+                        <div data-repeater-item class="flex-wrap mb-[20px] md:mb-[50px] border-[1px] p-[15px] rounded-[10px] flex gap-[15px] w-full">
                             <input type="hidden" name="rec_id" value="0">
                             <div class="md:flex-wrap flex flex-col gap-[5px] w-full md:w-[48%] xl:w-[48%] ">
                                 <label for="" class="flex items-center gap-[5px] text-[14px] text-[#898989]">Offer<div class="text-[#F23765] mt-[-2px]">*</div></label>

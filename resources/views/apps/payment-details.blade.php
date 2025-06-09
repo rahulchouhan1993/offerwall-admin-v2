@@ -6,7 +6,7 @@
         <div class="bg-[#fff] p-[15px] md:p-[20px] rounded-[8px] md:rounded-[10px]">
 
             <div
-                class="my-[20px] p-[15px] rounded-[8px] md:rounded-[10px] grid grid-cols-1 md:grid-cols-2 bg-[#f7f7f7]">
+                class="my-[20px] p-[15px] rounded-[8px] md:rounded-[10px] grid grid-cols-1 md:grid-cols-2 bg-[#f7f7f7] text-[14px]">
                 <div class="">
                     <strong>Name:</strong> ahdouhiho
                 </div>
@@ -15,7 +15,7 @@
                 </div>
             </div>
 
-            <h2 class="mb-[20px] text-[20px] text-[#1A1A1A] font-[600] ">
+            <h2 class="mb-[10px] md:mb-[20px] text-[16px] md:text-[20px] text-[#1A1A1A] font-[600] ">
                 Payment Details
             </h2>
 
