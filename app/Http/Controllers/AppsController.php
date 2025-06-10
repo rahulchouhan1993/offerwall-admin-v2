@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\App;
+use App\Models\PaymentMethod;
 use App\Models\User;
 use App\Models\Template;
+use App\Models\Tracking;
 use Illuminate\Http\Request;
+use stdClass;
 
 class AppsController extends Controller
 {
@@ -165,11 +168,75 @@ class AppsController extends Controller
 
     public function invoices(){
         $pageTitle = 'Invoices';
-        return view('apps.invoices',compact('pageTitle'));
+        $allAffiliates = User::where('role', 'affiliate')
+        ->where('status', 1)
+        ->whereHas('trackings', function ($query) {
+            $query->where('revenue', '>', 0);
+        })
+        ->with(['trackings' => function ($query) {
+            $query->where('revenue', '>', 0);
+        }])
+        ->get();
+        return view('apps.invoices',compact('pageTitle','allAffiliates'));
     }
 
-    public function paymentDetails(){
+    public function paymentDetails($id){
         $pageTitle = 'Payment Details';
-        return view('apps.payment-details',compact('pageTitle'));
+        $paymentDetails = PaymentMethod::where('user_id',$id)->get();
+        $userDetails = User::find($id);
+        return view('apps.payment-details',compact('pageTitle','paymentDetails','userDetails'));
+    }
+
+    public function createInvoice(Request $request){
+        $pageTitle = 'Create Invoice';
+        $allAffiliates = User::where('role', 'affiliate')
+        ->where('status', 1)
+        ->whereHas('trackings', function ($query) {
+            $query->where('revenue', '>', 0);
+        })
+        ->with(['trackings' => function ($query) {
+            $query->where('revenue', '>', 0);
+        }])
+        ->get();
+
+        $requestedParams = $request->all();
+        $allStatistics = collect();
+        if(!empty($requestedParams['range']) && !empty($requestedParams['affiliate_id'])){
+            $trackingStats = Tracking::query();
+
+            //Adding Date Query
+            $separateDate = explode('-', $requestedParams['range']);
+            $requestedParams['strd'] = trim($separateDate[0]);
+            $requestedParams['endd'] = trim($separateDate[1]);
+            $startDate = date('Y-m-d 00:00:00', strtotime(trim($separateDate[0])));
+            $endDate = date('Y-m-d 23::59:59', strtotime(trim($separateDate[1])));
+            $trackingStats->whereBetween('click_time', [$startDate, $endDate]); 
+
+            //Adding Affiiate condition
+            $trackingStats->where('user_id', $requestedParams['affiliate_id']);
+
+            //Merging all stats together
+            $matchCount = $trackingStats->count();
+            if ($matchCount > 0) {
+                $allStatistics = $trackingStats->selectRaw("
+                    COUNT(*) as total_click,
+                    COUNT(CASE WHEN conversion_id IS NOT NULL AND status=1 THEN 1 END) as total_conversions,
+                    SUM(revenue) as total_revenue,
+                    SUM(payout) as total_payout
+                ")->get();
+            } else {
+                $allStatistics = collect(); // or set it to null or default values
+            }
+            $allStatistics = $trackingStats->get();
+            
+        }
+
+        return view('apps.create-invoice',compact('pageTitle','allAffiliates','allStatistics','requestedParams'));
+    }
+
+    public function invoicePreview(){
+        $pageTitle = 'Invoice preview';
+       
+        return view('apps.add-invoice',compact('pageTitle'));
     }
 }

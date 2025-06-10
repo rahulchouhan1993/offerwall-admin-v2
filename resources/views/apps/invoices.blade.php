@@ -10,38 +10,51 @@
                 <h3 class="text-[20px] md:text-[38px] font-[700] text-[#fff]">10 | 500$</h3>
             </div>
             <div
-                class="pinkbg flex flex-col justify-center bg-[#C855C8] items-start gap-[5px] w-[100%] sm:w-[200px] md:w-[265px] lg:w-[365px] md:h-[130px]  rounded-[7px] lg:rounded-[10px] px-[15px] py-[15px] md:px-[20px] md:py-[20px] lg:px-[30px] lg:py-[30px] activeApps">
-                <h2 class="text-14px md:text-[18px] font-[500] text-[#fff]">Paid</h2>
-                <h3 class="text-[20px] md:text-[38px] font-[700] text-[#fff]">10 | 500$</h3>
+                class="pinkbg flex flex-col justify-center bg-[#4EF953] items-start gap-[5px] w-[100%] sm:w-[200px] md:w-[265px] lg:w-[365px] md:h-[130px]  rounded-[7px] lg:rounded-[10px] px-[15px] py-[15px] md:px-[20px] md:py-[20px] lg:px-[30px] lg:py-[30px] activeApps">
+                <h2 class="text-14px md:text-[18px] font-[500] text-[#000]">Paid</h2>
+                <h3 class="text-[20px] md:text-[38px] font-[700] text-[#000]">10 | 500$</h3>
             </div>
         </div>
         <div class="flex flex-col lg:flex-row justify-between items-start gap-[15px] w-full">
             <div class="w-full bg-white p-[15px] md:p-[20px] rounded-[10px] custom_filter">
+                <h2 class="w-full lg:w-auto text-[20px] text-[#1A1A1A] font-[600]">All Invoices</h2>
                 <form>
                     <div class="flex flex-wrap md-flex-nowrap items-start gap-[7px] md:gap-[15px] justify-end mb-[15px]">
-                        <div class="relative w-[100%] sm:w-[200px]">
+                        {{-- <div class="relative w-[100%] sm:w-[200px]">
                             <input name="range"
                                 class="date-range-profit w-[100%] lg:w-[100%] bg-[#F6F6F6] px-[15px] py-[10px] text-[13px] font-[600] text-[#4D4D4D] border-[1px] border-[#E6E6E6] rounded-[4px] hover:outline-none focus:outline-none"
                                 type="text" value="">
-                        </div>
+                        </div> --}}
                         <div class="relative w-[100%] sm:w-[220px]">
                             <select name="affiliate_id"
-                                class=" select-affiliate-dash  affiliate-profit z-2 absolute mt-1 w-[100%] rounded bg-[#F6F6F6] border-[1px] border-[#E6E6E6] rounded-[5px] text-[13px] font-[600] text-[#4D4D4D]"
+                                class="select-affiliate-invocie  z-2 absolute mt-1 w-[100%] rounded bg-[#F6F6F6] border-[1px] border-[#E6E6E6] rounded-[5px] text-[13px] font-[600] text-[#4D4D4D]"
                                 x-show="open">
                                 <option value="">Select Affiliate</option>
+                                @if($allAffiliates->isNotEmpty())
+                                    @foreach ($allAffiliates as $affiliate)
+                                        <option value="{{ $affiliate->id }}">{{ $affiliate->name }} {{ $affiliate->last_name }}</option>
+                                    @endforeach
+                                @endif
                             </select>
                         </div>
                         <div class="relative w-[100%] sm:w-[220px]">
-                            <select name="affiliate_id2"
-                                class=" select-affiliate-dash  affiliate-profit z-2 absolute mt-1 w-[100%] rounded bg-[#F6F6F6] border-[1px] border-[#E6E6E6] rounded-[5px] text-[13px] font-[600] text-[#4D4D4D]"
+                            <select name="status"
+                                class="select-status-invoice z-2 absolute mt-1 w-[100%] rounded bg-[#F6F6F6] border-[1px] border-[#E6E6E6] rounded-[5px] text-[13px] font-[600] text-[#4D4D4D]"
                                 x-show="open">
-                                <option value="">Select Affiliate</option>
+                                <option value="">Select Status</option>
+                                <option value="draft">Draft</option>
+                                <option value="pending">Pending</option>
+                                <option value="paid">Paid</option>
                             </select>
                         </div>
                         <div class="relative w-full md:w-auto">
-                            <button type="submit"
-                                class="w-full md:w-[110px] lg:w-[140px] bg-[#4EF953] px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#fff] text-center">+
-                                Add</button>
+                            <button type="button"
+                                class="w-full md:w-[110px] lg:w-[140px] bg-[#4EF953] px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#000] text-center">Search</button>
+                        </div>
+                        <div class="relative w-full md:w-auto">
+                            <a href="{{ route('create.invoice') }}"
+                                class="w-full md:w-[110px] lg:w-[140px] bg-[#4EF953] px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#000] text-center">+
+                                Add</a>
                         </div>
                     </div>
                 </form>
@@ -51,22 +64,22 @@
                         <thead>
                             <tr>
                                 <th
-                                    class="bg-[#F6F6F6] rounded-tl-[10px] text-[12px] font-medium text-[#1A1A1A] px-[10px] py-[13px] text-left whitespace-nowrap">
+                                    class="bg-[#7FB5CB] rounded-tl-[10px] text-[12px] font-medium text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">
                                     Id</th>
                                 <th
-                                    class="bg-[#F6F6F6] text-[12px] font-medium text-[#1A1A1A] px-[10px] py-[13px] text-left whitespace-nowrap">
+                                    class="bg-[#7FB5CB] text-[12px] font-medium text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">
                                     Invoice No.</th>
                                 <th
-                                    class="max-w-[250px] bg-[#F6F6F6] text-[12px] font-medium text-[#1A1A1A] px-[10px] py-[13px] text-left whitespace-nowrap">
+                                    class="max-w-[250px] bg-[#7FB5CB] text-[12px] font-medium text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">
                                     Duration</th>
                                 <th
-                                    class="bg-[#F6F6F6] text-[12px] font-medium text-[#1A1A1A] px-[10px] py-[13px] text-left whitespace-nowrap">
+                                    class="bg-[#7FB5CB] text-[12px] font-medium text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">
                                     Amount</th>
                                 <th
-                                    class="bg-[#F6F6F6] text-[12px] font-medium text-[#1A1A1A] px-[10px] py-[13px] text-left whitespace-nowrap">
+                                    class="bg-[#7FB5CB] text-[12px] font-medium text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">
                                     Status</th>
                                 <th
-                                    class="bg-[#F6F6F6] rounded-tr-[10px] text-[12px] font-medium text-[#1A1A1A] px-[10px] py-[13px] text-left whitespace-nowrap">
+                                    class="bg-[#7FB5CB] rounded-tr-[10px] text-[12px] font-medium text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">
                                     Action</th>
                             </tr>
                         </thead>
@@ -151,112 +164,19 @@
         </div>
     </div>
 
-    <div class="w-full bg-[#f7f7f7] px-4 py-4">
-        <div class="mx-auto w-full max-w-[750px] rounded-[12px] bg-white px-[15px] py-[20px] md:px-[50px] md:py-[55px]">
-            <div class="flex w-full flex-col-reverse flex-wrap justify-between gap-[20px] sm:flex-row md:items-center">
-                <div class="">
-                    <div class="max-w-[180px]">
-                        <select name="" id=""
-                            class="w-full appearance-none bg-[#4EF953] px-[5px] text-sm text-white outline-none focus:outline-none">
-                            <option value="">1. select contact</option>
-                        </select>
-                        <div class="mt-3 border-l-[1px] border-[#4EF953] px-3">
-                            <span class="text-xs text-[#888]"> Voornaam Achternaam <br /> Adres 123 <br /> 1234AB Plaats
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <ul class="space-y-1 text-xs">
-                        <li>
-                            <div><strong>admin </strong></div>
-                        </li>
-                        <li>
-                            <div>piplod 23<br />234234 gujarat</div>
-                        </li>
-                        <li class="!my-4">
-                            <div>bipinaviansoft@gmail.com</div>
-                        </li>
+<script>
+    $(document).ready(function() {
+        $('.select-affiliate-invocie').select2({
+            placeholder: "Select an affiliate",
+            allowClear: true // Adds a clear (X) button
+        });
 
-                        <li>
-                            <div><span>KVK: </span></div>
-                        </li>
-                        <li>
-                            <div><span>Btw: </span></div>
-                        </li>
-                        <li>
-                            <div><span>Bank: </span></div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="mt-[30px] md:mt-[70px]">
-                <div class="flex w-full flex-wrap gap-[10px] items-start justify-between">
-                    <h3 class="text-xl font-medium">Invoice <span class="text-[#999]">Concept #1</span></h3>
-                    <div class="text-sm text-[#555]">
-                        <div>Invoice date: 09-06-2025</div>
-                        <div>Expiry date: 23-06-2025</div>
-                    </div>
-                </div>
-                <div class="mt-[30px] overflow-x-auto">
-                    <table class="document-details w-full min-w-[500px] border-collapse text-sm text-[#666]">
-                        <thead>
-                            <tr>
-                                <th class="border-b-[1px] border-[#777] p-[.4em] text-left align-top text-[#555]"></th>
-                                <th class="border-b-[1px] border-[#777] p-[.4em] text-left align-top text-[#555]">
-                                    Omschrijving</th>
-                                <th class="border-b-[1px] border-[#777] p-[.4em] text-left align-top text-[#555]">Bedrag
-                                </th>
-                                <th class="border-b-[1px] border-[#777] p-[.4em] text-left align-top text-[#555]">Totaal
-                                </th>
-                                <th class="border-b-[1px] border-[#777] p-[.4em] text-left align-top text-[#555]">Btw</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="border-b-[1px] border-[#777] p-[.4em] text-left align-top"><input
-                                        type="text" name="" id=""
-                                        class="h-[30px] w-[50px] md:w-[80px] rounded-[5px] border-[1px] border-[#ccc] p-2 outline-none focus:outline-none"
-                                        value="1x" /></td>
-                                <td class="border-b-[1px] border-[#777] p-[.4em] text-left align-top"><input
-                                        type="text" name="" id=""
-                                        class="h-[30px] w-[150px] md:w-[250px] rounded-[5px] border-[1px] border-[#ccc] p-2 outline-none focus:outline-none"
-                                        value="Je hebt nog geen regels toegevoegd" /></td>
-                                <td class="border-b-[1px] border-[#777] p-[.4em] text-left align-top"><input
-                                        type="text" name="" id=""
-                                        class="h-[30px] w-[80px] rounded-[5px] border-[1px] border-[#ccc] p-2 outline-none focus:outline-none"
-                                        value="€ 0,00" /></td>
-                                <td class="border-b-[1px] border-[#777] p-[.4em] text-left align-top"><input
-                                        type="text" name="" id=""
-                                        class="h-[30px] w-[80px] rounded-[5px] border-[1px] border-[#ccc] p-2 outline-none focus:outline-none"
-                                        value="€ 0,00" /></td>
-                                <td class="border-b-[1px] border-[#777] p-[.4em] text-left align-top"><input
-                                        type="text" name="" id=""
-                                        class="h-[30px] w-[80px] rounded-[5px] border-[1px] border-[#ccc] p-2 outline-none focus:outline-none"
-                                        value="21%" /></td>
-                            </tr>
-                            <tr class="tfoot subtotal">
-                                <td class="p-[.4em] text-left align-top" colspan="2">
-                                    <button class="rounded-sm bg-[#4EF953] px-4 py-1 text-white">+ add</button>
-                                </td>
-                                <td class="border-b-[1px] border-[#777] p-[.4em] text-left align-top">Subtotaal</td>
-                                <td class="border-b-[1px] border-[#777] p-[.4em] text-left align-top">€ 0,00</td>
-                                <td class="p-[.4em] text-left align-top"></td>
-                            </tr>
-                            <tr class="tfoot total">
-                                <td colspan="2" class="p-[.4em] text-left align-top"></td>
-                                <td class="border-b-[1px] border-[#777] p-[.4em] text-left align-top">Totaal</td>
-                                <td class="border-b-[1px] border-[#777] p-[.4em] text-left align-top">€ 0,00</td>
-                                <td class="p-[.4em] text-left align-top"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="mt-[60px] border-t-[1px] pt-[20px] text-xs text-[#000000]">We verzoeken u vriendelijk het
-                    bovenstaande bedrag van € 0,00 voor 23-06-2025 te voldoen op onze bankrekening onder vermelding van de
-                    omschrijving RF51CONCEPT1. Voor vragen kunt u contact opnemen per e-mail.</div>
-            </div>
-        </div>
-    </div>
+        $('.select-status-invoice').select2({
+            placeholder: "Select status",
+            allowClear: true // Adds a clear (X) button
+        });
+    });
+    
+</script>
 
 @stop
