@@ -48,6 +48,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/integration/{id}', [AppsController::class, 'integration'])->name('apps.integration');
     Route::get('/update-status/{id}', [AppsController::class, 'updateStatus'])->name('apps.status');
     Route::match(['get','post'],'/template/{id}', [AppsController::class, 'template'])->name('apps.template');
+    Route::get('/preview', [AppsController::class, 'preview']);
+    Route::get('/download', [AppsController::class, 'download']);
     
     //Invoices
     Route::get('/invoices', [AppsController::class, 'invoices'])->name('apps.invoices');

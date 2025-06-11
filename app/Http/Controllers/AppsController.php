@@ -9,6 +9,7 @@ use App\Models\Template;
 use App\Models\Tracking;
 use Illuminate\Http\Request;
 use stdClass;
+use Mpdf\Mpdf;
 
 class AppsController extends Controller
 {
@@ -238,5 +239,23 @@ class AppsController extends Controller
         $pageTitle = 'Invoice preview';
        
         return view('apps.add-invoice',compact('pageTitle'));
+    }
+
+     public function preview()
+    {
+        return view('invoices.show');
+    }
+
+    // Download invoice as PDF using mPDF
+    public function download()
+    {
+        $html = view('invoices.show')->render();
+
+        $mpdf = new Mpdf(['default_font' => 'dejavusans']);
+        $mpdf->WriteHTML($html);
+
+        return response($mpdf->Output("Invoice_.pdf", 'S'), 200)
+            ->header('Content-Type', 'application/pdf')
+            ->header('Content-Disposition', 'attachment; filename="Invoice_.pdf"');
     }
 }
