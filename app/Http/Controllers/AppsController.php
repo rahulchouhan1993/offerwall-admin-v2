@@ -254,7 +254,7 @@ class AppsController extends Controller
         $mpdf = new Mpdf(['default_font' => 'dejavusans']);
         $mpdf->WriteHTML($html);
 
-        return response($mpdf->Output("Invoice_.pdf", 'S'), 200)
+        return response($mpdf->Output("Invoice_.pdf", 'I'), 200)
             ->header('Content-Type', 'application/pdf')
             ->header('Content-Disposition', 'attachment; filename="Invoice_.pdf"');
     }
