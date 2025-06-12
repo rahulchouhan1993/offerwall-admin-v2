@@ -6,12 +6,7 @@
             <!-- Header Section -->
             <div class="mb-[50px]">
                 <!-- Logo -->
-                <img src="/images/logo.png" alt="Company Logo" class="min-h-[26px] object-contain">
-                {{-- <img
-          src="https://modernsoftwaretechnologies.com/wp-content/uploads/2025/05/logo-1.png"
-          alt="Company Logo"
-          class="mb-4 max-w-[140px]"
-        /> --}}
+                <img src="/images/logo-offerwall-login.png" alt="Company Logo" class="min-h-[26px] object-contain">
             </div>
             <div class="flex flex-col sm:flex-row justify-between items-start mb-10 gap-6">
                 <!-- Left: Logo + Vendor Info -->
@@ -19,11 +14,22 @@
                     <h2 class="font-bold text-base mb-2">SELF-BILLED INVOICE</h2>
                     <div class="font-medium text-xs leading-[14px]">Sold by/Vendor</div>
                     <div class="mt-1 leading-6 text-xs leading-[14px]">
-                        Simple MM d.o.o<br />
-                        Nedeligka Merdovica b.b<br />
-                        BEJILO POLJE<br />
-                        MONTENEGRO<br />
-                        VAT 03274233
+                        {{ $invoiceDetails->user->name }} {{ $invoiceDetails->user->last_name }}<br />
+                        @if(!empty($invoiceDetails->user->address_1))
+                            {{ $invoiceDetails->user->address_1 }}<br />
+                        @endif
+
+                        @if(!empty($invoiceDetails->user->address_2))
+                            {{ $invoiceDetails->user->address_2 }}<br />
+                        @endif
+
+                        @if(!empty($invoiceDetails->user->city) || !empty($invoiceDetails->user->country))
+                            {{ $invoiceDetails->user->city }}@if(!empty($invoiceDetails->user->city) && !empty($invoiceDetails->user->country)), @endif{{ $invoiceDetails->user->country }}<br />
+                        @endif
+
+                        @if(!empty($invoiceDetails->user->zip))
+                            {{ $invoiceDetails->user->zip }}
+                        @endif
                     </div>
                 </div>
 
@@ -33,15 +39,15 @@
                     <div class="space-y-2 text-xs leading-[15px]">
                         <div>
                             <div class="font-bold">Invoice Date</div>
-                            <div>30 Apr 2025</div>
+                            <div>{{ date('d M Y',strtotime($invoiceDetails->invoice_date)) }}</div>
                         </div>
                         <div>
                             <div class="font-bold">Invoice Due Date</div>
-                            <div>31 May 2025</div>
+                            <div>{{ date('d M Y',strtotime($invoiceDetails->due_date)) }}</div>
                         </div>
                         <div>
                             <div class="font-bold">Invoice Number</div>
-                            <div>Self-Bill20250649</div>
+                            <div>{{ date('d M Y',strtotime($invoiceDetails->invoice_number)) }}</div>
                         </div>
                     </div>
                     <!-- Purchaser Info -->
@@ -65,36 +71,43 @@
                     <thead>
                         <tr class="border-b border-gray-400">
                             <th class="text-left py-2">Description</th>
-                            <th class="text-left py-2">Quantity</th>
-                            <th class="text-left py-2">Unit Price</th>
-                            <th class="text-end py-2">Tax</th>
-                            <th class="text-end py-2">Amount USD</th>
+                            <th class="text-left py-2">Conversions</th>
+                            <th class="text-left py-2">Payout</th>
+                            <th class="text-left py-2">VAT</th>
+                            <th class="text-left py-2">Total</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="border-b border-gray-300">
-                            <td class="py-2">
-                                <input type="text" name="" id=""
-                                    class="h-[30px] w-[250px] rounded-[5px] border-[1px] border-[#ccc] p-2 outline-none focus:outline-none"
-                                    value="Advertising Services April 2025 (84 Conversions)" />
-                            </td>
-                            <td class="py-2">
-                                <input type="number" name="" id=""
-                                    class="h-[30px] w-[80px] rounded-[5px] border-[1px] border-[#ccc] p-2 outline-none focus:outline-none"
-                                    value="1" />
-                            </td>
-                            <td class="py-2">
-                                <input type="text" name="" id=""
-                                    class="h-[30px] w-[80px] rounded-[5px] border-[1px] border-[#ccc] p-2 outline-none focus:outline-none"
-                                    value="$187.43" />
-                            </td>
-                            <td class="text-end py-2">—</td>
-                            <td class="text-end py-2">
-                                <input type="text" name="" id=""
-                                    class="text-end h-[30px] w-[80px] rounded-[5px] border-[1px] border-[#ccc] p-2 outline-none focus:outline-none"
-                                    value="$187.43" />
-                            </td>
-                        </tr>
+                        @if(!empty($invoiceDetails->invoicedetails))
+                        @foreach ($invoiceDetails->invoicedetails as $items)
+                            <tr class="border-b border-gray-300">
+                                <td class="py-2">
+                                    <input type="text"
+                                        class="h-[30px] w-[250px] rounded-[5px] border-[1px] border-[#ccc] p-2 outline-none focus:outline-none"
+                                        value="{{ $items->description }}" />
+                                </td>
+                                <td class="py-2">
+                                    <input type="number" 
+                                        class="h-[30px] w-[80px] rounded-[5px] border-[1px] border-[#ccc] p-2 outline-none focus:outline-none"
+                                        value="{{ $items->conversion }}" />
+                                </td>
+                                <td class="py-2">
+                                    <input type="text" 
+                                        class="h-[30px] w-[80px] rounded-[5px] border-[1px] border-[#ccc] p-2 outline-none focus:outline-none"
+                                        value="{{ $items->payout }}" />
+                                </td>
+                                <td class="text-end py-2"><input type="text" 
+                                        class="h-[30px] w-[80px] rounded-[5px] border-[1px] border-[#ccc] p-2 outline-none focus:outline-none"
+                                        value="{{ $items->vat }}" /></td>
+                                <td class="text-end py-2">
+                                    <input type="text" 
+                                        class="text-end h-[30px] w-[80px] rounded-[5px] border-[1px] border-[#ccc] p-2 outline-none focus:outline-none"
+                                        value="{{ $items->vat }}" />
+                                </td>
+                            </tr>
+                        @endforeach
+                        @endif
+                        
                     </tbody>
                     <tfoot>
                         <tr>
@@ -133,8 +146,8 @@
                 <p class="mb-2">
                     Do not hesitate to contact us should you require more
                     information:<br />
-                    <a href="mailto:support@makamobile.com" class="text-[#49FB53]">support@makamobile.com</a>,
-                    <a href="mailto:finance@makamobile.com" class="text-[#49FB53]">finance@makamobile.com</a>.
+                    <a href="mailto:support@makamobile.com" class="text-[#D272D2]">support@makamobile.com</a>,
+                    <a href="mailto:finance@makamobile.com" class="text-[#D272D2]">finance@makamobile.com</a>.
                 </p>
                 <p class="mt-4 uppercase">
                     <strong>NOTE: It is your responsibility that your bank account details

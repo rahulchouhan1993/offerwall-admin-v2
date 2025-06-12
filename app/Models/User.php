@@ -64,6 +64,11 @@ class User extends Authenticatable
         return $this->hasMany(App::class,'affiliateId','id');
     }
 
+    public function invoice()
+    {
+        return $this->hasMany(Invoice::class);
+    }
+
     public function trackings()
     {
         return $this->hasMany(Tracking::class,'user_id','id');

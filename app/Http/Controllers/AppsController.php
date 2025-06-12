@@ -237,10 +237,11 @@ class AppsController extends Controller
         return view('apps.create-invoice',compact('pageTitle','allAffiliates','allStatistics','requestedParams'));
     }
 
-    public function invoicePreview(){
+    public function invoicePreview($invoiceId){
         $pageTitle = 'Invoice preview';
-       
-        return view('apps.add-invoice',compact('pageTitle'));
+        $invoiceDetails = Invoice::where('id',$invoiceId)->with('invoicedetails','user')->first();
+        
+        return view('apps.add-invoice',compact('pageTitle','invoiceDetails'));
     }
 
      public function preview()
