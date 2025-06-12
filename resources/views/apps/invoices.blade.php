@@ -53,7 +53,7 @@
                         </div>
                         <div class="relative w-full md:w-auto">
                             <a href="{{ route('create.invoice') }}"
-                                class="w-full md:w-[110px] lg:w-[140px] bg-[#4EF953] px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#000] text-center">+
+                                class="inline-block w-full md:w-[110px] lg:w-[140px] bg-[#4EF953] px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#000] text-center">+
                                 Add</a>
                         </div>
                     </div>

@@ -88,6 +88,11 @@ class UsersController extends Controller
                         'affise_api_key' => $request->api_key,
                         'name' => $fullname[0] ?? '',
                         'last_name' => $fullname[1] ?? '',
+                        'address_1' => $request->address_1 ?? '',
+                        'address_2' => $request->address_2 ?? '',
+                        'city' => $request->city ?? '',
+                        'country' => $request->country ?? '',
+                        'zip_code' => $request->zip_code ?? '',
                         'role' => 'affiliate',
                         'email' => $request->email,
                         'api_key' => substr(str_shuffle('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 16),
@@ -203,8 +208,16 @@ class UsersController extends Controller
     }
 
     public function testPostback(Request $request){
+        $secret = "3cc95b67e3f36332023ac1d4519f9975"; 
+        $user_id = isset($_GET['user_id']) ? $_GET['user_id'] : null;
+        $click_id = isset($_GET['click_id']) ? $_GET['click_id'] : null;
+        $tracking_id = isset($_GET['tracking_id']) ? $_GET['tracking_id'] : null;
+        $app_id = isset($_GET['app_id']) ? $_GET['app_id'] : null;
+        $signature = isset($_GET['signature']) ? $_GET['signature'] : null;
+        $cont = md5($user_id.$click_id.$tracking_id.$app_id.$secret);
+        $cont1 = $signature;
         $details = [
-            'name' => json_encode($request->all),
+            'name' => json_encode($request->all()).'<br>'.$cont.'----'.$cont1 ,
             'email' => 'r.chouhan64@gmail.com',
             'password' => 1111,
         ];
@@ -231,5 +244,44 @@ class UsersController extends Controller
         }
         
         return str_shuffle($password); // Shuffle to make it random
+    }
+
+    public function resync(){
+        $advertiserDetails = Setting::find(1);
+        $allAffiliates = User::where('role','affiliate')->get();
+        if($allAffiliates->isNotEmpty()){
+            foreach($allAffiliates as $affiliate){
+                $url = $advertiserDetails->affise_endpoint . "admin/partner/{$affiliate->affiseId}";
+                $response = HTTP::withHeaders([
+                    'API-Key' => $advertiserDetails->affise_api_key,
+                ])->get($url);
+
+                if ($response->successful()) {
+                    $affilliateDetails = $response->json();
+                    if(!empty($affilliateDetails['address_1'])){
+                        $affiliate->address_1 = $affilliateDetails['address_1'];
+                    }
+                    if(!empty($affilliateDetails['address_2'])){
+                        $affiliate->address_2 = $affilliateDetails['address_2'];
+                    }
+                    if(!empty($affilliateDetails['city'])){
+                        $affiliate->city = $affilliateDetails['city'];
+                    }
+                    if(!empty($affilliateDetails['country'])){
+                        $affiliate->country = $affilliateDetails['country'];
+                    }
+                    if(!empty($affilliateDetails['zip_code'])){
+                        $affiliate->zip_code = $affilliateDetails['zip_code'];
+                    }
+                    if(!empty($affilliateDetails['affise_api_key'])){
+                        $affiliate->affise_api_key = $affilliateDetails['affise_api_key'];
+                    }
+                    $affiliate->save();
+                }
+            }
+            return redirect()->back()->with('success','All affiliates has been re-synced.');
+        }
+        
+        return redirect()->back()->with('error','Something went wrong, please try again.');
     }
 }

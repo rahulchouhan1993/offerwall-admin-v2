@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/add-affiliate', [UsersController::class, 'addAffiliates'])->name('admin.users.addaffiliates');
     Route::get('/update-affiliate-status/{id}', [UsersController::class, 'updateStatus'])->name('admin.affiliate.status');
     Route::match(['post','get'],'/advertiser', [UsersController::class, 'advertisers'])->name('admin.users.advertisers'); 
+    Route::get('/resync', [UsersController::class, 'resync'])->name('resync');
 
     // Reports
     Route::get('/statistics', [ReportsController::class, 'statistics'])->name('admin.report.statistics');

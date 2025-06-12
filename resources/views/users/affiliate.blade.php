@@ -8,6 +8,7 @@ use App\Models\User;
         <div class="w-[100%] lg:w-[100%] bg-[#fff] p-[15px] md:p-[20px] rounded-[10px]">
             <div class="flex flex-wrap md:flex-nowrap items-center justify-between gap-[10px] mb-[20px]">
                 <h2 class="w-full lg:w-auto text-[20px] text-[#1A1A1A] font-[600]">Affiliates</h2>
+                <a href="{{ route('resync') }}" class="w-[100px] bg-[#49FB53] px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#000] text-center" >Resync</a>
                 <select name="status" onchange="filterRecords(this)" class="w-[100%] w-[250px] xl:max-w-[300px]  bg-[#F7F7F7] px-[15px] py-[12px] text-[13px] font-[600] text-[#000] 1border-[1px] 1border-[#ccc] rounded-[10px] hover:outline-none focus:outline-none hover:outline-none focus:outline-none">
                     <option value="" @if($userType == '') selected @endif>All</option>
                     <option value="active" @if($userType == 'active') selected @endif>Active</option>
@@ -141,6 +142,11 @@ use App\Models\User;
     <input type="hidden" id="affiliateEmail" name="email" value="">
     <input type="hidden" id="affiliateId" name="id" value="0">
     <input type="hidden" id="api_key" name="api_key" value="0">
+    <input type="hidden" id="address_1" name="address_1" value="0">
+    <input type="hidden" id="address_2" name="address_2" value="0">
+    <input type="hidden" id="city" name="city" value="0">
+    <input type="hidden" id="country" name="country" value="0">
+    <input type="hidden" id="zip_code" name="zip_code" value="0">
 </form>
 <script>
     function filterRecords(element){
@@ -148,11 +154,16 @@ use App\Models\User;
         window.location.href="/affiliates?status="+$(element).val();
     }
 
-    function addAffiliateUser(element,id,email,name,api_key){
+    function addAffiliateUser(element,id,email,name,api_key,address1,address2,city,country,zip_code){
         var conf = confirm('Are you sure you want to add affiliate to offerwall?');
         if(conf){
             $('#affiliateName').val(name);
             $('#affiliateEmail').val(email);
+            $('#address_1').val(address1);
+            $('#address_2').val(address2);
+            $('#city').val(city);
+            $('#country').val(country);
+            $('#zip_code').val(zip_code);
             $('#api_key').val(api_key);
             $('#affiliateId').val(id);
             $('.loader-fcustm').fadeIn(1000)
