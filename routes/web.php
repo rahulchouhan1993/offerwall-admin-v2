@@ -57,6 +57,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/payment-details/{id}', [AppsController::class, 'paymentDetails'])->name('payment.details');
     Route::get('/create-invoice', [AppsController::class, 'createInvoice'])->name('create.invoice');
     Route::get('/invoice-preview/{id}', [AppsController::class, 'invoicePreview'])->name('invoice.preview');
+    Route::post('/invoice-create', [AppsController::class, 'invoiceCreate'])->name('invoice.create');
 
     // Chart Data
     Route::get('/chart-data', [ChartController::class, 'chartData'])->name('chart.data');

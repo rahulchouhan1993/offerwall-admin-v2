@@ -72,7 +72,12 @@
                             </td>
                             <td
                                 class="text-[12px] font-medium text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap border-b border-[#E6E6E6]">
-                               <a class="text-[14px] font-[500] text-[#000]" href="{{ route('invoice.preview',['id'=>1]) }}"> Create Invoice </a>
+                               <a 
+                                    startdate="{{ request('range') }}" 
+                                    userid="{{ request('affiliate_id') }}" 
+                                    conversion="{{ $statistics->total_conversions }}" 
+                                    payout="{{ $statistics->total_payout }}" 
+                                class="create-invoice-now text-[14px] font-[500] text-[#000]" href="javascript:void(0);"> Create Invoice </a>
                             </td>
                             
                         </tr>
@@ -110,6 +115,31 @@
         });
     });
     
+    $(document).on('click','.create-invoice-now',function(){
+      $('.loader-fcustm').show();
+      var daterange = $(this).attr('startdate')
+      var userid = $(this).attr('userid')
+      var conversion = $(this).attr('conversion')
+      var payout = $(this).attr('payout')
+      $.ajax({
+         headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+         },
+         url: '{{ route("invoice.create") }}',
+         type: 'POST',
+         data: {daterange:daterange, userid:userid,conversion:conversion,payout:payout},
+         success: function (response) {
+            $('.loader-fcustm').hide();
+            if(response>0){
+                window.location.href="/invoice-preview/"+response
+            }
+         },
+         error: function (xhr) {
+            alert('<p>An error occurred. Please try again.</p>');
+         }
+      });
+   });
+
 </script>
 
 @stop

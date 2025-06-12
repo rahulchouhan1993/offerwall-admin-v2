@@ -1,30 +1,17 @@
 @extends('layouts.default')
 @section('content')
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 78d586e2d77494408e702f9d921ae0605d8e17a4
     <div class="w-full bg-[#f7f7f7] px-4 py-6">
         <div class="mx-auto w-full max-w-[700px] bg-white p-6 md:p-10 rounded-[12px] text-sm text-[#333]">
             <!-- Header Section -->
             <div class="mb-[50px]">
                 <!-- Logo -->
-<<<<<<< HEAD
                 <img src="/images/logo.png" alt="Company Logo" class="min-h-[26px] object-contain">
                 {{-- <img
           src="https://modernsoftwaretechnologies.com/wp-content/uploads/2025/05/logo-1.png"
           alt="Company Logo"
           class="mb-4 max-w-[140px]"
         /> --}}
-=======
-                <img src="/images/logo.png?2343" alt="Company Logo" class="min-h-[26px] object-contain">
-                {{-- <img
-      src="https://modernsoftwaretechnologies.com/wp-content/uploads/2025/05/logo-1.png"
-      alt="Company Logo"
-      class="mb-4 max-w-[140px]"
-    /> --}}
->>>>>>> 78d586e2d77494408e702f9d921ae0605d8e17a4
             </div>
             <div class="flex flex-col sm:flex-row justify-between items-start mb-10 gap-6">
                 <!-- Left: Logo + Vendor Info -->
