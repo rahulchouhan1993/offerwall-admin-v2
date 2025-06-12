@@ -5,59 +5,62 @@
 
         <div class="w-full flex flex-wrap md:flex-nowrap items-center gap-[15px] mb-[30px]">
             <div
-                class="bluebg flex flex-col justify-center bg-[#7850C0] items-start gap-[5px]  w-[100%] sm:w-[200px] md:w-[265px] lg:w-[365px] md:h-[130px]  rounded-[7px] lg:rounded-[10px] px-[15px] py-[15px] md:px-[20px] md:py-[20px] lg:px-[30px] lg:py-[30px] activeApps">
+                class="bluebg flex flex-col justify-center bg-[#7850C0] items-start gap-[5px]  w-[100%] sm:w-[200px] md:w-[265px] lg:w-[365px]  rounded-[7px] lg:rounded-[10px] px-[15px] py-[15px] md:px-[20px] md:py-[20px] lg:px-[15px] lg:py-[15px] activeApps">
                 <h2 class="text-14px md:text-[18px] font-[500] text-[#fff]">Pending</h2>
-                <h3 class="text-[20px] md:text-[38px] font-[700] text-[#fff]">10 | 500$</h3>
+                <h3 class="text-[20px] md:text-[24px] font-[700] text-[#fff]">10 | 500$</h3>
             </div>
             <div
-                class="pinkbg flex flex-col justify-center bg-[#4EF953] items-start gap-[5px] w-[100%] sm:w-[200px] md:w-[265px] lg:w-[365px] md:h-[130px]  rounded-[7px] lg:rounded-[10px] px-[15px] py-[15px] md:px-[20px] md:py-[20px] lg:px-[30px] lg:py-[30px] activeApps">
+                class="pinkbg flex flex-col justify-center bg-[#4EF953] items-start gap-[5px] w-[100%] sm:w-[200px] md:w-[265px] lg:w-[365px]  rounded-[7px] lg:rounded-[10px] px-[15px] py-[15px] md:px-[20px] md:py-[20px] lg:px-[15px] lg:py-[15px] activeApps">
                 <h2 class="text-14px md:text-[18px] font-[500] text-[#000]">Paid</h2>
-                <h3 class="text-[20px] md:text-[38px] font-[700] text-[#000]">10 | 500$</h3>
+                <h3 class="text-[20px] md:text-[24px] font-[700] text-[#000]">10 | 500$</h3>
             </div>
         </div>
         <div class="flex flex-col lg:flex-row justify-between items-start gap-[15px] w-full">
             <div class="w-full bg-white p-[15px] md:p-[20px] rounded-[10px] custom_filter">
-                <h2 class="w-full lg:w-auto text-[20px] text-[#1A1A1A] font-[600]">All Invoices</h2>
-                <form>
-                    <div class="flex flex-wrap md-flex-nowrap items-start gap-[7px] md:gap-[15px] justify-end mb-[15px]">
-                        {{-- <div class="relative w-[100%] sm:w-[200px]">
-                            <input name="range"
-                                class="date-range-profit w-[100%] lg:w-[100%] bg-[#F6F6F6] px-[15px] py-[10px] text-[13px] font-[600] text-[#4D4D4D] border-[1px] border-[#E6E6E6] rounded-[4px] hover:outline-none focus:outline-none"
-                                type="text" value="">
-                        </div> --}}
-                        <div class="relative w-[100%] sm:w-[220px]">
-                            <select name="affiliate_id"
-                                class="select-affiliate-invocie  z-2 absolute mt-1 w-[100%] rounded bg-[#F6F6F6] border-[1px] border-[#E6E6E6] rounded-[5px] text-[13px] font-[600] text-[#4D4D4D]"
-                                x-show="open">
-                                <option value="">Select Affiliate</option>
-                                @if($allAffiliates->isNotEmpty())
-                                    @foreach ($allAffiliates as $affiliate)
-                                        <option value="{{ $affiliate->id }}">{{ $affiliate->name }} {{ $affiliate->last_name }}</option>
-                                    @endforeach
-                                @endif
-                            </select>
+                <div class="flex flex-col md:flex-row items-center justify-between mb-[15px]">
+                    
+                    <h2 class="w-full lg:w-auto text-[20px] text-[#1A1A1A] font-[600]">All Invoices</h2>
+                    <form>
+                        <div class="flex flex-wrap md-flex-nowrap items-start gap-[7px] md:gap-[15px] justify-end ">
+                            {{-- <div class="relative w-[100%] sm:w-[200px]">
+                                <input name="range"
+                                    class="date-range-profit w-[100%] lg:w-[100%] bg-[#F6F6F6] px-[15px] py-[10px] text-[13px] font-[600] text-[#4D4D4D] border-[1px] border-[#E6E6E6] rounded-[4px] hover:outline-none focus:outline-none"
+                                    type="text" value="">
+                            </div> --}}
+                            <div class="relative w-[100%] sm:w-[220px]">
+                                <select name="affiliate_id"
+                                    class="select-affiliate-invocie  z-2 absolute mt-1 w-[100%] rounded bg-[#F6F6F6] border-[1px] border-[#E6E6E6] rounded-[5px] text-[13px] font-[600] text-[#4D4D4D]"
+                                    x-show="open">
+                                    <option value="">Select Affiliate</option>
+                                    @if($allAffiliates->isNotEmpty())
+                                        @foreach ($allAffiliates as $affiliate)
+                                            <option value="{{ $affiliate->id }}">{{ $affiliate->name }} {{ $affiliate->last_name }}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
+                            <div class="relative w-[100%] sm:w-[220px]">
+                                <select name="status"
+                                    class="select-status-invoice z-2 absolute mt-1 w-[100%] rounded bg-[#F6F6F6] border-[1px] border-[#E6E6E6] rounded-[5px] text-[13px] font-[600] text-[#4D4D4D]"
+                                    x-show="open">
+                                    <option value="">Select Status</option>
+                                    <option value="draft">Draft</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="paid">Paid</option>
+                                </select>
+                            </div>
+                            <div class="relative w-full md:w-auto">
+                                <button type="button"
+                                    class="w-full md:w-[110px] lg:w-[140px] bg-[#4EF953] px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#000] text-center">Search</button>
+                            </div>
+                            <div class="relative w-full md:w-auto">
+                                <a href="{{ route('create.invoice') }}"
+                                    class="inline-block w-full md:w-[110px] lg:w-[140px] bg-[#4EF953] px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#000] text-center">+
+                                    Add</a>
+                            </div>
                         </div>
-                        <div class="relative w-[100%] sm:w-[220px]">
-                            <select name="status"
-                                class="select-status-invoice z-2 absolute mt-1 w-[100%] rounded bg-[#F6F6F6] border-[1px] border-[#E6E6E6] rounded-[5px] text-[13px] font-[600] text-[#4D4D4D]"
-                                x-show="open">
-                                <option value="">Select Status</option>
-                                <option value="draft">Draft</option>
-                                <option value="pending">Pending</option>
-                                <option value="paid">Paid</option>
-                            </select>
-                        </div>
-                        <div class="relative w-full md:w-auto">
-                            <button type="button"
-                                class="w-full md:w-[110px] lg:w-[140px] bg-[#4EF953] px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#000] text-center">Search</button>
-                        </div>
-                        <div class="relative w-full md:w-auto">
-                            <a href="{{ route('create.invoice') }}"
-                                class="inline-block w-full md:w-[110px] lg:w-[140px] bg-[#4EF953] px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#000] text-center">+
-                                Add</a>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
                 <div class="overflow-x-scroll tableScroll">
                     <table
                         class="w-full border-collapse border-spacing-0 rounded-[10px] border-separate border border-[#E6E6E6] min-w-[600px]">

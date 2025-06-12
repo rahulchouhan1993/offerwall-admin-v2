@@ -21,31 +21,31 @@
     </form>
     <div class=" flex flex-wrap md:flex-nowrap items-center gap-[15px] mb-[30px]">
         <div
-            class="drakblbg flex flex-col justify-center bg-[#88E528] items-start gap-[5px]  w-[100%] sm:w-[200px] md:w-[265px] lg:w-[365px] h-[130px]  rounded-[7px] lg:rounded-[10px]  px-[15px] py-[15px] md:px-[20px] md:py-[20px] xl:px-[30px] xl:py-[30px] activeApps">
+            class="drakblbg flex flex-col justify-center bg-[#88E528] items-start gap-[5px]  w-[100%] sm:w-[200px] md:w-[265px] lg:w-[365px]  rounded-[7px] lg:rounded-[10px]  px-[15px] py-[15px] md:px-[20px] md:py-[20px] xl:px-[15px] xl:py-[15px] activeApps">
             <h2 class="text-[18px] font-[500] text-[#fff]">Affiliates</h2>
-            <h3 class="text-[25px] lg:text-[25px] xl:text-[38px] font-[700] text-[#fff]">{{ $allAffiliatesCount }}</h3>
+            <h3 class="text-[25px] lg:text-[25px] xl:text-[24px] font-[700] text-[#fff]">{{ $allAffiliatesCount }}</h3>
         </div>
         <div
-            class="orangebg flex flex-col justify-center bg-[#EF7947] items-start gap-[5px]  w-[100%] sm:w-[200px] md:w-[265px] lg:w-[365px] h-[130px]  rounded-[7px] lg:rounded-[10px]   px-[15px] py-[15px] md:px-[20px] md:py-[20px] xl:px-[30px] xl:py-[30px] activeApps">
+            class="orangebg flex flex-col justify-center bg-[#EF7947] items-start gap-[5px]  w-[100%] sm:w-[200px] md:w-[265px] lg:w-[365px]  rounded-[7px] lg:rounded-[10px]   px-[15px] py-[15px] md:px-[20px] md:py-[20px] xl:px-[15px] xl:py-[15px] activeApps">
             <h2 class="text-[18px] font-[500] text-[#01000B]">Active Apps</h2>
-            <h3 class="text-[25px] lg:text-[25px] xl:text-[38px] font-[700] text-[#01000B]">{{ $activeApps }}</h3>
+            <h3 class="text-[25px] lg:text-[25px] xl:text-[24px] font-[700] text-[#01000B]">{{ $activeApps }}</h3>
         </div>
         
         
         <div
-            class="bluebg flex flex-col justify-center bg-[#7850C0] items-start gap-[5px]  w-[100%] sm:w-[200px] md:w-[265px] lg:w-[365px] h-[130px]  rounded-[7px] lg:rounded-[10px]  px-[15px] py-[15px] md:px-[20px] md:py-[20px] xl:px-[30px] xl:py-[30px] activeApps">
+            class="bluebg flex flex-col justify-center bg-[#7850C0] items-start gap-[5px]  w-[100%] sm:w-[200px] md:w-[265px] lg:w-[365px]  rounded-[7px] lg:rounded-[10px]  px-[15px] py-[15px] md:px-[20px] md:py-[20px] xl:px-[15px] xl:py-[15px] activeApps">
             <h2 class="text-[18px] font-[500] text-[#fff]">Revenue</h2>
-            <h3 class="text-[38px] font-[700] text-[#fff]">$ {{ $totalRevenue }}</h3>
+            <h3 class="text-[24px] font-[700] text-[#fff]">$ {{ $totalRevenue }}</h3>
         </div>
         
-        <div class="graybg flex flex-col justify-center bg-[#C855C8] items-start gap-[5px] w-[100%] sm:w-[200px] md:w-[265px] lg:w-[365px] h-[130px]  rounded-[7px] lg:rounded-[10px]  px-[15px] py-[15px] md:px-[20px] md:py-[20px] xl:px-[30px] xl:py-[30px] activeApps">
+        <div class="graybg flex flex-col justify-center bg-[#C855C8] items-start gap-[5px] w-[100%] sm:w-[200px] md:w-[265px] lg:w-[365px]  rounded-[7px] lg:rounded-[10px]  px-[15px] py-[15px] md:px-[20px] md:py-[20px] xl:px-[15px] xl:py-[15px] activeApps">
             <h2 class="text-[18px] font-[500] text-[#080C0F]">Payouts</h2>
-            <h3 class="text-[25px] lg:text-[25px] xl:text-[38px] lg:text-[25px] xl:text-[38px] font-[700] text-[#080C0F]">$ {{ $totalPayouts }}</h3>
+            <h3 class="text-[25px] lg:text-[25px] xl:text-[24px] lg:text-[25px] xl:text-[24px] font-[700] text-[#080C0F]">$ {{ $totalPayouts }}</h3>
         </div>
         <div
-            class="pinkbg flex flex-col justify-center bg-[#4EF953] items-start gap-[5px] w-[100%] sm:w-[200px] md:w-[265px] lg:w-[365px] h-[130px]  rounded-[7px] lg:rounded-[10px]  px-[15px] py-[15px] md:px-[20px] md:py-[20px] xl:px-[30px] xl:py-[30px] activeApps">
+            class="pinkbg flex flex-col justify-center bg-[#4EF953] items-start gap-[5px] w-[100%] sm:w-[200px] md:w-[265px] lg:w-[365px]  rounded-[7px] lg:rounded-[10px]  px-[15px] py-[15px] md:px-[20px] md:py-[20px] xl:px-[15px] xl:py-[15px] activeApps">
             <h2 class="text-[18px] font-[500] text-[#000]">Profit</h2>
-            <h3 class="text-[25px] lg:text-[25px] xl:text-[38px] font-[700] text-[#000]">$ {{ $totalRevenue-$totalPayouts }}</h3>
+            <h3 class="text-[25px] lg:text-[25px] xl:text-[24px] font-[700] text-[#000]">$ {{ $totalRevenue-$totalPayouts }}</h3>
         </div>
         
     </div>

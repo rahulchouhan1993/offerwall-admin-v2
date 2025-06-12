@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="w-full bg-[#f7f7f7] px-4 py-6">
-        <div class="mx-auto w-full max-w-[700px] bg-white p-6 md:p-10 rounded-[12px] text-sm text-[#333]">
+        <div class="mx-auto w-full max-w-[850px] bg-white p-6 md:p-10 rounded-[12px] text-sm text-[#333]">
             <!-- Header Section -->
             <div class="mb-[50px]">
                 <!-- Logo -->
