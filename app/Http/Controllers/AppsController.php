@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Mpdf\Mpdf;
 use Carbon\Carbon;
 use stdClass;
+use Illuminate\Support\Facades\DB;
 
 class AppsController extends Controller
 {
@@ -181,7 +182,30 @@ class AppsController extends Controller
             $query->where('revenue', '>', 0);
         }])
         ->get();
-        return view('apps.invoices',compact('pageTitle','allAffiliates'));
+
+        $allInvoices = Invoice::where('status','!=',4)->with('invoicedetails')->orderBy('id','DESC')->get();
+
+        $allInvoices = $allInvoices->map(function ($invoice) {
+            $total = 0;
+            foreach ($invoice->invoicedetails as $detail) {
+                $priceWithVat = $detail->payout + ($detail->payout * $detail->vat / 100);
+                $total += $priceWithVat;
+            }
+            $invoice->total_price = round($total, 2); // add a dynamic property
+            return $invoice;
+        });
+
+        $cardData = DB::table('invoices')
+        ->join('invoice_details', 'invoices.id', '=', 'invoice_details.invoice_id')
+        ->select(
+            'invoices.status',
+            DB::raw('COUNT(DISTINCT invoices.id) as total_invoices'),
+            DB::raw('SUM(CASE WHEN invoice_details.vat > 0 THEN invoice_details.payout + (invoice_details.payout * invoice_details.vat / 100) ELSE invoice_details.payout END) as total_payout_with_vat')
+        )
+        ->whereIn('invoices.status', [1, 2])
+        ->groupBy('invoices.status')
+        ->get();
+        return view('apps.invoices',compact('pageTitle','allAffiliates','allInvoices','cardData'));
     }
 
     public function paymentDetails($id){
@@ -240,7 +264,6 @@ class AppsController extends Controller
     public function invoicePreview($invoiceId){
         $pageTitle = 'Invoice preview';
         $invoiceDetails = Invoice::where('id',$invoiceId)->with('invoicedetails','user')->first();
-        
         return view('apps.add-invoice',compact('pageTitle','invoiceDetails'));
     }
 
@@ -250,14 +273,15 @@ class AppsController extends Controller
     }
 
     // Download invoice as PDF using mPDF
-    public function download()
-    {
-        $html = view('invoices.show')->render();
+    public function download($id)
+    {   
+        $invoiceDetails = Invoice::where('id',$id)->with('invoicedetails','user')->first();
+        $html = view('invoices.show',compact('invoiceDetails'))->render();
 
         $mpdf = new Mpdf(['default_font' => 'dejavusans']);
         $mpdf->WriteHTML($html);
 
-        return response($mpdf->Output("Invoice_.pdf", 'I'), 200)
+        return response($mpdf->Output("Invoice_{$id}.pdf", 'I'), 200)
             ->header('Content-Type', 'application/pdf')
             ->header('Content-Disposition', 'attachment; filename="Invoice_.pdf"');
     }
@@ -303,5 +327,48 @@ class AppsController extends Controller
             echo $newInvoice->id;die;
         }
        echo 0; die;
+    }
+
+    public function updateInvoice(Request $request){
+        if($request->isMethod('POST')){
+            foreach($request['items'] as $k => $v){
+                if($v['rec_id']>0){
+                    $newInvoiceDetail = InvoiceDetail::find($v['rec_id']);
+                }else{
+                    $newInvoiceDetail = new InvoiceDetail();
+                }
+                
+                $newInvoiceDetail->invoice_id = $request['invoice_id'];
+                $newInvoiceDetail->description = $v['description'];
+                $newInvoiceDetail->conversion = $v['conversion'];
+                $newInvoiceDetail->payout = $v['payout'];
+                $newInvoiceDetail->vat = ($v['vat']=='' || $v['vat']=='no') ? 0 : $v['vat'];
+                $newInvoiceDetail->item_type = 0;
+                $newInvoiceDetail->save();
+            }
+            return redirect()->route('apps.invoices')->with('success','Invoice Updated Successfully.');
+        }
+
+    }
+
+    public function deleteInvoice($id){
+        $invoice = Invoice::findOrFail($id);
+        if($invoice->status==0){
+            $invoice = Invoice::with('invoicedetails')->findOrFail($id);
+            $invoice->invoicedetails()->delete();
+            $invoice->delete();
+        }else{
+            $invoice->status = 4;
+            $invoice->save();
+        }
+        
+        return redirect()->back()->with('success','Invoice Deleted Successfully');
+    }
+
+    public function status(Request $request){
+        $invoice = Invoice::findOrFail($request->rec_id);
+        $invoice->status = $request->status;
+        $invoice->save();
+        return redirect()->back()->with('success','Invoice Status Updated Successfully');
     }
 }

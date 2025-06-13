@@ -49,8 +49,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/integration/{id}', [AppsController::class, 'integration'])->name('apps.integration');
     Route::get('/update-status/{id}', [AppsController::class, 'updateStatus'])->name('apps.status');
     Route::match(['get','post'],'/template/{id}', [AppsController::class, 'template'])->name('apps.template');
-    Route::get('/preview', [AppsController::class, 'preview']);
-    Route::get('/download', [AppsController::class, 'download']);
     
     //Invoices
     Route::get('/invoices', [AppsController::class, 'invoices'])->name('apps.invoices');
@@ -58,6 +56,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/create-invoice', [AppsController::class, 'createInvoice'])->name('create.invoice');
     Route::get('/invoice-preview/{id}', [AppsController::class, 'invoicePreview'])->name('invoice.preview');
     Route::post('/invoice-create', [AppsController::class, 'invoiceCreate'])->name('invoice.create');
+    Route::post('/update-invoice', [AppsController::class, 'updateInvoice'])->name('invoice.update');
+    Route::get('/delete-invoice/{id}', [AppsController::class, 'deleteInvoice'])->name('invoice.delete');
+    Route::get('/download/{id}', [AppsController::class, 'download'])->name('invoice.download');
+    Route::post('/status', [AppsController::class, 'status'])->name('invoice.status');
 
     // Chart Data
     Route::get('/chart-data', [ChartController::class, 'chartData'])->name('chart.data');
