@@ -33,13 +33,14 @@
                 <div class="flex flex-col md:flex-row items-center justify-between mb-[15px]">
                     
                     <h2 class="w-full lg:w-auto text-[20px] text-[#1A1A1A] font-[600]">All Invoices</h2>
-                    <form>
+                    <form method="GET" action="{{ route('apps.invoices') }}">
                         <div class="flex flex-wrap md-flex-nowrap items-start gap-[7px] md:gap-[15px] justify-end ">
                             {{-- <div class="relative w-[100%] sm:w-[200px]">
                                 <input name="range"
                                     class="date-range-profit w-[100%] lg:w-[100%] bg-[#F6F6F6] px-[15px] py-[10px] text-[13px] font-[600] text-[#4D4D4D] border-[1px] border-[#E6E6E6] rounded-[4px] hover:outline-none focus:outline-none"
                                     type="text" value="">
-                            </div> --}}
+                            </div>
+                                --}}
                             <div class="relative w-[100%] sm:w-[220px]">
                                 <select name="affiliate_id"
                                     class="select-affiliate-invocie  z-2 absolute mt-1 w-[100%] rounded bg-[#F6F6F6] border-[1px] border-[#E6E6E6] rounded-[5px] text-[13px] font-[600] text-[#4D4D4D]"
@@ -47,7 +48,7 @@
                                     <option value="">Select Affiliate</option>
                                     @if($allAffiliates->isNotEmpty())
                                         @foreach ($allAffiliates as $affiliate)
-                                            <option value="{{ $affiliate->id }}">{{ $affiliate->name }} {{ $affiliate->last_name }}</option>
+                                            <option value="{{ $affiliate->id }}" @if(request('affiliate_id')==$affiliate->id) selected @endif>{{ $affiliate->name }} {{ $affiliate->last_name }}</option>
                                         @endforeach
                                     @endif
                                 </select>
@@ -57,18 +58,19 @@
                                     class="select-status-invoice z-2 absolute mt-1 w-[100%] rounded bg-[#F6F6F6] border-[1px] border-[#E6E6E6] rounded-[5px] text-[13px] font-[600] text-[#4D4D4D]"
                                     x-show="open">
                                     <option value="">Select Status</option>
-                                    <option value="draft">Draft</option>
-                                    <option value="pending">Pending</option>
-                                    <option value="paid">Paid</option>
+                                    <option value="draft" @if(request('status')=='draft') selected @endif>Draft</option>
+                                    <option value="inprocess" @if(request('status')=='inprocess') selected @endif>In Process</option>
+                                    <option value="paid" @if(request('status')=='paid') selected @endif>Paid</option>
                                 </select>
                             </div>
                             <div class="relative w-full md:w-auto">
-                                <button type="button"
-                                    class="w-full md:w-[110px] lg:w-[140px] bg-[#4EF953] px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#000] text-center">Search</button>
+                                <button type="submit"
+                                    class="w-full md:w-[110px] lg:w-[140px] bg-[#D272D2] px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#fff] text-center">Search</button>
                             </div>
+                            
                             <div class="relative w-full md:w-auto">
                                 <a href="{{ route('create.invoice') }}"
-                                    class="inline-block w-full md:w-[110px] lg:w-[140px] bg-[#4EF953] px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#000] text-center">+
+                                    class="inline-block w-full md:w-[110px] lg:w-[140px] bg-[#D272D2] px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#fff] text-center">+
                                     Add</a>
                             </div>
                         </div>

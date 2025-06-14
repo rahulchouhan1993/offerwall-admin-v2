@@ -171,8 +171,9 @@ class AppsController extends Controller
         return view('apps.test-postback',compact('pageTitle'));
     }
 
-    public function invoices(){
+    public function invoices(Request $request){
         $pageTitle = 'Invoices';
+        $requestedParams = $request->all();
         $allAffiliates = User::where('role', 'affiliate')
         ->where('status', 1)
         ->whereHas('trackings', function ($query) {
@@ -182,8 +183,27 @@ class AppsController extends Controller
             $query->where('revenue', '>', 0);
         }])
         ->get();
+        
+        $statusArray = [
+            'draft' => 0,
+            'inprocess' => 1,
+            'paid' => 2
+        ];
 
-        $allInvoices = Invoice::where('status','!=',4)->with('invoicedetails')->orderBy('id','DESC')->get();
+        $allInvoices = Invoice::query();
+        if (!empty($requestedParams['affiliate_id']) && $requestedParams['affiliate_id'] > 0) {
+            $allInvoices->where('user_id', $requestedParams['affiliate_id']);
+        }
+
+        if (!empty($requestedParams['status'])) {
+            $allInvoices->where('status', $statusArray[$requestedParams['status']] ?? null);
+        }
+
+        $allInvoices = $allInvoices
+            ->where('status', '!=', 4)
+            ->with('invoicedetails')
+            ->orderBy('id', 'DESC')
+            ->get(); // NOW you assign the result
 
         $allInvoices = $allInvoices->map(function ($invoice) {
             $total = 0;
@@ -191,7 +211,7 @@ class AppsController extends Controller
                 $priceWithVat = $detail->payout + ($detail->payout * $detail->vat / 100);
                 $total += $priceWithVat;
             }
-            $invoice->total_price = round($total, 2); // add a dynamic property
+            $invoice->total_price = round($total, 2);
             return $invoice;
         });
 
@@ -278,7 +298,10 @@ class AppsController extends Controller
         $invoiceDetails = Invoice::where('id',$id)->with('invoicedetails','user')->first();
         $html = view('invoices.show',compact('invoiceDetails'))->render();
 
-        $mpdf = new Mpdf(['default_font' => 'dejavusans']);
+        $mpdf = new Mpdf([
+            'default_font' => 'dejavusans',
+            'tempDir' => storage_path('app/mpdf-temp')
+        ]);
         $mpdf->WriteHTML($html);
 
         return response($mpdf->Output("Invoice_{$id}.pdf", 'I'), 200)
