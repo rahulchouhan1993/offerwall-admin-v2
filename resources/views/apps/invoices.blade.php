@@ -65,12 +65,12 @@
                             </div>
                             <div class="relative w-full md:w-auto">
                                 <button type="submit"
-                                    class="w-full md:w-[110px] lg:w-[140px] bg-[#D272D2] px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#fff] text-center">Search</button>
+                                    class="w-full md:w-[110px] lg:w-[140px] bg-[#49FB53] px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#000] text-center">Search</button>
                             </div>
                             
                             <div class="relative w-full md:w-auto">
                                 <a href="{{ route('create.invoice') }}"
-                                    class="inline-block w-full md:w-[110px] lg:w-[140px] bg-[#D272D2] px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#fff] text-center">+
+                                    class="inline-block w-full md:w-[110px] lg:w-[140px] bg-[#49FB53] px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#000] text-center">+
                                     Add</a>
                             </div>
                         </div>
@@ -221,8 +221,8 @@
                     </div>
                     <div class="flex justify-end space-x-2 mt-4">
                         <button type="button" onclick="closeModal()"
-                            class="px-4 py-2 bg-[#F5EAF5] w-[100px] border border-[#FED5C3] rounded-[4px] text-[14px] font-[500] text-[#D272D2] text-center">Cancel</button>
-                        <button class="px-4 py-2 bg-[#D272D2] text-white rounded">Save</button>
+                            class="px-4 py-2 bg-[#F5EAF5] w-[100px] border border-[#FED5C3] rounded-[4px] text-[14px] font-[500] text-[#49FB53] text-center">Cancel</button>
+                        <button class="px-4 py-2 bg-[#49FB53] text-white rounded">Save</button>
                     </div>
                 </div>
                 <button onclick="closeModal()"
