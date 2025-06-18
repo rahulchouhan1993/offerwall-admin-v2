@@ -60,6 +60,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/delete-invoice/{id}', [AppsController::class, 'deleteInvoice'])->name('invoice.delete');
     Route::get('/download/{id}', [AppsController::class, 'download'])->name('invoice.download');
     Route::post('/status', [AppsController::class, 'status'])->name('invoice.status');
+    Route::get('/invoice-method/{id}', [AppsController::class, 'invoieeMethod'])->name('invoice.method');
+
 
     // Chart Data
     Route::get('/chart-data', [ChartController::class, 'chartData'])->name('chart.data');

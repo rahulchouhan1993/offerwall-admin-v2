@@ -142,7 +142,7 @@
                                 $ {{ number_format($invoice->total_price,2) }}
                             </td>
                             <td
-                                class="text-[12px] font-medium text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap border-b border-[#E6E6E6]">N/A</td>
+                                class="text-[12px] font-medium text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap border-b border-[#E6E6E6]"><a class="text-[#832af0]" href="{{ route('invoice.method',['id'=>$invoice->id]) }}">See Details </a></td>
                             <td
                                 class="text-[12px] font-medium text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap border-b border-[#E6E6E6]">
                                 @if($invoice->status==0)

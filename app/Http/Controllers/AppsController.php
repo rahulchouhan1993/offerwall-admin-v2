@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Template;
 use App\Models\Tracking;
 use App\Models\Invoice;
+use App\Models\Country;
 use App\Models\InvoiceDetail;
 use Illuminate\Http\Request;
 use Mpdf\Mpdf;
@@ -232,9 +233,12 @@ class AppsController extends Controller
 
     public function paymentDetails($id){
         $pageTitle = 'Payment Details';
-        $paymentDetails = PaymentMethod::where('user_id',$id)->get();
-        $userDetails = User::find($id);
-        return view('apps.payment-details',compact('pageTitle','paymentDetails','userDetails'));
+        $paymentDetails = PaymentMethod::where('user_id',$id)->first();
+        if(empty($paymentDetails)){
+            $paymentDetails = new PaymentMethod();
+        }
+        $allCountries = Country::get();
+        return view('apps.payment-details',compact('pageTitle','paymentDetails','allCountries'));
     }
 
     public function createInvoice(Request $request){
@@ -359,7 +363,10 @@ class AppsController extends Controller
             }else{
                 $invoiceNumber = $lasInvoice->invoice_number+1;
             }
-
+            $paymentDetails = PaymentMethod::where('user_id',$request->userid)->first();
+            if(empty($paymentDetails)){
+                die("Affiliate has not added any payment method.");
+            }
             $newInvoice = new Invoice();
             $newInvoice->user_id = $request->userid;
             $newInvoice->start_date = $startDate->format('Y-m-d');
@@ -368,6 +375,7 @@ class AppsController extends Controller
             $newInvoice->invoice_date = Carbon::now()->format('Y-m-d');
             $newInvoice->due_date = Carbon::now()->addDays(10);
             $newInvoice->status = 0;
+            $newInvoice->payment_method = json_encode($paymentDetails->toArray());
             $newInvoice->save();
             
             if($newInvoice->id>0){
@@ -427,5 +435,12 @@ class AppsController extends Controller
         $invoice->status = $request->status;
         $invoice->save();
         return redirect()->back()->with('success','Invoice Status Updated Successfully');
+    }
+
+    public function invoieeMethod($id){
+        $pageTitle = 'Invoice Method Details';
+        $invoiceDetails = Invoice::where('id',$id)->first();
+
+        return view('apps.invoice-method',compact('pageTitle','invoiceDetails'));
     }
 }
