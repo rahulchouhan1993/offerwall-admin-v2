@@ -1,5 +1,6 @@
 @extends('layouts.default')
 @section('content')
+@php use App\Models\User; @endphp
 <div class="bg-[#f2f2f2] p-[15px] lg:p-[35px]">
     <div class="flex flex-col lg:flex-row justify-between items-start gap-[15px] w-full">
         <div class="w-full bg-white p-[15px] md:p-[20px] rounded-[10px] custom_filter">
@@ -12,7 +13,7 @@
                             type="text" value="{{ request('range') }}" required>
                     </div>
                     <div class="relative w-[100%] sm:w-[220px]">
-                        <select required name="affiliate_id"
+                        <select name="affiliate_id"
                             class="select-affiliate-invocie  z-2 absolute mt-1 w-[100%] rounded bg-[#F6F6F6] border-[1px] border-[#E6E6E6] rounded-[5px] text-[13px] font-[600] text-[#4D4D4D]"
                             x-show="open">
                             <option value="">Select Affiliate</option>
@@ -25,7 +26,7 @@
                     </div>
                     <div class="relative w-full md:w-auto">
                         <button type="submit"
-                            class="w-full md:w-[110px] lg:w-[140px] bg-[#4EF953] px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#000] text-center">Fetch</button>
+                            class="w-full md:w-[110px] lg:w-[140px] bg-[#4EF953] px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#000] text-center">Generate</button>
                     </div>
                 
                 </div>
@@ -37,6 +38,9 @@
                         <tr>
                             <th
                                 class="bg-[#7FB5CB] rounded-tl-[10px] text-[12px] font-medium text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">
+                                Affiliate</th>
+                            <th
+                                class="bg-[#7FB5CB] text-[12px] font-medium text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">
                                 Clicks</th>
                             <th
                                 class="bg-[#7FB5CB] text-[12px] font-medium text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">
@@ -55,7 +59,11 @@
                     <tbody>
                         @if($allStatistics->isNotEmpty())
                         @foreach ($allStatistics as $statistics )
+                        @php $userDetails = User::find($statistics->user_id); @endphp
                         <tr>
+                            <td
+                                class="text-[12px] font-medium text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap border-b border-[#E6E6E6]">
+                                {{ $userDetails->name.' '.$userDetails->last_name }}</td>
                             <td
                                 class="text-[12px] font-medium text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap border-b border-[#E6E6E6]">
                                 {{ $statistics->total_click }}</td>
@@ -74,7 +82,7 @@
                                 class="text-[12px] font-medium text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap border-b border-[#E6E6E6]">
                                <a 
                                     startdate="{{ request('range') }}" 
-                                    userid="{{ request('affiliate_id') }}" 
+                                    userid="{{ $statistics->user_id }}" 
                                     conversion="{{ $statistics->total_conversions }}" 
                                     payout="{{ $statistics->total_payout }}" 
                                 class="create-invoice-now text-[14px] font-[500] text-[#000]" href="javascript:void(0);"> Create Invoice </a>
@@ -132,6 +140,8 @@
             $('.loader-fcustm').hide();
             if(response>0){
                 window.location.href="/invoice-preview/"+response
+            }else{
+                alert(response)
             }
          },
          error: function (xhr) {

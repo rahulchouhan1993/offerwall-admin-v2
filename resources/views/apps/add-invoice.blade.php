@@ -48,7 +48,7 @@
                         </div>
                         <div>
                             <div class="font-bold">Invoice Number</div>
-                            <div>{{ env('INVOICE_ALIAS')}}{{ date('Y',strtotime($invoiceDetails->invoice_date)) }}{{ $invoiceDetails->invoice_number }}</div>
+                            <div>{{ env('INVOICE_ALIAS')}}-{{ date('Y',strtotime($invoiceDetails->invoice_date)) }}-{{ date('m',strtotime($invoiceDetails->invoice_date)) }}-{{ $invoiceDetails->invoice_number }}</div>
                         </div>
                     </div>
                     <!-- Purchaser Info -->
@@ -57,8 +57,8 @@
                         <div class="leading-6 text-xs leading-[14px]">
                             Maka Mobile<br />
                             Herengracht 420<br />
-                            AMSTERDAM NOORD-HOLLAND 1017BZ<br />
-                            NETHERLANDS<br />
+                            Amsterdam Noord-Holland 1017BZ<br />
+                            Netherlands<br />
                             VAT No. NL858589242B01<br />
                             Business Registration: 71125957
                         </div>
@@ -172,19 +172,7 @@
 
             <!-- Notes -->
             <div class="mt-[50px] text-sm text-[#000000] leading-relaxed">
-                <p class="mb-3 font-bold">Terms and conditions of the Self-Billing</p>
-                <p class="mb-2">
-                    The Revenue and Conversions displayed in this self-billing invoice
-                    are based on the numbers displayed in Affise's dashboard. The
-                    currency, the amount and the due date for the payment are based on
-                    the T&C and IO.
-                </p>
-                <p class="mb-2">
-                    Do not hesitate to contact us should you require more
-                    information:<br />
-                    <a href="mailto:support@makamobile.com" class="text-[#49FB53]">support@makamobile.com</a>,
-                    <a href="mailto:finance@makamobile.com" class="text-[#49FB53]">finance@makamobile.com</a>.
-                </p>
+                
                 <p class="mt-4 uppercase">
                     <strong>NOTE: It is your responsibility that your bank account details
                         are updated. Please contact your account manager if you have to

@@ -186,7 +186,7 @@ class AppsController extends Controller
         
         $statusArray = [
             'draft' => 0,
-            'inprocess' => 1,
+            'pending' => 1,
             'paid' => 2
         ];
 
@@ -206,12 +206,14 @@ class AppsController extends Controller
             ->get(); // NOW you assign the result
 
         $allInvoices = $allInvoices->map(function ($invoice) {
-            $total = 0;
+            $total = 0; $totalConv = 0;
             foreach ($invoice->invoicedetails as $detail) {
                 $priceWithVat = $detail->payout + ($detail->payout * $detail->vat / 100);
                 $total += $priceWithVat;
+                $totalConv+=$detail->conversion;
             }
             $invoice->total_price = round($total, 2);
+            $invoice->total_conversion = $totalConv;
             return $invoice;
         });
 
@@ -249,33 +251,41 @@ class AppsController extends Controller
 
         $requestedParams = $request->all();
         $allStatistics = collect();
-        if(!empty($requestedParams['range']) && !empty($requestedParams['affiliate_id'])){
+
+        if (!empty($requestedParams['range'])) {
             $trackingStats = Tracking::query();
 
-            //Adding Date Query
+            // Parse date range
             $separateDate = explode('-', $requestedParams['range']);
-            $requestedParams['strd'] = trim($separateDate[0]);
-            $requestedParams['endd'] = trim($separateDate[1]);
             $startDate = date('Y-m-d 00:00:00', strtotime(trim($separateDate[0])));
-            $endDate = date('Y-m-d 23::59:59', strtotime(trim($separateDate[1])));
-            $trackingStats->whereBetween('click_time', [$startDate, $endDate]); 
+            $endDate = date('Y-m-d 23:59:59', strtotime(trim($separateDate[1])));
+            $trackingStats->whereBetween('click_time', [$startDate, $endDate]);
 
-            //Adding Affiiate condition
-            $trackingStats->where('user_id', $requestedParams['affiliate_id']);
+            // Check if specific affiliate is selected
+            if (!empty($requestedParams['affiliate_id']) && $requestedParams['affiliate_id'] > 0) {
+                // Filter by selected affiliate
+                $trackingStats->where('user_id', $requestedParams['affiliate_id']);
 
-            //Merging all stats together
-            $matchCount = $trackingStats->count();
-            if ($matchCount > 0) {
+                // Get stats for single affiliate
                 $allStatistics = $trackingStats->selectRaw("
+                    user_id,
                     COUNT(*) as total_click,
-                    COUNT(CASE WHEN conversion_id IS NOT NULL AND status=1 THEN 1 END) as total_conversions,
+                    COUNT(CASE WHEN conversion_id IS NOT NULL AND status = 1 THEN 1 END) as total_conversions,
                     SUM(revenue) as total_revenue,
                     SUM(payout) as total_payout
-                ")->get();
+                ")->groupBy('user_id')->get();
+
             } else {
-                $allStatistics = collect(); // or set it to null or default values
+                // Get stats for all affiliates separately
+                $allStatistics = $trackingStats->selectRaw("
+                    user_id,
+                    COUNT(*) as total_click,
+                    COUNT(CASE WHEN conversion_id IS NOT NULL AND status = 1 THEN 1 END) as total_conversions,
+                    SUM(revenue) as total_revenue,
+                    SUM(payout) as total_payout
+                ")->groupBy('user_id')->get();
             }
-            $allStatistics = $trackingStats->get();
+
         }
         
         return view('apps.create-invoice',compact('pageTitle','allAffiliates','allStatistics','requestedParams'));
@@ -316,30 +326,54 @@ class AppsController extends Controller
             $separateDate = explode('-', $request->daterange);
             $requestedParams['strd'] = trim($separateDate[0]);
             $requestedParams['endd'] = trim($separateDate[1]);
-            $startDate = date('Y-m-d', strtotime(trim($separateDate[0])));
-            $endDate = date('Y-m-d', strtotime(trim($separateDate[1])));
+            $startDate = Carbon::parse(trim($separateDate[0]));
+            $endDate = Carbon::parse(trim($separateDate[1]));
+
+            //check if invoice is created
+            $missingMonths = [];
+
+            $current = $startDate->copy()->startOfMonth();
+
+            while ($current <= $endDate) {
+                $monthStart = $current->copy()->startOfMonth();
+                $monthEnd = $current->copy()->endOfMonth();
+
+                // Adjust overlap range
+                $rangeStart = $monthStart->greaterThan($startDate) ? $monthStart : $startDate;
+                $rangeEnd = $monthEnd->lessThan($endDate) ? $monthEnd : $endDate;
+
+                // Now check for invoices in this overlapping range
+                $invoiceExists = Invoice::where('user_id',$request->userid)->whereBetween('invoice_date', [$rangeStart, $rangeEnd])->exists();
+
+                if ($invoiceExists) {
+                    die("Can't create invoice due to overlapping dates");
+                }
+
+                $current->addMonth();
+            }
 
             //Last invoice number
-            $lasInvoice = Invoice::orderBy('id','DESC')->first();
+            $lasInvoice = Invoice::whereYear('invoice_date', Carbon::now()->year)->whereMonth('invoice_date', Carbon::now()->month)->orderBy('id', 'DESC')->first();
             if(empty($lasInvoice)){
                 $invoiceNumber = 1000;
             }else{
                 $invoiceNumber = $lasInvoice->invoice_number+1;
             }
+
             $newInvoice = new Invoice();
             $newInvoice->user_id = $request->userid;
-            $newInvoice->start_date = $startDate;
-            $newInvoice->end_date = $endDate;
+            $newInvoice->start_date = $startDate->format('Y-m-d');
+            $newInvoice->end_date = $endDate->format('Y-m-d');
             $newInvoice->invoice_number = $invoiceNumber;
             $newInvoice->invoice_date = Carbon::now()->format('Y-m-d');
-            $newInvoice->due_date = Carbon::now()->addDays(7);
+            $newInvoice->due_date = Carbon::now()->addDays(10);
             $newInvoice->status = 0;
             $newInvoice->save();
             
             if($newInvoice->id>0){
                 $newInvoiceDetail = new InvoiceDetail();
                 $newInvoiceDetail->invoice_id = $newInvoice->id;
-                $newInvoiceDetail->description = "Advertising Services for {$startDate} to {$endDate}";
+                $newInvoiceDetail->description = "Advertising Services from {$startDate->format('Y-m-d')} to {$endDate->format('Y-m-d')}";
                 $newInvoiceDetail->conversion = $request->conversion;
                 $newInvoiceDetail->payout = $request->payout;
                 $newInvoiceDetail->vat = 0;

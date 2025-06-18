@@ -1,6 +1,9 @@
 @extends('layouts.default')
 @section('content')
-@php $pendingCount = 0; $pendingAmount = 0; $paidCount = 0; $paidAmount = 0; @endphp
+@php 
+    use App\Models\User; 
+    $pendingCount = 0; $pendingAmount = 0; $paidCount = 0; $paidAmount = 0; 
+@endphp
 @foreach ($cardData as $card )
     @if($card->status==1)
         @php 
@@ -59,19 +62,19 @@
                                     x-show="open">
                                     <option value="">Select Status</option>
                                     <option value="draft" @if(request('status')=='draft') selected @endif>Draft</option>
-                                    <option value="inprocess" @if(request('status')=='inprocess') selected @endif>In Process</option>
+                                    <option value="pending" @if(request('status')=='pending') selected @endif>Pending</option>
                                     <option value="paid" @if(request('status')=='paid') selected @endif>Paid</option>
                                 </select>
                             </div>
                             <div class="relative w-full md:w-auto">
                                 <button type="submit"
-                                    class="w-full md:w-[110px] lg:w-[140px] bg-[#49FB53] px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#000] text-center">Search</button>
+                                    class="w-full md:w-[110px] lg:w-[140px] bg-[#49FB53] px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#000] text-center">Apply</button>
                             </div>
                             
                             <div class="relative w-full md:w-auto">
                                 <a href="{{ route('create.invoice') }}"
                                     class="inline-block w-full md:w-[110px] lg:w-[140px] bg-[#49FB53] px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#000] text-center">+
-                                    Add</a>
+                                    New Invoice</a>
                             </div>
                         </div>
                     </form>
@@ -80,55 +83,77 @@
                     <table
                         class="w-full border-collapse border-spacing-0 rounded-[10px] border-separate border border-[#E6E6E6] min-w-[600px]">
                         <thead>
-                            <tr>
-                                <th
-                                    class="bg-[#7FB5CB] rounded-tl-[10px] text-[12px] font-medium text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">
-                                    Invoice No.</th>
-                                <th
-                                    class="bg-[#7FB5CB] text-[12px] font-medium text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">
-                                    Duration</th>
-                                <th
-                                    class="max-w-[250px] bg-[#7FB5CB] text-[12px] font-medium text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">
-                                    Amount</th>
-                                <th
-                                    class="bg-[#7FB5CB] text-[12px] font-medium text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">
-                                    Status</th>
-                                <th
-                                    class="bg-[#7FB5CB] text-[12px] font-medium text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">
-                                    Created</th>
-                                <th
-                                    class="bg-[#7FB5CB] rounded-tr-[10px] text-[12px] font-medium text-[#fff] px-[10px] py-[13px] text-left whitespace-nowrap">
-                                    Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if($allInvoices->isNotEmpty())
+                        <tr>
+                            <th
+                                class="bg-[#7FB5CB] rounded-tl-[10px] text-[12px] font-medium text-[#FFF] px-[10px] py-[13px] text-left whitespace-nowrap">
+                                Invoice Id.</th>
+                            <th
+                                class="bg-[#7FB5CB] text-[12px] font-medium text-[#FFF] px-[10px] py-[13px] text-left whitespace-nowrap">
+                                Date</th>
+                            <th
+                                class="max-w-[250px] bg-[#7FB5CB] text-[12px] font-medium text-[#FFF] px-[10px] py-[13px] text-left whitespace-nowrap">
+                                Invoice Number</th>
+                            <th
+                                class="bg-[#7FB5CB] text-[12px] font-medium text-[#FFF] px-[10px] py-[13px] text-left whitespace-nowrap">
+                                Affiliate</th>
+                            <th
+                                class="bg-[#7FB5CB] text-[12px] font-medium text-[#FFF] px-[10px] py-[13px] text-left whitespace-nowrap">
+                                Period</th>
+                            <th
+                                class="bg-[#7FB5CB] text-[12px] font-medium text-[#FFF] px-[10px] py-[13px] text-left whitespace-nowrap">
+                                Conversions</th>
+                            <th
+                                class="bg-[#7FB5CB] text-[12px] font-medium text-[#FFF] px-[10px] py-[13px] text-left whitespace-nowrap">
+                                Payouts</th>
+                            <th
+                                class="bg-[#7FB5CB] text-[12px] font-medium text-[#FFF] px-[10px] py-[13px] text-left whitespace-nowrap">
+                                Payment System</th>
+                            <th
+                                class="bg-[#7FB5CB] text-[12px] font-medium text-[#FFF] px-[10px] py-[13px] text-left whitespace-nowrap">
+                                Status</th>
+                            <th
+                                class="bg-[#7FB5CB] rounded-tr-[10px] text-[12px] font-medium text-[#FFF] px-[10px] py-[13px] text-left whitespace-nowrap">
+                                Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if($allInvoices->isNotEmpty())
                         @foreach ( $allInvoices as $invoice)
+                        @php $userDetails = User::find($invoice->user_id); @endphp
                             <tr>
                             <td
-                                class="text-[12px] font-medium text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap border-b border-[#E6E6E6]">
-                                {{ env('INVOICE_ALIAS')}}{{ date('Y',strtotime($invoice->invoice_date)) }}{{ $invoice->invoice_number }}</td>
-                            <td
-                                class="text-[12px] font-medium text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap border-b border-[#E6E6E6]">
-                                {{ date('d M Y',strtotime($invoice->start_date)) }} - {{ date('d M Y',strtotime($invoice->end_date)) }}</td>
-                            <td
-                                class="max-w-[250px] text-[12px] font-medium text-[#808080] px-[10px] py-[10px] text-left whitespace-normal border-b border-[#E6E6E6]">
-                                {{ number_format($invoice->total_price,2) }}
-                            </td>
-                            <td
-                                class="text-[12px] font-medium text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap border-b border-[#E6E6E6]">
-                                @if($invoice->status==0)
-                                    <a href="javascript:void(0);" class="inline-flex bg-[#fee7e7] border border-[#ee8989] rounded-[5px] px-[10px] py-[4px] text-[12px] font-[600] text-[#bf1a1a] text-center uppercase">Draft</a>
-                                @elseif ($invoice->status==1)
-                                    <a href="javascript:void(0);" class="inline-flex bg-[#e7f2fe] border border-[#89abee] rounded-[5px] px-[10px] py-[4px] text-[12px] font-[600] text-[#1a64bf] text-center uppercase">In Process</a>
-                                @elseif ($invoice->status==2)
-                                    <a href="javascript:void(0);" class="inline-flex bg-[#F3FEE7] border border-[#BCEE89] rounded-[5px] px-[10px] py-[4px] text-[12px] font-[600] text-[#6EBF1A] text-center uppercase">Paid</a>
-                                @endif
-                            </td>
+                                class="text-[12px] font-medium text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap border-b border-[#E6E6E6]">{{ $invoice->id }}</td>
                             <td
                                 class="text-[12px] font-medium text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap border-b border-[#E6E6E6]">
                                 {{ date('d M Y',strtotime($invoice->created_at)) }}
                             </td>
+                            <td
+                                class="text-[12px] font-medium text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap border-b border-[#E6E6E6]">
+                                {{ env('INVOICE_ALIAS')}}-{{ date('Y',strtotime($invoice->invoice_date)) }}-{{ date('m',strtotime($invoice->invoice_date)) }}-{{ $invoice->invoice_number }}</td>
+                            <td
+                                class="text-[12px] font-medium text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap border-b border-[#E6E6E6]">{{ $userDetails->name.' '.$userDetails->last_name }}</td>
+                            <td
+                                class="text-[12px] font-medium text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap border-b border-[#E6E6E6]">
+                                {{ date('d M Y',strtotime($invoice->start_date)) }} - {{ date('d M Y',strtotime($invoice->end_date)) }}</td>
+                            <td
+                                class="text-[12px] font-medium text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap border-b border-[#E6E6E6]">{{ $invoice->total_conversion }}</td>
+                            <td
+                                class="max-w-[250px] text-[12px] font-medium text-[#808080] px-[10px] py-[10px] text-left whitespace-normal border-b border-[#E6E6E6]">
+                                $ {{ number_format($invoice->total_price,2) }}
+                            </td>
+                            <td
+                                class="text-[12px] font-medium text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap border-b border-[#E6E6E6]">N/A</td>
+                            <td
+                                class="text-[12px] font-medium text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap border-b border-[#E6E6E6]">
+                                @if($invoice->status==0)
+                                    <a href="javascript:void(0);" class="inline-flex bg-[#ebeef0] border border-[#7993a2] rounded-[5px] px-[10px] py-[4px] text-[12px] font-[600] text-[#636f76] text-center uppercase">Draft</a>
+                                @elseif ($invoice->status==1)
+                                    <a href="javascript:void(0);" class="inline-flex bg-[#e7f2fe] border border-[#89abee] rounded-[5px] px-[10px] py-[4px] text-[12px] font-[600] text-[#1a64bf] text-center uppercase">Pending</a>
+                                @elseif ($invoice->status==2)
+                                    <a href="javascript:void(0);" class="inline-flex bg-[#F3FEE7] border border-[#BCEE89] rounded-[5px] px-[10px] py-[4px] text-[12px] font-[600] text-[#6EBF1A] text-center uppercase">Paid</a>
+                                @endif
+                            </td>
+                            
                             <td
                                 class="text-[12px] font-medium text-[#808080] px-[10px] py-[10px] text-left whitespace-nowrap border-b border-[#E6E6E6]">
                                 <div class="flex justify-start items-center gap-[7px]">
@@ -193,7 +218,7 @@
                         </tr>
                         @endforeach
                         @endif
-                        </tbody>
+                    </tbody>
                     </table>
                 </div>
             </div>
@@ -206,7 +231,7 @@
             <form class="w-full" method="POST" action="{{ route('invoice.status') }}">
                 @csrf
                 <input type="hidden" id="invoice-id-status" name="rec_id" value="0">
-                <h2 class="text-xl font-semibold ">Updaet Status</h2>
+                <h2 class="text-xl font-semibold ">Update Status</h2>
                 <div class="space-y-4 mt-4">
                     <div class="w-full">
                         <p class="text-[14px] text-[#898989]">Select Status</p>
@@ -215,14 +240,14 @@
                             required>
                             <option value="">Select</option>
                             <option value="0">Draft</option>
-                            <option value="1">In Process</option>
+                            <option value="1">Pending</option>
                             <option value="2">Paid</option>
                         </select>
                     </div>
                     <div class="flex justify-end space-x-2 mt-4">
                         <button type="button" onclick="closeModal()"
-                            class="px-4 py-2 bg-[#F5EAF5] w-[100px] border border-[#FED5C3] rounded-[4px] text-[14px] font-[500] text-[#49FB53] text-center">Cancel</button>
-                        <button class="px-4 py-2 bg-[#49FB53] text-white rounded">Save</button>
+                            class="px-4 py-2 bg-[#ffe3e3] w-[100px] border border-[#FED5C3] rounded-[4px] text-[14px] font-[500] text-[#f00000] text-center">Cancel</button>
+                        <button class="px-4 py-2 bg-[#49FB53] text-black rounded">Save</button>
                     </div>
                 </div>
                 <button onclick="closeModal()"
