@@ -49,7 +49,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/integration/{id}', [AppsController::class, 'integration'])->name('apps.integration');
     Route::get('/update-status/{id}', [AppsController::class, 'updateStatus'])->name('apps.status');
     Route::match(['get','post'],'/template/{id}', [AppsController::class, 'template'])->name('apps.template');
-    
+    Route::post('/update-method/{id}', [AppsController::class, 'updateMethod'])->name('update.method');
+
     //Invoices
     Route::get('/invoices', [AppsController::class, 'invoices'])->name('apps.invoices');
     Route::get('/payment-details/{id}', [AppsController::class, 'paymentDetails'])->name('payment.details');

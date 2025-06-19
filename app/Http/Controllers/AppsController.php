@@ -233,12 +233,41 @@ class AppsController extends Controller
 
     public function paymentDetails($id){
         $pageTitle = 'Payment Details';
-        $paymentDetails = PaymentMethod::where('user_id',$id)->first();
-        if(empty($paymentDetails)){
-            $paymentDetails = new PaymentMethod();
+        $paymentMethods = PaymentMethod::where('user_id',$id)->first();
+        if(empty($paymentMethods)){
+            $paymentMethods = new PaymentMethod();
         }
+        
         $allCountries = Country::get();
-        return view('apps.payment-details',compact('pageTitle','paymentDetails','allCountries'));
+        return view('apps.payment-details',compact('pageTitle','paymentMethods','allCountries','id'));
+    }
+
+    public function updateMethod(Request $request, $id=null){
+        if($id>0){
+            $paymentMethods = PaymentMethod::where('user_id',$id)->first();
+            if(empty($paymentMethods)){
+                $paymentMethods = new PaymentMethod();
+            }
+        }else{
+            $paymentMethods = new PaymentMethod();
+        }
+        if($request->isMethod('post')){
+            $paymentMethods->user_id = $id; 
+            $paymentMethods->payment_method = $request->method;
+            $paymentMethods->account_name = $request->org_name ?? NULL;
+            $paymentMethods->iban = $request->account_number ?? NULL;
+            $paymentMethods->routing_number = $request->routing_number ?? NULL;
+            $paymentMethods->account_type = $request->account_type ?? NULL;
+            $paymentMethods->country = $request->country ?? NULL;
+            $paymentMethods->city = $request->city ?? NULL;
+            $paymentMethods->address = $request->address ?? NULL;
+            $paymentMethods->post_code = $request->post_code ?? NULL;
+            $paymentMethods->wallet_address = $request->wallet_address ?? NULL;
+            $paymentMethods->paypal_email = $request->paypal_email ?? NULL;
+            $paymentMethods->save();
+            return redirect()->route('admin.users.affiliates')->with('success','Payment Method Updated Successfully.');
+        }
+        die('Okay');
     }
 
     public function createInvoice(Request $request){
