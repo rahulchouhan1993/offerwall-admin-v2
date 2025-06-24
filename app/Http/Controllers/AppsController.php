@@ -470,7 +470,7 @@ class AppsController extends Controller
     public function invoieeMethod($id){
         $pageTitle = 'Invoice Method Details';
         $invoiceDetails = Invoice::where('id',$id)->first();
-
-        return view('apps.invoice-method',compact('pageTitle','invoiceDetails'));
+        $allCountries = Country::get();
+        return view('apps.invoice-method',compact('pageTitle','invoiceDetails','allCountries'));
     }
 }
