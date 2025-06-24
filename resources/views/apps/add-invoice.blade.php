@@ -88,21 +88,21 @@
                                 <input type="hidden" name="items[{{ $key }}][rec_id]" value="{{ $items->id}}">
                                 <td class="py-2">
                                     <input type="text" name="items[{{ $key }}][description]"
-                                        class="h-[30px] w-[250px] rounded-[5px] border-[1px] border-[#ccc] p-2 outline-none focus:outline-none"
+                                        class="h-[35px] w-[250px] rounded-[5px] border-[1px] border-[#ccc] p-2 outline-none focus:outline-none"
                                         value="{{ $items->description }}" />
                                 </td>
                                 <td class="py-2">
                                     <input type="number" name="items[{{ $key }}][conversion]" readonly 
-                                        class="h-[30px] w-[80px] rounded-[5px] border-[1px] border-[#ccc] p-2 outline-none focus:outline-none"
+                                        class="h-[35px] w-[80px] rounded-[5px] border-[1px] border-[#ccc] p-2 outline-none focus:outline-none"
                                         value="{{ $items->conversion }}" />
                                 </td>
                                 <td class="py-2">
                                     <input type="text" name="items[{{ $key }}][payout]"
-                                        class="change-numbers payout-amount h-[30px] w-[80px] rounded-[5px] border-[1px] border-[#ccc] p-2 outline-none focus:outline-none"
+                                        class="change-numbers payout-amount h-[35px] w-[80px] rounded-[5px] border-[1px] border-[#ccc] p-2 outline-none focus:outline-none"
                                         value="{{ $items->payout }}" />
                                 </td>
                                 <td class="text-end py-2">
-                                    <select class="change-numbers vat-amount h-[30px] w-[80px] rounded-[5px] border-[1px] border-[#ccc] p-2 outline-none focus:outline-none" name="items[{{ $key }}][vat]">
+                                    <select class="change-numbers vat-amount h-[35px] w-[80px] rounded-[5px] border-[1px] border-[#ccc] p-2 outline-none focus:outline-none" name="items[{{ $key }}][vat]">
                                         <option value="no" @if($items->vat==0) selected @endif>0%</option>
                                         <option value="21" @if($items->vat==21) selected @endif>21%</option>
                                     </select></td>
@@ -115,7 +115,7 @@
                                 @endphp
                                 <td class="text-end py-2">
                                     <input type="text" disabled
-                                        class="final-amount text-end h-[30px] w-[80px] rounded-[5px] border-[1px] border-[#ccc] p-2 outline-none focus:outline-none"
+                                        class="final-amount text-end h-[35px] w-[80px] rounded-[5px] border-[1px] border-[#ccc] p-2 outline-none focus:outline-none"
                                         value="{{ $totalAmount }}" />
                                 </td>
                                 <td class="text-end py-2">
@@ -174,7 +174,7 @@
             <div class="mt-[50px] text-sm text-[#000000] leading-relaxed">
                 
                 <p class="mt-4 uppercase">
-                    <strong>NOTE: It is your responsibility that your bank account details
+                    <strong>NOTE: It is your responsibility that your PAYMENT DETAILS
                         are updated. Please contact your account manager if you have to
                         report any changes.</strong>
                 </p>

@@ -258,23 +258,23 @@ class UsersController extends Controller
 
                 if ($response->successful()) {
                     $affilliateDetails = $response->json();
-                    if(!empty($affilliateDetails['address_1'])){
-                        $affiliate->address_1 = $affilliateDetails['address_1'];
+                    if(!empty($affilliateDetails['partner']['address_1'])){
+                        $affiliate->address_1 = $affilliateDetails['partner']['address_1'];
                     }
-                    if(!empty($affilliateDetails['address_2'])){
-                        $affiliate->address_2 = $affilliateDetails['address_2'];
+                    if(!empty($affilliateDetails['partner']['address_2'])){
+                        $affiliate->address_2 = $affilliateDetails['partner']['address_2'];
                     }
-                    if(!empty($affilliateDetails['city'])){
-                        $affiliate->city = $affilliateDetails['city'];
+                    if(!empty($affilliateDetails['partner']['city'])){
+                        $affiliate->city = $affilliateDetails['partner']['city'];
                     }
-                    if(!empty($affilliateDetails['country'])){
-                        $affiliate->country = $affilliateDetails['country'];
+                    if(!empty($affilliateDetails['partner']['country'])){
+                        $affiliate->country = $affilliateDetails['partner']['country'];
                     }
-                    if(!empty($affilliateDetails['zip_code'])){
-                        $affiliate->zip_code = $affilliateDetails['zip_code'];
+                    if(!empty($affilliateDetails['partner']['zip_code'])){
+                        $affiliate->zip_code = $affilliateDetails['partner']['zip_code'];
                     }
-                    if(!empty($affilliateDetails['affise_api_key'])){
-                        $affiliate->affise_api_key = $affilliateDetails['affise_api_key'];
+                    if(!empty($affilliateDetails['partner']['affise_api_key'])){
+                        $affiliate->affise_api_key = $affilliateDetails['partner']['affise_api_key'];
                     }
                     $affiliate->save();
                 }

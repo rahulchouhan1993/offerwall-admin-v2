@@ -386,7 +386,8 @@ class AppsController extends Controller
             }
 
             //Last invoice number
-            $lasInvoice = Invoice::whereYear('invoice_date', Carbon::now()->year)->whereMonth('invoice_date', Carbon::now()->month)->orderBy('id', 'DESC')->first();
+            //$lasInvoice = Invoice::whereYear('invoice_date', Carbon::now()->year)->whereMonth('invoice_date', Carbon::now()->month)->orderBy('id', 'DESC')->first();
+            $lasInvoice = Invoice::orderBy('id', 'DESC')->first();
             if(empty($lasInvoice)){
                 $invoiceNumber = 1000;
             }else{

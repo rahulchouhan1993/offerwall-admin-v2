@@ -209,9 +209,7 @@ class ReportsController extends Controller
                     }
                 }
             }
-            if(!empty($updatedIds)){
-                FeaturedOffer::whereNotIn('id',$updatedIds)->delete();
-            }
+            FeaturedOffer::whereNotIn('id',$updatedIds)->delete();
             return redirect()->back()->with('success','Featured Offers Updated');
         }
         //End
