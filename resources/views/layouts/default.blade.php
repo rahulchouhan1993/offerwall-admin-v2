@@ -159,6 +159,27 @@
         });
 </script>
 
+<!-- chat js -->
+<script>
+    // Close all other dropdowns
+    function toggleDropdown(button) {
+      const allDropdowns = document.querySelectorAll('.dropdownNav');
+      allDropdowns.forEach(drop => drop.classList.add('hidden'));
+
+      const dropdown = button.nextElementSibling;
+      dropdown.classList.toggle('hidden');
+    }
+
+    // Close dropdown when clicked outside
+    document.addEventListener('click', function (e) {
+      const isDropdown = e.target.closest('.dropdownNav');
+      const isButton = e.target.closest('button');
+      if (!isDropdown && !isButton) {
+        document.querySelectorAll('.dropdownNav').forEach(drop => drop.classList.add('hidden'));
+      }
+    });
+  </script>
+
 </body>
 
 </html>
