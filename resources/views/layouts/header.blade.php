@@ -1,4 +1,4 @@
-<div class="fixed w-[100%] h-[50px] md:h-[80px] lg:h-[80px] top-[0] z-[9] w-[100%] bg-[#fff]   flex items-center gap-[0]">
+<div class="fixed w-[100%] h-[50px] md:h-[80px] lg:h-[80px] top-[0] z-[999] w-[100%] bg-[#fff]   flex items-center gap-[0]">
     <div class="flex items-center w-[200px] md:w-[230px] 2xl:w-[290px] bg-[#210D0F] py-[15px] px-[15px] md:py-[30px] md:px-[30px] lg:py-[30px] lg:px-[30px] head-logo">
         <img src="/images/logo.png" alt="img">
     </div>

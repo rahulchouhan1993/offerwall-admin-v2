@@ -163,12 +163,17 @@
 <script>
     // Close all other dropdowns
     function toggleDropdown(button) {
-      const allDropdowns = document.querySelectorAll('.dropdownNav');
-      allDropdowns.forEach(drop => drop.classList.add('hidden'));
+  const dropdown = button.nextElementSibling;
+  const isHidden = dropdown.classList.contains('hidden');
 
-      const dropdown = button.nextElementSibling;
-      dropdown.classList.toggle('hidden');
-    }
+  // सारे बंद करो
+  document.querySelectorAll('.dropdownNav').forEach(drop => drop.classList.add('hidden'));
+
+  // अगर clicked वाला hidden था, तो दिखाओ
+  if (isHidden) {
+    dropdown.classList.remove('hidden');
+  }
+}
 
     // Close dropdown when clicked outside
     document.addEventListener('click', function (e) {
