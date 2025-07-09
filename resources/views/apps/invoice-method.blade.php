@@ -6,12 +6,12 @@
     
         <div class="bg-[#fff] p-[15px] md:p-[20px] rounded-[8px] md:rounded-[10px] mt-[30px]">
             <h2 class="mb-[20px] text-[20px] text-[#1A1A1A] font-[600] ">
-                Your Preferred Payment Method
+                 Preferred Payment Method
             </h2>  
             <div class="flex flex-wrap gap-x-[20px] gap-y-[30px] w-[100%] ">
                 <div class="flex flex-col gap-[10px] w-[100%] ">
                     <label for="" class="flex items-center gap-[5px] text-[14] text-[#898989]">Payment Method <div class="text-[#F23765] mt-[-2px]">*</div></label>
-                    <select name="method" required class="payment-method flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" >
+                    <select name="method" required class="payment-method flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" disabled>
                         <option value="">Select Option</option>
                         <option value="1" @if($data['payment_method']==1) selected @endif>ACH/SWIFT (Wise)</option>
                         <option value="2" @if($data['payment_method']==2) selected @endif>Crypto</option>
@@ -30,7 +30,7 @@
                     
                     <div class="flex flex-col gap-[10px] w-[100%] ">
                         <label for="" class="flex items-center gap-[5px] text-[14] text-[#898989]">Account Type <div class="text-[#F23765] mt-[-2px]">*</div></label>
-                        <select name="account_type"  class="account-type-sel flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" >
+                        <select name="account_type"  class="account-type-sel flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" disabled>
                             <option value="">Select Option</option>
                             <option value="ACH" @if($data['account_type']=='ACH') selected @endif>ACH</option>
                             <option value="SWIFT" @if($data['account_type']=='SWIFT') selected @endif>SWIFT</option>
@@ -38,19 +38,19 @@
                     </div>
                     <div class="flex flex-col gap-[10px] w-[100%] ">
                         <label for="" class="flex items-center gap-[5px] text-[14] text-[#898989]">Name of business/organisation <div class="text-[#F23765] mt-[-2px]">*</div></label>
-                        <input type="text" name="org_name"  class="flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{{ $data['account_name'] }}" >
+                        <input type="text" name="org_name"  class="flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{{ $data['account_name'] }}" disabled>
                     </div>
                     <div class="flex flex-col gap-[10px] w-[100%] ">
                         <label for="" class="flex items-center gap-[5px] text-[14] text-[#898989] routing-label">Routing Number <div class="text-[#F23765] mt-[-2px]">*</div></label>
-                        <input type="text" name="routing_number"  class="flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{{ $data['routing_number'] }}" >
+                        <input type="text" name="routing_number"  class="flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{{ $data['routing_number'] }}" disabled>
                     </div>
                     <div class="flex flex-col gap-[10px] w-[100%] ">
                         <label for="" class="flex items-center gap-[5px] text-[14] text-[#898989] account-label">Account Number <div class="text-[#F23765] mt-[-2px]">*</div></label>
-                        <input type="text" name="account_number"  class="flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{{ $data['iban'] }}" >
+                        <input type="text" name="account_number"  class="flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{{ $data['iban'] }}" disabled>
                     </div>
                     <div class="flex flex-col gap-[10px] w-[100%] ">
                         <label for="" class="flex items-center gap-[5px] text-[14] text-[#898989]">Country <div class="text-[#F23765] mt-[-2px]">*</div></label>
-                        <select name="country" class="select-country-met flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" >
+                        <select name="country" class="select-country-met flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" disabled>
                             <option value="">Select</option>
                             @foreach ($allCountries as $country )
                                 <option value="{{ $country->iso }}" @if($data['country']==$country->iso) selected @endif>{{ $country->nicename }}</option>
@@ -59,15 +59,15 @@
                     </div>
                     <div class="flex flex-col gap-[10px] w-[100%] ">
                         <label for="" class="flex items-center gap-[5px] text-[14] text-[#898989]">City <div class="text-[#F23765] mt-[-2px]">*</div></label>
-                        <input type="text" name="city"  class="flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{{ $data['city'] }}" >
+                        <input type="text" name="city"  class="flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{{ $data['city'] }}" disabled>
                     </div>
                     <div class="flex flex-col gap-[10px] w-[100%] ">
                         <label for="" class="flex items-center gap-[5px] text-[14] text-[#898989]">Recipient Address <div class="text-[#F23765] mt-[-2px]">*</div></label>
-                        <input type="text" name="address"  class="flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{{ $data['address'] }}" >
+                        <input type="text" name="address"  class="flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{{ $data['address'] }}" disabled>
                     </div>
                     <div class="flex flex-col gap-[10px] w-[100%] ">
                         <label for="" class="flex items-center gap-[5px] text-[14] text-[#898989]">Post Code<div class="text-[#F23765] mt-[-2px]">*</div></label>
-                        <input type="text" name="post_code"  class="flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{{ $data['post_code'] }}" >
+                        <input type="text" name="post_code"  class="flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{{ $data['post_code'] }}" disabled>
                     </div>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                 <div class="flex flex-wrap gap-x-[20px] gap-y-[30px] w-[100%] ">
                     <div class="flex flex-col gap-[10px] w-[100%] ">
                         <label for="" class="flex items-center gap-[5px] text-[14] text-[#898989]">Wallet Address <div class="text-[#F23765] mt-[-2px]">*</div></label>
-                        <input type="text" name="wallet_address"  class="flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{{ $data['wallet_address'] }}" >
+                        <input type="text" name="wallet_address"  class="flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{{ $data['wallet_address'] }}" disabled>
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@
                 <div class="flex flex-wrap gap-x-[20px] gap-y-[30px] w-[100%] ">
                     <div class="flex flex-col gap-[10px] w-[100%] ">
                         <label for="" class="flex items-center gap-[5px] text-[14] text-[#898989]">Enter Email Address That You Use In Paypal <div class="text-[#F23765] mt-[-2px]">*</div></label>
-                        <input type="email" name="paypal_email"  class="flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{{ $data['paypal_email'] }}" >
+                        <input type="email" name="paypal_email"  class="flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none" value="{{ $data['paypal_email'] }}" disabled>
                     </div>
                 </div>
             </div>

@@ -247,4 +247,9 @@ class DashboardController extends Controller
         Contact::find($id)->delete();
         return redirect()->back()->with('success', 'Record Deleted Successfully!!');
     }
+
+    public function tickets(){
+        $pageTitle = 'Tickets';
+        return view('dashboard/tickets',compact('pageTitle'));
+    }
 }

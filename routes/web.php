@@ -63,6 +63,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/status', [AppsController::class, 'status'])->name('invoice.status');
     Route::get('/invoice-method/{id}', [AppsController::class, 'invoieeMethod'])->name('invoice.method');
 
+    //Tickets
+    Route::get('/tickets/{id?}',[DashboardController::class, 'tickets'])->name('tickets');
 
     // Chart Data
     Route::get('/chart-data', [ChartController::class, 'chartData'])->name('chart.data');

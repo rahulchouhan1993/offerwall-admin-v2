@@ -104,6 +104,11 @@
          </svg>
          Settings
       </a>
+      <a href="{{ route('tickets') }}"
+         class="group flex items-center gap-[10px] px-[10px] py-[10px] text-[16px] font-[400] text-[#FFFAFD] hover:text-[#4EF953] @if(Route::currentRouteName()=='tickets') active @endif">
+         
+         Tickets
+      </a>
       <a href="{{ route('inquiry') }}"
          class="relative group flex items-center gap-[10px] px-[10px] py-[10px] text-[16px] font-[400] text-[#FFFAFD] hover:text-[#4EF953] @if(Route::currentRouteName()=='inquiry') active @endif">
          <span class="relative inline-flex gap-[10px] align-center ">

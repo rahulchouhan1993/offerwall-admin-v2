@@ -5,7 +5,7 @@
         @csrf
         <div class="bg-[#fff] p-[15px] md:p-[20px] rounded-[8px] md:rounded-[10px] mt-[30px]">
             <h2 class="mb-[20px] text-[20px] text-[#1A1A1A] font-[600] ">
-                Your Preferred Payment Method
+                 Preferred Payment Method
             </h2>  
             <div class="flex flex-wrap gap-x-[20px] gap-y-[30px] w-[100%] ">
                 <div class="flex flex-col gap-[10px] w-[100%] ">
