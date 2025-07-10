@@ -254,14 +254,30 @@ class AppsController extends Controller
         if($request->isMethod('post')){
             $paymentMethods->user_id = $id; 
             $paymentMethods->payment_method = $request->method;
-            $paymentMethods->account_name = $request->org_name ?? NULL;
+            
             $paymentMethods->iban = $request->account_number ?? NULL;
             $paymentMethods->routing_number = $request->routing_number ?? NULL;
             $paymentMethods->account_type = $request->account_type ?? NULL;
-            $paymentMethods->country = $request->country ?? NULL;
-            $paymentMethods->city = $request->city ?? NULL;
-            $paymentMethods->address = $request->address ?? NULL;
-            $paymentMethods->post_code = $request->post_code ?? NULL;
+            if($request->method==1){
+                 $paymentMethods->account_name = $request->org_name ?? NULL;
+                $paymentMethods->country = $request->country ?? NULL;
+                $paymentMethods->city = $request->city ?? NULL;
+                $paymentMethods->address = $request->address ?? NULL;
+                $paymentMethods->post_code = $request->post_code ?? NULL;
+            }elseif($request->method==2){
+                $paymentMethods->account_name = $request->org_name_wallet ?? NULL;
+                $paymentMethods->country = $request->country_wallet ?? NULL;
+                $paymentMethods->city = $request->city_wallet ?? NULL;
+                $paymentMethods->address = $request->address_wallet ?? NULL;
+                $paymentMethods->post_code = $request->post_code_wallet ?? NULL;
+            }elseif($request->method==3){
+                $paymentMethods->account_name = $request->org_name_paypal ?? NULL;
+                $paymentMethods->country = $request->country_paypal ?? NULL;
+                $paymentMethods->city = $request->city_paypal ?? NULL;
+                $paymentMethods->address = $request->address_paypal ?? NULL;
+                $paymentMethods->post_code = $request->post_code_paypal ?? NULL;
+            }
+            
             $paymentMethods->wallet_address = $request->wallet_address ?? NULL;
             $paymentMethods->paypal_email = $request->paypal_email ?? NULL;
             $paymentMethods->save();
@@ -374,9 +390,14 @@ class AppsController extends Controller
                 // Adjust overlap range
                 $rangeStart = $monthStart->greaterThan($startDate) ? $monthStart : $startDate;
                 $rangeEnd = $monthEnd->lessThan($endDate) ? $monthEnd : $endDate;
-
+                
                 // Now check for invoices in this overlapping range
-                $invoiceExists = Invoice::where('user_id',$request->userid)->whereBetween('invoice_date', [$rangeStart, $rangeEnd])->exists();
+                $invoiceExists = Invoice::where('user_id', $request->userid)
+                ->where(function($query) use ($rangeStart, $rangeEnd) {
+                    $query->whereBetween('start_date', [$rangeStart, $rangeEnd])
+                        ->orWhereBetween('end_date', [$rangeStart, $rangeEnd]);
+                })
+                ->exists();
 
                 if ($invoiceExists) {
                     die("Can't create invoice due to overlapping dates");
