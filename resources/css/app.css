@@ -87,6 +87,10 @@ form#filterConversions{width:100%;}
 .custom_form_design span.select2.select2-container.select2-container--default{padding:0;background:transparent;height:auto;}
 .custom_form_design .select2-container--default .select2-selection--single .select2-selection__rendered{height:100%;display:flex;align-items:center;}
 .custom_filter .select2-container--default .select2-selection--single{height:41.5px;}
+.note-editor { width: 100%;}
+.note-editor.note-frame.card {
+  border: 1px solid #f2f2f2;
+}
 /* Responsvie */
 @media(max-width:1535px){.sidebar{width:230px;}
 .head-w-cal{width:calc(100% - 230px);}
