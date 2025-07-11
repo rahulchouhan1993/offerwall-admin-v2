@@ -220,7 +220,7 @@
       <!-- Input Box (Fixed on Mobile) -->
       <div class="p-3 border-t  mobile-fixed md:relative z-[999]">
         <form onsubmit="event.preventDefault(); addMessage();" class="flex items-center gap-2">
-          <input id="msgInput" type="text" placeholder="Type a message..." class="flex-1 py-[15px] px-[30px] border-none bg-[#f2f2f2] rounded-[80px] text-[15px] text-black focus:outline-none" />
+          <textarea id="msgInput" placeholder="Type a message..." class="flex-1 py-[15px] px-[30px] border-none bg-[#f2f2f2] rounded-[80px] text-[15px] text-black focus:outline-none" ></textarea>
           <button type="submit" class="w-[50px] h-[50px] flex items-center justify-center bg-[#49FB53] text-black p-[0] rounded-[100px] hover:bg-green-600"><svg xmlns="http://www.w3.org/2000/svg" class="w-[20px] h-[20px]" viewBox="0 0 24 24" fill="currentColor"><path d="M1.94607 9.31543C1.42353 9.14125 1.4194 8.86022 1.95682 8.68108L21.043 2.31901C21.5715 2.14285 21.8746 2.43866 21.7265 2.95694L16.2733 22.0432C16.1223 22.5716 15.8177 22.59 15.5944 22.0876L11.9999 14L17.9999 6.00005L9.99992 12L1.94607 9.31543Z"></path></svg></button>
         </form>
       </div>
@@ -228,4 +228,12 @@
 
   </div>
   </div>
+
+  <script>
+    $('#msgInput').summernote({
+      height: 50,
+      placeholder: 'Write your message here...',
+      toolbar:[],
+    })
+  </script>
 @stop
