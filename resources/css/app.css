@@ -1,4 +1,5 @@
 @tailwind base;@tailwind components;@tailwind utilities;body{font-family:"Inter",serif;}
+*{box-sizing: border-box;}
 .hide{display:none;}
 .head-w-cal{width:calc(100% - 290px);}
 body.active .head-logo{width:70px;}
@@ -87,9 +88,16 @@ form#filterConversions{width:100%;}
 .custom_form_design span.select2.select2-container.select2-container--default{padding:0;background:transparent;height:auto;}
 .custom_form_design .select2-container--default .select2-selection--single .select2-selection__rendered{height:100%;display:flex;align-items:center;}
 .custom_filter .select2-container--default .select2-selection--single{height:41.5px;}
-.note-editor { width: 100%;}
-.note-editor.note-frame.card {
-  border: 1px solid #f2f2f2;
+.note-editor{width:100%;}
+.note-editor.note-frame.card{border:1px solid #f2f2f2;}
+.custom-dropdown {
+  position: absolute;
+  min-width: 130px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 9999;
 }
 /* Responsvie */
 @media(max-width:1535px){.sidebar{width:230px;}
@@ -117,18 +125,9 @@ body.active .sidebar h2{font-size:12px;}
 body.active .head-w-cal{width:100%;}
 body.active .sidebar a svg{width:18px;height:18px;}
 }
-@media (max-width: 768px) {
-    .mobile-fixed {
-      position: fixed;
-      bottom:60px;
-      left: 0;
-      right: 0;
-      z-index: 50;
-      background-color: white;
-      border-top: 1px solid #e5e7eb;
-    }
-  }
-  
+@media (max-width:768px){.mobile-fixed{position:fixed;bottom:51px;left:0;right:0;z-index:50;background-color:white;border-top:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb;}
+#chatMessages{height:100%;padding-bottom:160px;}
+}
 @media(max-width:767px){body.active .sidebar{width:178px;}
 .sidebar{overflow-y:scroll;max-height:300px;}
 button#hs-dropdown-toggle{font-size:0;gap:4px;}
@@ -144,4 +143,3 @@ button#hs-dropdown-toggle img{width:25px;height:25px;}
 @media(max-width:576px){.head-logo{width:160px;padding-left:10px !important;padding-right:10px !important;}
 body.active .head-logo{width:160px;}
 }
-

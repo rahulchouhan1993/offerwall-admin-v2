@@ -18,7 +18,7 @@
             <div class="flex gap-[8px] items-center justify-between">
                 <h2 class="text-lg font-semibold mb-[0]">Chats</h2>
                 <div class="relative">
-                    <button onclick="toggleDropdown(this)"
+                    <button onclick="toggleDropdown2(event)"
                         class="w-[35px] h-[35px] text-black hover:text-black focus:outline-none px-2">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                             <path
@@ -28,7 +28,8 @@
                     </button>
 
                     <!-- Dropdown Menu (initially hidden) -->
-                    <div class="dropdownNav absolute top-[24px] right-0 mt-2 w-32 bg-white border rounded shadow-lg hidden z-10">
+                    <div
+                        class="dropdownNav absolute top-[24px] right-0 mt-2 w-32 bg-white border rounded shadow-lg hidden z-10">
                         <ul class="text-sm text-gray-700">
                             <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Mute</li>
                             <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Archive</li>
@@ -37,7 +38,8 @@
                     </div>
                 </div>
             </div>
-            <div class="flex gap-[10px] relative mb-[10px]">
+            <div class="flex items-center justify-between gap-[10px] relative mb-[10px]">
+                <div class="relative w-[100%]">
                 <input type="text" placeholder="Search or start new chat"
                     class="w-full pl-[40px] pr-[15px] py-[9px] border rounded-[60px] text-sm bg-[#f5f5f5] focus:outline-none" />
                 <button class="w-[25px] text-[#4EF953] text-[10px] absolute top-[10px] start-[10px]">
@@ -47,237 +49,243 @@
                         </path>
                     </svg>
                 </button>
+                </div>
+                <div>
+                <button onclick="toggleDiv()" class=" md:hidden p-[0] w-[35px] h-[35px] flex items-center justify-center text-black rounded-[40px] bg-[#f2f2f2] focus:outline-none " > <svg xmlns="http://www.w3.org/2000/svg" class="w-[15px] h-[15px]" viewBox="0 0 24 24" fill="currentColor"><path d="M3 4H21V6H3V4ZM9 11H21V13H9V11ZM3 18H21V20H3V18Z"></path></svg> </button>
+                </div>
             </div>
 
         </div>
-        <div class="overflow-y-auto max-h-[115px] flex-grow">
+        <div id="myDiv" class=" overflow-y-auto  max-h-[115px] md:max-h-[100vh] flex-grow">
             <ul class="m-[0]">
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer">
-
-                    <!-- Avatar -->
-                    <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-
-                    <!-- Chat Info -->
-                    <div class="flex-1 w-[90%] max-w-[90%]">
-                        <div class="w-full flex justify-between items-center">
-                            <span class="text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate max-w-[80px] xl:max-w-[100px] ">Ipsum Lorem Lorem Lorem Lorem</span>
+                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
+                    <div class="flex-1 w-[100%] max-w-[77%] lg:max-w-[70%] lg:max-w-[70%] pr-[40px]">
+                        <div class="w-full flex flex-col justify-between items-center ">
+                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
+                                Lorem Lorem Lorem Lorem</span>
+                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
                             <span class="text-[11px] xl:text-[11px] font-bold text-[#49FB53] absolute right-[30px] top-[10px]">14:56</span>
                         </div>
-                        <p class="text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] max-w-[80px] xl:max-w-[100px]">Hey, how’s it going going going going?</p>
                     </div>
-                    <!--  Unread Badge -->
-                    <span
-                        class="absolute right-[30px] top-[28px] text-black text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-[#49FB53]">12</span>
-
-                    <!-- ⋮ Dropdown Trigger -->
-                    <div class="relative hidden group-hover:block">
-                        <button onclick="toggleDropdown(this)"
-                            class="text-gray-500 hover:text-black focus:outline-none px-2">
-                            ⋮
-                        </button>
-
-                        <!-- Dropdown Menu (initially hidden) -->
-                        <div
-                            class="dropdownNav absolute right-0 mt-2 w-32 bg-white border rounded shadow-lg hidden z-10">
-                            <ul class="text-sm text-gray-700">
-                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Mute</li>
-                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Archive</li>
-                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500">Delete</li>
-                            </ul>
-                        </div>
+                    <span class="absolute right-[30px] top-[28px] text-black text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-[#49FB53]">12</span>
+                    <div class="absolute right-[5px] top-[15px] hidden group-hover:block">
+                        <button onclick="toggleDropdown(event)" class="text-[15px] text-gray-500 hover:text-black focus:outline-none px-2">⋮</button>
+                       
                     </div>
                 </li>
 
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer">
-
-                    <!-- Avatar -->
-                    <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-
-                    <!-- Chat Info -->
-                    <div class="flex-1 w-[90%] max-w-[90%]">
-                        <div class="w-full flex justify-between items-center">
-                            <span class="text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate max-w-[80px] xl:max-w-[100px] ">Ipsum Lorem Lorem Lorem Lorem</span>
+                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
+                    <div class="flex-1 w-[100%] max-w-[77%] lg:max-w-[70%] lg:max-w-[70%] pr-[40px]">
+                        <div class="w-full flex flex-col justify-between items-center ">
+                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
+                                Lorem Lorem Lorem Lorem</span>
+                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
                             <span class="text-[11px] xl:text-[11px] font-bold text-[#49FB53] absolute right-[30px] top-[10px]">14:56</span>
                         </div>
-                        <p class="text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] max-w-[80px] xl:max-w-[100px]">Hey, how’s it going going going going?</p>
                     </div>
-                    <!--  Unread Badge -->
-                    <span
-                        class="absolute right-[30px] top-[28px] text-black text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-[#49FB53]">12</span>
-
-                    <!-- ⋮ Dropdown Trigger -->
-                    <div class="relative hidden group-hover:block">
-                        <button onclick="toggleDropdown(this)"
-                            class="text-gray-500 hover:text-black focus:outline-none px-2">
-                            ⋮
-                        </button>
-
-                        <!-- Dropdown Menu (initially hidden) -->
-                        <div
-                            class="dropdownNav absolute right-0 mt-2 w-32 bg-white border rounded shadow-lg hidden z-10">
-                            <ul class="text-sm text-gray-700">
-                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Mute</li>
-                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Archive</li>
-                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500">Delete</li>
-                            </ul>
-                        </div>
+                    <span class="absolute right-[30px] top-[28px] text-black text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-[#49FB53]">12</span>
+                    <div class="absolute right-[5px] top-[15px] hidden group-hover:block">
+                        <button onclick="toggleDropdown(event)" class="text-[15px] text-gray-500 hover:text-black focus:outline-none px-2">⋮</button>
+                       
                     </div>
                 </li>
 
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer">
-
-                    <!-- Avatar -->
-                    <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-
-                    <!-- Chat Info -->
-                    <div class="flex-1 w-[90%] max-w-[90%]">
-                        <div class="w-full flex justify-between items-center">
-                            <span class="text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate max-w-[80px] xl:max-w-[100px] ">Ipsum Lorem Lorem Lorem Lorem</span>
+                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
+                    <div class="flex-1 w-[100%] max-w-[77%] lg:max-w-[70%] lg:max-w-[70%] pr-[40px]">
+                        <div class="w-full flex flex-col justify-between items-center ">
+                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
+                                Lorem Lorem Lorem Lorem</span>
+                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
                             <span class="text-[11px] xl:text-[11px] font-bold text-[#49FB53] absolute right-[30px] top-[10px]">14:56</span>
                         </div>
-                        <p class="text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] max-w-[80px] xl:max-w-[100px]">Hey, how’s it going going going going?</p>
                     </div>
-                    <!--  Unread Badge -->
-                    <span
-                        class="absolute right-[30px] top-[28px] text-black text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-[#49FB53]">12</span>
-
-                    <!-- ⋮ Dropdown Trigger -->
-                    <div class="relative hidden group-hover:block">
-                        <button onclick="toggleDropdown(this)"
-                            class="text-gray-500 hover:text-black focus:outline-none px-2">
-                            ⋮
-                        </button>
-
-                        <!-- Dropdown Menu (initially hidden) -->
-                        <div
-                            class="dropdownNav absolute right-0 mt-2 w-32 bg-white border rounded shadow-lg hidden z-10">
-                            <ul class="text-sm text-gray-700">
-                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Mute</li>
-                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Archive</li>
-                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500">Delete</li>
-                            </ul>
-                        </div>
+                    <span class="absolute right-[30px] top-[28px] text-black text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-[#49FB53]">12</span>
+                    <div class="absolute right-[5px] top-[15px] hidden group-hover:block">
+                        <button onclick="toggleDropdown(event)" class="text-[15px] text-gray-500 hover:text-black focus:outline-none px-2">⋮</button>
+                       
                     </div>
                 </li>
 
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer">
-
-                    <!-- Avatar -->
-                    <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-
-                    <!-- Chat Info -->
-                    <div class="flex-1 w-[90%] max-w-[90%]">
-                        <div class="w-full flex justify-between items-center">
-                            <span class="text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate max-w-[80px] xl:max-w-[100px] ">Ipsum Lorem Lorem Lorem Lorem</span>
+                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
+                    <div class="flex-1 w-[100%] max-w-[77%] lg:max-w-[70%] lg:max-w-[70%] pr-[40px]">
+                        <div class="w-full flex flex-col justify-between items-center ">
+                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
+                                Lorem Lorem Lorem Lorem</span>
+                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
                             <span class="text-[11px] xl:text-[11px] font-bold text-[#49FB53] absolute right-[30px] top-[10px]">14:56</span>
                         </div>
-                        <p class="text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] max-w-[80px] xl:max-w-[100px]">Hey, how’s it going going going going?</p>
                     </div>
-                    <!--  Unread Badge -->
-                    <span
-                        class="absolute right-[30px] top-[28px] text-black text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-[#49FB53]">12</span>
-
-                    <!-- ⋮ Dropdown Trigger -->
-                    <div class="relative hidden group-hover:block">
-                        <button onclick="toggleDropdown(this)"
-                            class="text-gray-500 hover:text-black focus:outline-none px-2">
-                            ⋮
-                        </button>
-
-                        <!-- Dropdown Menu (initially hidden) -->
-                        <div
-                            class="dropdownNav absolute right-0 mt-2 w-32 bg-white border rounded shadow-lg hidden z-10">
-                            <ul class="text-sm text-gray-700">
-                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Mute</li>
-                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Archive</li>
-                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500">Delete</li>
-                            </ul>
-                        </div>
+                    <span class="absolute right-[30px] top-[28px] text-black text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-[#49FB53]">12</span>
+                    <div class="absolute right-[5px] top-[15px] hidden group-hover:block">
+                        <button onclick="toggleDropdown(event)" class="text-[15px] text-gray-500 hover:text-black focus:outline-none px-2">⋮</button>
+                       
                     </div>
                 </li>
 
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer">
-
-                    <!-- Avatar -->
-                    <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-
-                    <!-- Chat Info -->
-                    <div class="flex-1 w-[90%] max-w-[90%]">
-                        <div class="w-full flex justify-between items-center">
-                            <span class="text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate max-w-[80px] xl:max-w-[100px] ">Ipsum Lorem Lorem Lorem Lorem</span>
+                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
+                    <div class="flex-1 w-[100%] max-w-[77%] lg:max-w-[70%] lg:max-w-[70%] pr-[40px]">
+                        <div class="w-full flex flex-col justify-between items-center ">
+                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
+                                Lorem Lorem Lorem Lorem</span>
+                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
                             <span class="text-[11px] xl:text-[11px] font-bold text-[#49FB53] absolute right-[30px] top-[10px]">14:56</span>
                         </div>
-                        <p class="text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] max-w-[80px] xl:max-w-[100px]">Hey, how’s it going going going going?</p>
                     </div>
-                    <!--  Unread Badge -->
-                    <span
-                        class="absolute right-[30px] top-[28px] text-black text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-[#49FB53]">12</span>
-
-                    <!-- ⋮ Dropdown Trigger -->
-                    <div class="relative hidden group-hover:block">
-                        <button onclick="toggleDropdown(this)"
-                            class="text-gray-500 hover:text-black focus:outline-none px-2">
-                            ⋮
-                        </button>
-
-                        <!-- Dropdown Menu (initially hidden) -->
-                        <div
-                            class="dropdownNav absolute right-0 mt-2 w-32 bg-white border rounded shadow-lg hidden z-10">
-                            <ul class="text-sm text-gray-700">
-                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Mute</li>
-                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Archive</li>
-                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500">Delete</li>
-                            </ul>
-                        </div>
+                    <span class="absolute right-[30px] top-[28px] text-black text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-[#49FB53]">12</span>
+                    <div class="absolute right-[5px] top-[15px] hidden group-hover:block">
+                        <button onclick="toggleDropdown(event)" class="text-[15px] text-gray-500 hover:text-black focus:outline-none px-2">⋮</button>
+                       
                     </div>
                 </li>
 
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer">
-
-                    <!-- Avatar -->
-                    <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-
-                    <!-- Chat Info -->
-                    <div class="flex-1 w-[90%] max-w-[90%]">
-                        <div class="w-full flex justify-between items-center">
-                            <span class="text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate max-w-[80px] xl:max-w-[100px] ">Ipsum Lorem Lorem Lorem Lorem</span>
+                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
+                    <div class="flex-1 w-[100%] max-w-[77%] lg:max-w-[70%] lg:max-w-[70%] pr-[40px]">
+                        <div class="w-full flex flex-col justify-between items-center ">
+                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
+                                Lorem Lorem Lorem Lorem</span>
+                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
                             <span class="text-[11px] xl:text-[11px] font-bold text-[#49FB53] absolute right-[30px] top-[10px]">14:56</span>
                         </div>
-                        <p class="text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] max-w-[80px] xl:max-w-[100px]">Hey, how’s it going going going going?</p>
                     </div>
-                    <!--  Unread Badge -->
-                    <span
-                        class="absolute right-[30px] top-[28px] text-black text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-[#49FB53]">12</span>
-
-                    <!-- ⋮ Dropdown Trigger -->
-                    <div class="relative hidden group-hover:block">
-                        <button onclick="toggleDropdown(this)"
-                            class="text-gray-500 hover:text-black focus:outline-none px-2">
-                            ⋮
-                        </button>
-
-                        <!-- Dropdown Menu (initially hidden) -->
-                        <div
-                            class="dropdownNav absolute right-0 mt-2 w-32 bg-white border rounded shadow-lg hidden z-10">
-                            <ul class="text-sm text-gray-700">
-                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Mute</li>
-                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Archive</li>
-                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500">Delete</li>
-                            </ul>
-                        </div>
+                    <span class="absolute right-[30px] top-[28px] text-black text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-[#49FB53]">12</span>
+                    <div class="absolute right-[5px] top-[15px] hidden group-hover:block">
+                        <button onclick="toggleDropdown(event)" class="text-[15px] text-gray-500 hover:text-black focus:outline-none px-2">⋮</button>
+                       
                     </div>
                 </li>
-            
+
+                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
+                    <div class="flex-1 w-[100%] max-w-[77%] lg:max-w-[70%] lg:max-w-[70%] pr-[40px]">
+                        <div class="w-full flex flex-col justify-between items-center ">
+                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
+                                Lorem Lorem Lorem Lorem</span>
+                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
+                            <span class="text-[11px] xl:text-[11px] font-bold text-[#49FB53] absolute right-[30px] top-[10px]">14:56</span>
+                        </div>
+                    </div>
+                    <span class="absolute right-[30px] top-[28px] text-black text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-[#49FB53]">12</span>
+                    <div class="absolute right-[5px] top-[15px] hidden group-hover:block">
+                        <button onclick="toggleDropdown(event)" class="text-[15px] text-gray-500 hover:text-black focus:outline-none px-2">⋮</button>
+                       
+                    </div>
+                </li>
+
+                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
+                    <div class="flex-1 w-[100%] max-w-[77%] lg:max-w-[70%] lg:max-w-[70%] pr-[40px]">
+                        <div class="w-full flex flex-col justify-between items-center ">
+                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
+                                Lorem Lorem Lorem Lorem</span>
+                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
+                            <span class="text-[11px] xl:text-[11px] font-bold text-[#49FB53] absolute right-[30px] top-[10px]">14:56</span>
+                        </div>
+                    </div>
+                    <span class="absolute right-[30px] top-[28px] text-black text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-[#49FB53]">12</span>
+                    <div class="absolute right-[5px] top-[15px] hidden group-hover:block">
+                        <button onclick="toggleDropdown(event)" class="text-[15px] text-gray-500 hover:text-black focus:outline-none px-2">⋮</button>
+                       
+                    </div>
+                </li>
+
+                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
+                    <div class="flex-1 w-[100%] max-w-[77%] lg:max-w-[70%] lg:max-w-[70%] pr-[40px]">
+                        <div class="w-full flex flex-col justify-between items-center ">
+                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
+                                Lorem Lorem Lorem Lorem</span>
+                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
+                            <span class="text-[11px] xl:text-[11px] font-bold text-[#49FB53] absolute right-[30px] top-[10px]">14:56</span>
+                        </div>
+                    </div>
+                    <span class="absolute right-[30px] top-[28px] text-black text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-[#49FB53]">12</span>
+                    <div class="absolute right-[5px] top-[15px] hidden group-hover:block">
+                        <button onclick="toggleDropdown(event)" class="text-[15px] text-gray-500 hover:text-black focus:outline-none px-2">⋮</button>
+                       
+                    </div>
+                </li>
+
+                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
+                    <div class="flex-1 w-[100%] max-w-[77%] lg:max-w-[70%] lg:max-w-[70%] pr-[40px]">
+                        <div class="w-full flex flex-col justify-between items-center ">
+                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
+                                Lorem Lorem Lorem Lorem</span>
+                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
+                            <span class="text-[11px] xl:text-[11px] font-bold text-[#49FB53] absolute right-[30px] top-[10px]">14:56</span>
+                        </div>
+                    </div>
+                    <span class="absolute right-[30px] top-[28px] text-black text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-[#49FB53]">12</span>
+                    <div class="absolute right-[5px] top-[15px] hidden group-hover:block">
+                        <button onclick="toggleDropdown(event)" class="text-[15px] text-gray-500 hover:text-black focus:outline-none px-2">⋮</button>
+                       
+                    </div>
+                </li>
+
+                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
+                    <div class="flex-1 w-[100%] max-w-[77%] lg:max-w-[70%] lg:max-w-[70%] pr-[40px]">
+                        <div class="w-full flex flex-col justify-between items-center ">
+                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
+                                Lorem Lorem Lorem Lorem</span>
+                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
+                            <span class="text-[11px] xl:text-[11px] font-bold text-[#49FB53] absolute right-[30px] top-[10px]">14:56</span>
+                        </div>
+                    </div>
+                    <span class="absolute right-[30px] top-[28px] text-black text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-[#49FB53]">12</span>
+                    <div class="absolute right-[5px] top-[15px] hidden group-hover:block">
+                        <button onclick="toggleDropdown(event)" class="text-[15px] text-gray-500 hover:text-black focus:outline-none px-2">⋮</button>
+                       
+                    </div>
+                </li>
+
+                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
+                    <div class="flex-1 w-[100%] max-w-[77%] lg:max-w-[70%] lg:max-w-[70%] pr-[40px]">
+                        <div class="w-full flex flex-col justify-between items-center ">
+                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
+                                Lorem Lorem Lorem Lorem</span>
+                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
+                            <span class="text-[11px] xl:text-[11px] font-bold text-[#49FB53] absolute right-[30px] top-[10px]">14:56</span>
+                        </div>
+                    </div>
+                    <span class="absolute right-[30px] top-[28px] text-black text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-[#49FB53]">12</span>
+                    <div class="absolute right-[5px] top-[15px] hidden group-hover:block">
+                        <button onclick="toggleDropdown(event)" class="text-[15px] text-gray-500 hover:text-black focus:outline-none px-2">⋮</button>
+                       
+                    </div>
+                </li>
             </ul>
-
         </div>
     </aside>
+
+     <!-- Global dropdown left Sidebar -->
+        <div id="globalDropdown" class="custom-dropdown hidden bg-white border rounded shadow-lg z-10">
+            <ul class="text-sm text-gray-700">
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Mute</li>
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Archive</li>
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500">Delete</li>
+            </ul>
+        </div>
+
+
+        <div id="globalDropdown2" class="custom-dropdown hidden bg-white border rounded shadow-lg z-10">
+            <ul class="text-sm text-gray-700">
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Mute</li>
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Archive</li>
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500">Delete</li>
+            </ul>
+        </div>
+
+
+        <div id="globalDropdown3" class="custom-dropdown hidden bg-white border rounded shadow-lg z-10">
+            <ul class="text-sm text-gray-700">
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Mute</li>
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Archive</li>
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500">Delete</li>
+            </ul>
+        </div>
 
     <!-- Chat Window -->
     <main class="w-full md:w-2/3 lg:w-3/4 bg-gray-50 flex flex-col relative rounded-[10px] shadow-md">
         <div
             class="absolute top-[0] bottom-[0] left-[0] right-[0] m-auto flex items-center justify-center opacity-[25%]">
-            <img src="/images/logo.png" alt="img"></div>
+            <img src="/images/logo.png" alt="img">
+        </div>
         <!-- Header -->
         <div class="px-[10px] py-[10px] border-b flex items-center justify-between gap-3 bg-white z-10">
             <div class="flex items-center gap-[5px]">
@@ -288,20 +296,19 @@
             </div>
 
             <div class="relative flex items-center">
-                <button onclick="toggleDropdown(this)"
-                    class="w-[35px] h-[35px] text-black bg-[#f2f2f2]  hover:text-black focus:outline-none px-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M12 3C10.9 3 10 3.9 10 5C10 6.1 10.9 7 12 7C13.1 7 14 6.1 14 5C14 3.9 13.1 3 12 3ZM12 17C10.9 17 10 17.9 10 19C10 20.1 10.9 21 12 21C13.1 21 14 20.1 14 19C14 17.9 13.1 17 12 17ZM12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10Z">
-                        </path>
-                    </svg>
+                <button  onclick="toggleDropdown3(event)"
+                    class="p-[0] w-[35px] h-[35px] flex items-center justify-center text-black rounded-[40px] bg-[#f2f2f2] focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-[15px] h-[15px]" viewBox="0 0 24 24" fill="currentColor"><path d="M3 4H21V6H3V4ZM9 11H21V13H9V11ZM3 18H21V20H3V18Z"></path></svg>
                 </button>
 
+                
+              
 
 
 
                 <!-- Dropdown Menu (initially hidden) -->
-                <div class="dropdownNav absolute right-0 top-[30px] mt-2 w-32 bg-white border rounded shadow-lg hidden z-[99]">
+                <div
+                    class="dropdownNav absolute right-0 top-[30px] mt-2 w-32 bg-white border rounded shadow-lg hidden z-[99]">
                     <ul class="text-sm text-gray-700">
                         <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Mute</li>
                         <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Archive</li>
@@ -313,80 +320,102 @@
         </div>
 
         <!-- Messages Area with Scroll Fix -->
-        <div id="chatMessages" class="relative h-[35vh] md:h-[70vh] overflow-y-auto px-[10px] py-[10px] md:px-[20px] md:py-[20px] xl:px-[30px] xl:py-[30px] space-y-4 z-[1]">
+        <div id="chatMessages"
+            class="relative h-[35vh] md:h-[70vh] overflow-y-auto pt-[40px] px-[10px] py-[10px] md:px-[20px] md:py-[20px] xl:px-[30px] xl:py-[30px] space-y-4 z-[1]">
 
-        <div class="absolute top-[14px] left-[0] right-[0] m-auto text-[13px] font-[600] text-[#49fb53] text-center z-[9]">Mukesh Added At This Group</div>
-          <div class="text-left">
-                <div class="relative inline-flex flex-col bg-white p-[12px] lg:text-[15px]  text-sm  shadow-md rounded-[10px] rounded-tl-[0]">
-                  <div class="absolute top-2 left-[-15px] w-0 h-0 border-t-[15px] border-t-transparent border-b-[15px] border-b-transparent border-r-[15px] border-r-gray-100"></div>
-                  
-                  <p class="text-[12px] xl:text-[13px]">
-                    Here are all the files. Let me know once you’ve had a look. Here are all the files. Let me know once you’ve had a look. Here are all the files. Let me know once you’ve had a look. Here are all the files. Let me know once you’ve had a look. Here are all the files. Let me know once you’ve had a look.
-                  </p>
-
-                  <div class="w-full text-end flex justify-end gap-[5px] items-center text-[12px] text-[#000]">
-                    11/July/2025 <div class="text-[12px] text-black font-[600]">10:40 PM</div>
-                  </div>
+            <div
+                class="absolute top-[8px] w-auto left-[0] right-[0] m-auto text-[13px] font-[600] text-[#49fb53]  text-center z-[9]">
+                <div class="w-auto inline-flex shadow-md bg-white px-[10px] py-[5px]  rounded-[4px]">
+                Mukesh Added At This Group
                 </div>
-              </div>
-
-              <div class="text-left">
-                <div class="relative inline-block bg-white p-[12px] lg:text-[15px]  text-sm  shadow-md rounded-[10px] rounded-tl-[0]">
-                  <div class="absolute top-2 left-[-15px] w-0 h-0 border-t-[15px] border-t-transparent border-b-[15px] border-b-transparent border-r-[15px] border-r-gray-100"></div>
-                  <p class="text-[12px] xl:text-[13px]">
-                    Here are all the files. Let me know once you’ve had a look. once you’ve had a look. once you’ve had a look.
-                  </p>
-
-                  <div class="w-full text-end flex justify-end gap-[5px] items-center text-[12px] text-[#000]">
-                    11/July/2025 <div class="text-[12px] text-black font-[600]">10:40 PM</div>
-                  </div>
                 </div>
-              </div>
+            <div class="text-left">
+                <div
+                    class="relative inline-flex flex-col bg-gray-100 p-[12px] lg:text-[15px]  text-sm  shadow-md rounded-[10px] rounded-tl-[0]">
+                    <div class="absolute top-2 left-[-15px] w-0 h-0 border-t-[15px] border-t-transparent border-b-[15px] border-b-transparent border-r-[15px] border-r-gray-100">
+                    </div>
 
-
-             
-
-            <div class="text-right">
-                <div class="relative inline-block bg-green-100 text-green-800 text-sm p-[12px] lg:text-[15px] rounded-[10px] rounded-tl-[0] shadow-md">
-                  <div class="absolute top-2 right-[-15px] w-0 h-0 border-t-[15px] border-t-transparent border-b-[15px] border-b-transparent border-l-[15px] border-l-green-100"></div>
-                  <p class="text-[12px] xl:text-[13px]">
-                    Here are all the files. Let me know once you’ve had a look. Here are all the files.
+                    <p class="text-[12px] xl:text-[13px]">
+                        Here are all the files. Let me know once you’ve had a look. Here are all the files. Let me know
+                        once you’ve had a look. Here are all the files. Let me know once you’ve had a look. Here are all
+                        the files. Let me know once you’ve had a look. Here are all the files. Let me know once you’ve
+                        had a look.
                     </p>
 
                     <div class="w-full text-end flex justify-end gap-[5px] items-center text-[12px] text-[#000]">
-                    11/July/2025 <div class="text-[12px] text-black font-[600]">10:40 PM</div>
-                  </div>
+                        11/July/2025 <div class="text-[12px] text-black font-[600]">10:40 PM</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-left">
+                <div
+                    class="relative inline-block bg-gray-100 p-[12px] lg:text-[15px]  text-sm  shadow-md rounded-[10px] rounded-tl-[0]">
+                    <div
+                        class="absolute top-2 left-[-15px] w-0 h-0 border-t-[15px] border-t-transparent border-b-[15px] border-b-transparent border-r-[15px] border-r-gray-100">
+                    </div>
+                    <p class="text-[12px] xl:text-[13px]">
+                        Here are all the files. Let me know once you’ve had a look. once you’ve had a look. once you’ve
+                        had a look.
+                    </p>
+
+                    <div class="w-full text-end flex justify-end gap-[5px] items-center text-[12px] text-[#000]">
+                        11/July/2025 <div class="text-[12px] text-black font-[600]">10:40 PM</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="text-right">
+                <div
+                    class="relative inline-block bg-green-100 text-green-800 text-sm p-[12px] lg:text-[15px] rounded-[10px] rounded-tl-[0] shadow-md">
+                    <div
+                        class="absolute top-2 right-[-15px] w-0 h-0 border-t-[15px] border-t-transparent border-b-[15px] border-b-transparent border-l-[15px] border-l-green-100">
+                    </div>
+                    <p class="text-[12px] xl:text-[13px]">
+                        Here are all the files. Let me know once you’ve had a look. Here are all the files.
+                    </p>
+
+                    <div class="w-full text-end flex justify-end gap-[5px] items-center text-[12px] text-[#000]">
+                        11/July/2025 <div class="text-[12px] text-black font-[600]">10:40 PM</div>
+                    </div>
                 </div>
             </div>
 
 
             <div class="text-right">
-                <div class="relative inline-block bg-green-100 text-green-800 text-sm p-[18px] rounded-[10px] rounded-tl-[0] shadow-md">
-                  <div class="absolute top-2 right-[-15px] w-0 h-0 border-t-[15px] border-t-transparent border-b-[15px] border-b-transparent border-l-[15px] border-l-green-100"></div>
-                  <p class="text-[12px] xl:text-[13px]">Here are all the files.</p>
+                <div
+                    class="relative inline-block bg-green-100 text-green-800 text-sm p-[18px] rounded-[10px] rounded-tl-[0] shadow-md">
+                    <div
+                        class="absolute top-2 right-[-15px] w-0 h-0 border-t-[15px] border-t-transparent border-b-[15px] border-b-transparent border-l-[15px] border-l-green-100">
+                    </div>
+                    <p class="text-[12px] xl:text-[13px]">Here are all the files.</p>
 
                     <div class="w-full text-end flex justify-end gap-[5px] items-center text-[12px] text-[#000]">
-                    11/July/2025 <div class="text-[12px] text-black font-[600]">10:40 PM</div>
-                  </div>
+                        11/July/2025 <div class="text-[12px] text-black font-[600]">10:40 PM</div>
+                    </div>
                 </div>
             </div>
 
-           
-           
+
+
         </div>
 
         <!-- Input Box (Fixed on Mobile) -->
-        <div class="flex gap-[6px] md:gap-[10px] p-[10px] md:p-[13px] border-t  mobile-fixed md:relative z-[999] w-full" >
+        <div
+            class="flex gap-[6px] md:gap-[10px] p-[10px] md:p-[13px] border-t  mobile-fixed md:relative z-[999] w-full">
             <div class="relative flex items-center">
-              <label for="fileInput" class="cursor-pointer flex items-center gap-1 text-black hover:text-[#49FB53]">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                  viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M15.172 7l-6.586 6.586a2 2 0 002.828 2.828l6.586-6.586A4 4 0 1012 3.172l-6.586 6.586" />
-                </svg>
-                <span class="text-[0] md:text-[15px]">Attach</span>
-              </label>
-              <input id="fileInput" type="file" class="hidden" />
+                <label for="fileInput" class="cursor-pointer flex items-center gap-1 text-black hover:text-[#49FB53]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15.172 7l-6.586 6.586a2 2 0 002.828 2.828l6.586-6.586A4 4 0 1012 3.172l-6.586 6.586" />
+                    </svg>
+                    <span class="text-[0] md:text-[15px]">Attach</span>
+                </label>
+                <input id="fileInput" type="file" class="hidden" />
             </div>
 
             <form onsubmit="event.preventDefault(); addMessage();" class="w-full flex items-center gap-2">
