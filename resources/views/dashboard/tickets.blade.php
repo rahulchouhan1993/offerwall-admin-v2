@@ -10,10 +10,10 @@
 
 
 
-<div class="flex gap-[20px] p-[20px] flex-col md:flex-row h-[80vh] bg-[#EEF0F8]">
+<div class="flex gap-[10px] md:gap-[15px] lg:gap-[20px] p-[20px] flex-col md:flex-row h-[80vh] bg-[#EEF0F8]">
 
     <!-- Sidebar -->
-    <aside class="w-full md:w-1/3 lg:w-1/4 bg-white p-[15px] rounded-[6px] flex flex-col shadow-md">
+    <aside class="w-full md:w-1/3 lg:w-1/4 bg-white p-[10px] xl:p-[15px] rounded-[6px] flex flex-col shadow-md">
         <div class="border-b border-b-[#f2f2f2]">
             <div class="flex gap-[8px] items-center justify-between">
                 <h2 class="text-lg font-semibold mb-[0]">Chats</h2>
@@ -50,28 +50,24 @@
             </div>
 
         </div>
-        <div class="overflow-y-auto flex-grow">
+        <div class="overflow-y-auto max-h-[115px] flex-grow">
             <ul class="m-[0]">
-                <li
-                    class="group relative px-[5px] py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-3 cursor-pointer">
+                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer">
 
                     <!-- Avatar -->
-                    <img src="/images/user.webp" class="rounded-full w-10 h-10" />
+                    <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
 
                     <!-- Chat Info -->
                     <div class="flex-1 w-[90%] max-w-[90%]">
                         <div class="w-full flex justify-between items-center">
-                            <span class="font-semibold truncate max-w-[100px]">Ipsum Lorem Lorem Lorem Lorem</span>
-                            <span class="text-xs font-bold text-[#49FB53] absolute right-[30px] top-[10px]">14:56</span>
+                            <span class="text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate max-w-[80px] xl:max-w-[100px] ">Ipsum Lorem Lorem Lorem Lorem</span>
+                            <span class="text-[11px] xl:text-[11px] font-bold text-[#49FB53] absolute right-[30px] top-[10px]">14:56</span>
                         </div>
-                        <p class="text-sm text-gray-500 truncate m-[0] max-w-[100px]">Hey, how’s it going going going going?</p>
+                        <p class="text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] max-w-[80px] xl:max-w-[100px]">Hey, how’s it going going going going?</p>
                     </div>
-
                     <!--  Unread Badge -->
                     <span
-                        class="absolute right-[30px] top-[32px] text-black text-xs rounded-full flex items-center justify-center w-[20px] h-[20px] bg-[#49FB53]">
-                        2
-                    </span>
+                        class="absolute right-[30px] top-[28px] text-black text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-[#49FB53]">12</span>
 
                     <!-- ⋮ Dropdown Trigger -->
                     <div class="relative hidden group-hover:block">
@@ -90,30 +86,24 @@
                             </ul>
                         </div>
                     </div>
-
                 </li>
 
-
-                <li
-                    class="group relative px-[5px] py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-3 cursor-pointer">
+                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer">
 
                     <!-- Avatar -->
-                    <img src="/images/user.webp" class="rounded-full w-10 h-10" />
+                    <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
 
                     <!-- Chat Info -->
                     <div class="flex-1 w-[90%] max-w-[90%]">
                         <div class="w-full flex justify-between items-center">
-                            <span class="font-semibold truncate max-w-[100px]">Ipsum Lorem</span>
-                            <span class="text-xs font-bold text-[#49FB53] absolute right-[30px] top-[10px]">14:56</span>
+                            <span class="text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate max-w-[80px] xl:max-w-[100px] ">Ipsum Lorem Lorem Lorem Lorem</span>
+                            <span class="text-[11px] xl:text-[11px] font-bold text-[#49FB53] absolute right-[30px] top-[10px]">14:56</span>
                         </div>
-                        <p class="text-sm text-gray-500 truncate m-[0] max-w-[100px]">Hey, how’s it going?</p>
+                        <p class="text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] max-w-[80px] xl:max-w-[100px]">Hey, how’s it going going going going?</p>
                     </div>
-
                     <!--  Unread Badge -->
                     <span
-                        class="absolute right-[30px] top-[32px] text-black text-xs rounded-full flex items-center justify-center w-[20px] h-[20px] bg-[#49FB53]">
-                        2
-                    </span>
+                        class="absolute right-[30px] top-[28px] text-black text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-[#49FB53]">12</span>
 
                     <!-- ⋮ Dropdown Trigger -->
                     <div class="relative hidden group-hover:block">
@@ -132,8 +122,152 @@
                             </ul>
                         </div>
                     </div>
-
                 </li>
+
+                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer">
+
+                    <!-- Avatar -->
+                    <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
+
+                    <!-- Chat Info -->
+                    <div class="flex-1 w-[90%] max-w-[90%]">
+                        <div class="w-full flex justify-between items-center">
+                            <span class="text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate max-w-[80px] xl:max-w-[100px] ">Ipsum Lorem Lorem Lorem Lorem</span>
+                            <span class="text-[11px] xl:text-[11px] font-bold text-[#49FB53] absolute right-[30px] top-[10px]">14:56</span>
+                        </div>
+                        <p class="text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] max-w-[80px] xl:max-w-[100px]">Hey, how’s it going going going going?</p>
+                    </div>
+                    <!--  Unread Badge -->
+                    <span
+                        class="absolute right-[30px] top-[28px] text-black text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-[#49FB53]">12</span>
+
+                    <!-- ⋮ Dropdown Trigger -->
+                    <div class="relative hidden group-hover:block">
+                        <button onclick="toggleDropdown(this)"
+                            class="text-gray-500 hover:text-black focus:outline-none px-2">
+                            ⋮
+                        </button>
+
+                        <!-- Dropdown Menu (initially hidden) -->
+                        <div
+                            class="dropdownNav absolute right-0 mt-2 w-32 bg-white border rounded shadow-lg hidden z-10">
+                            <ul class="text-sm text-gray-700">
+                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Mute</li>
+                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Archive</li>
+                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500">Delete</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer">
+
+                    <!-- Avatar -->
+                    <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
+
+                    <!-- Chat Info -->
+                    <div class="flex-1 w-[90%] max-w-[90%]">
+                        <div class="w-full flex justify-between items-center">
+                            <span class="text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate max-w-[80px] xl:max-w-[100px] ">Ipsum Lorem Lorem Lorem Lorem</span>
+                            <span class="text-[11px] xl:text-[11px] font-bold text-[#49FB53] absolute right-[30px] top-[10px]">14:56</span>
+                        </div>
+                        <p class="text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] max-w-[80px] xl:max-w-[100px]">Hey, how’s it going going going going?</p>
+                    </div>
+                    <!--  Unread Badge -->
+                    <span
+                        class="absolute right-[30px] top-[28px] text-black text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-[#49FB53]">12</span>
+
+                    <!-- ⋮ Dropdown Trigger -->
+                    <div class="relative hidden group-hover:block">
+                        <button onclick="toggleDropdown(this)"
+                            class="text-gray-500 hover:text-black focus:outline-none px-2">
+                            ⋮
+                        </button>
+
+                        <!-- Dropdown Menu (initially hidden) -->
+                        <div
+                            class="dropdownNav absolute right-0 mt-2 w-32 bg-white border rounded shadow-lg hidden z-10">
+                            <ul class="text-sm text-gray-700">
+                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Mute</li>
+                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Archive</li>
+                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500">Delete</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer">
+
+                    <!-- Avatar -->
+                    <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
+
+                    <!-- Chat Info -->
+                    <div class="flex-1 w-[90%] max-w-[90%]">
+                        <div class="w-full flex justify-between items-center">
+                            <span class="text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate max-w-[80px] xl:max-w-[100px] ">Ipsum Lorem Lorem Lorem Lorem</span>
+                            <span class="text-[11px] xl:text-[11px] font-bold text-[#49FB53] absolute right-[30px] top-[10px]">14:56</span>
+                        </div>
+                        <p class="text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] max-w-[80px] xl:max-w-[100px]">Hey, how’s it going going going going?</p>
+                    </div>
+                    <!--  Unread Badge -->
+                    <span
+                        class="absolute right-[30px] top-[28px] text-black text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-[#49FB53]">12</span>
+
+                    <!-- ⋮ Dropdown Trigger -->
+                    <div class="relative hidden group-hover:block">
+                        <button onclick="toggleDropdown(this)"
+                            class="text-gray-500 hover:text-black focus:outline-none px-2">
+                            ⋮
+                        </button>
+
+                        <!-- Dropdown Menu (initially hidden) -->
+                        <div
+                            class="dropdownNav absolute right-0 mt-2 w-32 bg-white border rounded shadow-lg hidden z-10">
+                            <ul class="text-sm text-gray-700">
+                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Mute</li>
+                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Archive</li>
+                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500">Delete</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer">
+
+                    <!-- Avatar -->
+                    <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
+
+                    <!-- Chat Info -->
+                    <div class="flex-1 w-[90%] max-w-[90%]">
+                        <div class="w-full flex justify-between items-center">
+                            <span class="text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate max-w-[80px] xl:max-w-[100px] ">Ipsum Lorem Lorem Lorem Lorem</span>
+                            <span class="text-[11px] xl:text-[11px] font-bold text-[#49FB53] absolute right-[30px] top-[10px]">14:56</span>
+                        </div>
+                        <p class="text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] max-w-[80px] xl:max-w-[100px]">Hey, how’s it going going going going?</p>
+                    </div>
+                    <!--  Unread Badge -->
+                    <span
+                        class="absolute right-[30px] top-[28px] text-black text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-[#49FB53]">12</span>
+
+                    <!-- ⋮ Dropdown Trigger -->
+                    <div class="relative hidden group-hover:block">
+                        <button onclick="toggleDropdown(this)"
+                            class="text-gray-500 hover:text-black focus:outline-none px-2">
+                            ⋮
+                        </button>
+
+                        <!-- Dropdown Menu (initially hidden) -->
+                        <div
+                            class="dropdownNav absolute right-0 mt-2 w-32 bg-white border rounded shadow-lg hidden z-10">
+                            <ul class="text-sm text-gray-700">
+                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Mute</li>
+                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Archive</li>
+                                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500">Delete</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            
             </ul>
 
         </div>
@@ -149,7 +283,7 @@
             <div class="flex items-center gap-[5px]">
                 <img src="/images/user.webp" class="rounded-full w-10 h-10" />
                 <div>
-                    <p class="font-semibold m-[0]">Alice Whitman</p>
+                    <p class="text-[12px] xl:text-[15px] font-semibold m-[0]">Alice Whitman</p>
                 </div>
             </div>
 
@@ -179,14 +313,14 @@
         </div>
 
         <!-- Messages Area with Scroll Fix -->
-        <div id="chatMessages" class="relative h-[70vh] overflow-y-auto px-4 py-[30px] space-y-4 z-[1]">
+        <div id="chatMessages" class="relative h-[35vh] md:h-[70vh] overflow-y-auto px-[10px] py-[10px] md:px-[20px] md:py-[20px] xl:px-[30px] xl:py-[30px] space-y-4 z-[1]">
 
         <div class="absolute top-[14px] left-[0] right-[0] m-auto text-[13px] font-[600] text-[#49fb53] text-center z-[9]">Mukesh Added At This Group</div>
           <div class="text-left">
-                <div class="relative inline-flex flex-col bg-white p-[18px]  text-sm  shadow-md rounded-[10px] rounded-tl-[0]">
+                <div class="relative inline-flex flex-col bg-white p-[12px] lg:text-[15px]  text-sm  shadow-md rounded-[10px] rounded-tl-[0]">
                   <div class="absolute top-2 left-[-15px] w-0 h-0 border-t-[15px] border-t-transparent border-b-[15px] border-b-transparent border-r-[15px] border-r-gray-100"></div>
                   
-                  <p>
+                  <p class="text-[12px] xl:text-[13px]">
                     Here are all the files. Let me know once you’ve had a look. Here are all the files. Let me know once you’ve had a look. Here are all the files. Let me know once you’ve had a look. Here are all the files. Let me know once you’ve had a look. Here are all the files. Let me know once you’ve had a look.
                   </p>
 
@@ -197,9 +331,9 @@
               </div>
 
               <div class="text-left">
-                <div class="relative inline-block bg-white p-[18px]  text-sm  shadow-md rounded-[10px] rounded-tl-[0]">
+                <div class="relative inline-block bg-white p-[12px] lg:text-[15px]  text-sm  shadow-md rounded-[10px] rounded-tl-[0]">
                   <div class="absolute top-2 left-[-15px] w-0 h-0 border-t-[15px] border-t-transparent border-b-[15px] border-b-transparent border-r-[15px] border-r-gray-100"></div>
-                  <p>
+                  <p class="text-[12px] xl:text-[13px]">
                     Here are all the files. Let me know once you’ve had a look. once you’ve had a look. once you’ve had a look.
                   </p>
 
@@ -213,9 +347,9 @@
              
 
             <div class="text-right">
-                <div class="relative inline-block bg-green-100 text-green-800 text-sm p-[18px] rounded-[10px] rounded-tl-[0] shadow-md">
+                <div class="relative inline-block bg-green-100 text-green-800 text-sm p-[12px] lg:text-[15px] rounded-[10px] rounded-tl-[0] shadow-md">
                   <div class="absolute top-2 right-[-15px] w-0 h-0 border-t-[15px] border-t-transparent border-b-[15px] border-b-transparent border-l-[15px] border-l-green-100"></div>
-                  <p>
+                  <p class="text-[12px] xl:text-[13px]">
                     Here are all the files. Let me know once you’ve had a look. Here are all the files.
                     </p>
 
@@ -229,9 +363,7 @@
             <div class="text-right">
                 <div class="relative inline-block bg-green-100 text-green-800 text-sm p-[18px] rounded-[10px] rounded-tl-[0] shadow-md">
                   <div class="absolute top-2 right-[-15px] w-0 h-0 border-t-[15px] border-t-transparent border-b-[15px] border-b-transparent border-l-[15px] border-l-green-100"></div>
-                  <p>
-                    Here are all the files.
-                    </p>
+                  <p class="text-[12px] xl:text-[13px]">Here are all the files.</p>
 
                     <div class="w-full text-end flex justify-end gap-[5px] items-center text-[12px] text-[#000]">
                     11/July/2025 <div class="text-[12px] text-black font-[600]">10:40 PM</div>
@@ -244,10 +376,7 @@
         </div>
 
         <!-- Input Box (Fixed on Mobile) -->
-        <div class="flex gap-[15px] p-3 border-t  mobile-fixed md:relative z-[999] w-full" >
-         
-
-
+        <div class="flex gap-[6px] md:gap-[10px] p-[10px] md:p-[13px] border-t  mobile-fixed md:relative z-[999] w-full" >
             <div class="relative flex items-center">
               <label for="fileInput" class="cursor-pointer flex items-center gap-1 text-black hover:text-[#49FB53]">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
@@ -255,27 +384,17 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M15.172 7l-6.586 6.586a2 2 0 002.828 2.828l6.586-6.586A4 4 0 1012 3.172l-6.586 6.586" />
                 </svg>
-                Attach
+                <span class="text-[0] md:text-[15px]">Attach</span>
               </label>
               <input id="fileInput" type="file" class="hidden" />
             </div>
 
-
-
-
-
-
-
-
-
-
-
             <form onsubmit="event.preventDefault(); addMessage();" class="w-full flex items-center gap-2">
                 <textarea id="msgInput" placeholder="Type a message..."
-                    class="w-full flex-1 py-[15px] px-[30px] border-none bg-[#f2f2f2] rounded-[80px] text-[15px] text-black focus:outline-none"></textarea>
+                    class="w-full flex-1 py-[15px] px-[30px] border-none bg-[#f2f2f2] rounded-[80px] text-[11px] md:text-[15px] text-black focus:outline-none"></textarea>
                 <button type="submit"
-                    class="w-[40px] h-[40px] flex items-center justify-center bg-[#49FB53] text-black p-[0] rounded-[100px] hover:bg-green-600"><svg
-                        xmlns="http://www.w3.org/2000/svg" class="w-[20px] h-[20px]" viewBox="0 0 24 24"
+                    class="w-[35px] h-[35px] min-h-[auto] flex items-center justify-center bg-[#49FB53] text-black p-[0] rounded-[100px] hover:bg-green-600"><svg
+                        xmlns="http://www.w3.org/2000/svg" class="w-[15px] h-[15px]" viewBox="0 0 24 24"
                         fill="currentColor">
                         <path
                             d="M1.94607 9.31543C1.42353 9.14125 1.4194 8.86022 1.95682 8.68108L21.043 2.31901C21.5715 2.14285 21.8746 2.43866 21.7265 2.95694L16.2733 22.0432C16.1223 22.5716 15.8177 22.59 15.5944 22.0876L11.9999 14L17.9999 6.00005L9.99992 12L1.94607 9.31543Z">

@@ -120,7 +120,7 @@ body.active .sidebar a svg{width:18px;height:18px;}
 @media (max-width: 768px) {
     .mobile-fixed {
       position: fixed;
-      bottom: 0;
+      bottom:60px;
       left: 0;
       right: 0;
       z-index: 50;
