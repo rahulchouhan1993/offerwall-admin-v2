@@ -65,19 +65,8 @@ class AppsController extends Controller
 
     public function add(Request $request, $id =null){
         $pageTitle = 'Apps';
-        if($id>0){
-            $appData = App::find($id);
-        }else{
-            $appData = new App();
-        }
-        
+        $appData = App::find($id);
         if($request->isMethod('POST')){
-            if($id==null){
-                $appData->appId = md5(rand());
-                $appData->secrect_key = md5(rand());
-                $appData->affiliateId = auth()->user()->id;
-                $appData->status = 0;
-            }
             $appData->appName = $request->appname;
             $appData->appUrl = $request->appurl;
             $appData->currencyName = $request->currencyname;
@@ -86,31 +75,7 @@ class AppsController extends Controller
             $appData->rounding = $request->rounding;
             $appData->postback = $request->postback;
             if($appData->save()){
-                if($id>0){
-                    return redirect()->route('apps.index')->with('success', 'App updated successfully!!');
-                }else{
-                    $defaultTemplate = Template::find(1);
-                    $templateColor = new Template();
-                    $templateColor->user_id = auth()->user()->id;
-                    $templateColor->app_id = $appData->id;
-                    $templateColor->bodyBg = $defaultTemplate->bodyBg;
-                    $templateColor->headerTextColor = $defaultTemplate->headerTextColor;
-                    $templateColor->headerButtonBg = $defaultTemplate->headerButtonBg;
-                    $templateColor->headerButtonColor = $defaultTemplate->headerButtonColor;
-                    $templateColor->NotificationBg = $defaultTemplate->NotificationBg;
-                    $templateColor->notificationText = $defaultTemplate->notificationText;
-                    $templateColor->offerBg = $defaultTemplate->offerBg;
-                    $templateColor->offerBgInner = $defaultTemplate->offerBgInner;
-                    $templateColor->offerText = $defaultTemplate->offerText;
-                    $templateColor->offerInfoBg = $defaultTemplate->offerInfoBg;
-                    $templateColor->offerInfoText = $defaultTemplate->offerInfoText;
-                    $templateColor->offerInfoBorder = $defaultTemplate->offerInfoBorder;
-                    $templateColor->offerButtonBg = $defaultTemplate->offerButtonBg;
-                    $templateColor->offerButtonText = $defaultTemplate->offerButtonText;
-                    $templateColor->footerText = $defaultTemplate->footerText;
-                    $templateColor->save();
-                    return redirect()->route('apps.index')->with('success', 'App added successfully!!');
-                }
+                return redirect()->route('apps.index')->with('success', 'App updated successfully!!');
             }else{
                 return redirect()->route('apps.index')->with('error', 'Sonething went wrong, please try again.');
             }

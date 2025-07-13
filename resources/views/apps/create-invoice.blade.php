@@ -23,7 +23,7 @@
                             <option value="">Select Affiliate</option>
                             @if($allAffiliates->isNotEmpty())
                                 @foreach ($allAffiliates as $affiliate)
-                                    <option value="{{ $affiliate->id }}" @if(request('affiliate_id') == $affiliate->id) selected @endif>{{ $affiliate->name }} {{ $affiliate->last_name }}</option>
+                                    <option value="{{ $affiliate->id }}" @if(request('affiliate_id') == $affiliate->id) selected @endif>{{ $affiliate->name }} {{ $affiliate->last_name }} ({{ $affiliate->affiseId }})</option>
                                 @endforeach
                             @endif
                         </select>
