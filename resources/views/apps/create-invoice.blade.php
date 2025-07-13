@@ -4,11 +4,13 @@
 <div class="bg-[#f2f2f2] p-[15px] lg:p-[35px]">
     <div class="flex flex-col lg:flex-row justify-between items-start gap-[15px] w-full">
         <div class="w-full bg-white p-[15px] md:p-[20px] rounded-[10px] custom_filter">
-            <h2 class="w-full lg:w-auto text-[20px] text-[#1A1A1A] font-[600]">Create Invoice</h2>
-            <button type="button" class="w-full md:w-[110px] lg:w-[140px] bg-[#4EF953] px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#000] text-center check-all">Create Invoices</button>
+            <h2 class="w-full lg:w-auto text-[20px] text-[#1A1A1A] font-[600] mb-[15px]">Create Invoice</h2>
+            
             <form method="GET" action="{{ route('create.invoice') }}">
-                <div class="flex flex-wrap md-flex-nowrap items-start gap-[7px] md:gap-[15px] justify-end mb-[15px]">
-                    
+                <div class="flex  flex-wrap md-flex-nowrap items-start justify-between gap-[7px] md:gap-[15px] justify-end mb-[15px]">
+                <button type="button" class="w-full md:w-[120px] lg:w-[140px] bg-[#4EF953] px-[10px] lg:px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#000] text-center check-all">Create Invoices</button>
+
+                <div class="flex flex-wrap w-full md:w-auto md:flex-nowrap gap-[10px]">
                     <div class="relative w-[100%] sm:w-[200px]">
                         <input name="range"
                             class="date-range-invoice w-[100%] lg:w-[100%] bg-[#F6F6F6] px-[15px] py-[10px] text-[13px] font-[600] text-[#4D4D4D] border-[1px] border-[#E6E6E6] rounded-[4px] hover:outline-none focus:outline-none"
@@ -30,7 +32,7 @@
                         <button type="submit"
                             class="w-full md:w-[110px] lg:w-[140px] bg-[#4EF953] px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#000] text-center">Generate</button>
                     </div>
-                
+                    </div>
                 </div>
             </form>
             <div class="overflow-x-scroll tableScroll">
