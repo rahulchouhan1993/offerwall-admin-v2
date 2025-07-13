@@ -58,7 +58,7 @@
                             <div data-repeater-item class="relative flex-wrap mb-[20px] md:mb-[50px] border-[1px] p-[15px] rounded-[10px] flex gap-[15px] w-full">
                                 <input type="hidden" name="rec_id" value="{{ $featOffer->id }}">
                                 <div class="md:flex-wrap flex flex-col gap-[5px] w-full md:w-[48%] xl:w-[48%] ">
-                                    <label for="" class="flex items-center gap-[5px] text-[14px] text-[#898989]">Offer<div class="text-[#F23765] mt-[-2px]">*</div></label>
+                                    <label for="" class="flex items-center gap-[5px] text-[14px] text-[#898989]">Select Offer<div class="text-[#F23765] mt-[-2px]">*</div></label>
                                     <select name="offer_id" required class="flex px-[15px] py-[15px] rounded-[10px] bg-transparent text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none offer-option">
                                         
                                         
@@ -132,7 +132,7 @@
                         <div data-repeater-item class="flex-wrap mb-[20px] md:mb-[50px] border-[1px] p-[15px] rounded-[10px] flex gap-[15px] w-full">
                             <input type="hidden" name="rec_id" value="0">
                             <div class="md:flex-wrap flex flex-col gap-[5px] w-full md:w-[48%] xl:w-[48%] ">
-                                <label for="" class="flex items-center gap-[5px] text-[14px] text-[#898989]">Offer<div class="text-[#F23765] mt-[-2px]">*</div></label>
+                                <label for="" class="flex items-center gap-[5px] text-[14px] text-[#898989]">Select Offer<div class="text-[#F23765] mt-[-2px]">*</div></label>
                                 <select name="offer_id" required class="flex px-[15px] py-[15px] rounded-[10px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none offer-option">
                                     @if($allOffers['pagination']['total_count']>0)
                                         @foreach ($allOffers['offers'] as $offerKey =>$offerVal )
