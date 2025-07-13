@@ -8,7 +8,12 @@
             
             <form method="GET" action="{{ route('create.invoice') }}">
                 <div class="flex  flex-wrap md-flex-nowrap items-start justify-between gap-[7px] md:gap-[15px] justify-end mb-[15px]">
-                <button type="button" class="w-full md:w-[120px] lg:w-[140px] bg-[#4EF953] px-[10px] lg:px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#000] text-center check-all">Create Invoices</button>
+                <button type="button" 
+                class="w-full md:w-[120px] lg:w-[140px] bg-[#4EF953] px-[10px] lg:px-[20px] py-[10px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#000] text-center check-all 
+                        disabled:opacity-50 disabled:cursor-not-allowed disabled:blur-[0.5px]" 
+                disabled>
+                Create Invoices
+                </button>
 
                 <div class="flex flex-wrap w-full md:w-auto md:flex-nowrap gap-[10px]">
                     <div class="relative w-[100%] sm:w-[200px]">
@@ -161,12 +166,14 @@
          }
       });
    });
-
+   
     $(document).on('click','.all-checkbox',function(){
         if($(this).is(':checked')){
             $('.element-checkbox').prop('checked',true);
+            $('.check-all').prop('disabled',false);
         }else{
             $('.element-checkbox').prop('checked',false);
+            $('.check-all').prop('disabled',true);
         }
     })
 
@@ -175,6 +182,14 @@
             $(this).parent().parent().find('.create-invoice-now').trigger('click');
         });
     })
+
+    $(document).on("click", '.element-checkbox', function() {
+        if ($(".element-checkbox:checkbox:checked").length > 0){
+            $('.check-all').prop('disabled',false);
+        } else {
+            $('.check-all').prop('disabled',true);
+        }
+    });
 
 </script>
 
