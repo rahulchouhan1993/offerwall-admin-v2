@@ -48,7 +48,7 @@
     @include('layouts.header')
     <div class="pt-[50px] md:pt-[80px] flex dashboardMain">
         @include('layouts.sidebar')
-        <div class="dashboardContainer bg-[#F2F2F2]  pb-[100px]">
+        <div class="dashboardContainer bg-[#F2F2F2]  pb-[70px]">
             @yield('content')
             @include('layouts.footer')
         </div>

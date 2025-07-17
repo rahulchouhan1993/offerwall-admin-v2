@@ -116,7 +116,7 @@ body.active .dashboardContainer{width:calc(100% - 70px);}
 @media(max-width:1024px){.head-logo{width:230px;}
 body.active .head-logo{width:230px;}
 .head-w-cal{width:100%;}
-.dashboardContainer{width:100%;padding-bottom:110px;}
+.dashboardContainer{width:100%;padding-bottom:70px;}
 body.active .dashboardContainer{width:100%;}
 .sidebar{position:fixed;left:-300px;transition:all ease .3s;}
 body.active .sidebar{left:0;width:197px;}
