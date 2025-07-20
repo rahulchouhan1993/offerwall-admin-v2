@@ -10,7 +10,7 @@
 
 
 
-<div class="flex gap-[10px] md:gap-[15px] lg:gap-[20px] p-[20px] flex-col md:flex-row h-[100vh] bg-[#EEF0F8]">
+<div class="flex gap-[10px] md:gap-[15px] lg:gap-[20px] p-[20px] flex-col md:flex-row h-[85vh] bg-[#EEF0F8]">
 
     <!-- Sidebar -->
     <aside class="w-full md:w-1/3 lg:w-1/4 bg-white p-[10px] xl:p-[15px] rounded-[6px] flex flex-col shadow-md">
@@ -57,7 +57,7 @@
 
         </div>
         <div id="myDiv" class=" overflow-y-auto  max-h-[115px] md:max-h-[100vh] flex-grow">
-            <ul class="m-[0]">
+            <ul class="m-[0] overflow-x-hidden relative">
                 <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
                     <div class="flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
                         <div class="w-full flex flex-col justify-between items-center ">
@@ -449,7 +449,7 @@
 
         <!-- Messages Area with Scroll Fix -->
         <div id="chatMessages"
-            class="relative h-[35vh] md:h-[70vh] overflow-y-auto pt-[40px] px-[10px] py-[10px] md:px-[20px] md:py-[20px] xl:px-[30px] xl:py-[30px] space-y-4 z-[1]">
+            class="relative 1111h-[35vh] md:h-[100vh] overflow-y-auto pt-[40px] px-[10px] py-[10px] md:px-[20px] md:py-[20px] xl:px-[30px] xl:py-[30px] space-y-4 z-[1]">
 
             <div
                 class="absolute top-[8px] w-auto left-[0] right-[0] m-auto text-[13px] font-[600] text-green-800  text-center z-[9]">
@@ -637,15 +637,15 @@
 
         <!-- Input Box (Fixed on Mobile) -->
         <div
-            class="flex gap-[6px] md:gap-[10px] p-[10px] md:p-[13px] border-t  mobile-fixed md:relative z-[999] w-full">
+            class="flex gap-[6px] md:gap-[10px] p-[10px] md:p-[13px] border-t  mobile-fixed md:relative w-full">
             <div class="relative flex items-center">
-                <label for="fileInput" class="cursor-pointer flex items-center gap-1 text-black hover:text-green-800 hover:bg-green-100 border border-[#ccc] px-[5px] py-[5px] md:px-[10px] md:py-[8px] rouder-[8px] mb-[0]">
+                <label for="fileInput" class="cursor-pointer flex items-center justify-center w-[35px] bg-[#49FB53] py-[10px] w-[100px] border border-[#33c33b] rounded-[4px] text-[14px] font-[500] text-[#000] text-center mb-[0]">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M15.172 7l-6.586 6.586a2 2 0 002.828 2.828l6.586-6.586A4 4 0 1012 3.172l-6.586 6.586" />
                     </svg>
-                    <span class="text-[0] md:text-[15px]">Attach</span>
+                    <!-- <span class="text-[0] md:text-[15px]">Attach</span> -->
                 </label>
                 <input id="fileInput" type="file" class="hidden" />
             </div>
