@@ -32,7 +32,7 @@
 </head>
 
 <body class="font-sans antialiased dark:bg-black dark:text-white/50">
-    <div class="loader-fcustm fixed inset-0 flex flex-col items-center justify-center bg-white bg-opacity-75 backdrop-blur-md z-50">
+    <div class="loader-fcustm fixed top-[0] bottom-[0] left-[0] right-[0] inset-0 flex flex-col items-center justify-center bg-white bg-opacity-75 backdrop-blur-md z-[999999]">
         <div class="w-10 h-10 border-4 border-[#4FF956] border-t-transparent rounded-full animate-spin"></div>
         <p class="mt-4 text-lg font-semibold text-[#4FF956]">Loading...</p>
     </div>
