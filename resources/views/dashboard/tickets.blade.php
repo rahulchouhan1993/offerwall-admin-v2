@@ -16,7 +16,7 @@
     <aside class="w-full md:w-1/3 lg:w-1/4 bg-white p-[10px] xl:p-[15px] rounded-[6px] flex flex-col shadow-md">
         <div class="border-b border-b-[#f2f2f2]">
             <div class="flex gap-[8px] items-center justify-between">
-                <h2 class="text-lg font-semibold mb-[0]">Chats</h2>
+                <h2 class="text-lg text-black font-semibold mb-[0]">Chats</h2>
                 <div class="relative">
                     <button onclick="toggleDropdown2(event)"
                         class="w-[35px] h-[35px] text-black hover:text-black focus:outline-none px-2">
@@ -58,327 +58,77 @@
         </div>
         <div id="myDiv" class=" overflow-y-auto  max-h-[115px] md:max-h-[100vh] flex-grow">
             <ul class="m-[0] overflow-x-hidden relative">
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                    <div class="flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
-                        <div class="w-full flex flex-col justify-between items-center ">
-                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
-                                Lorem Lorem Lorem Lorem Lorem Lorem Lorem</span>
-                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
-                            <span class="text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">14:56</span>
-                        </div>
-                    </div>
-                    <span class="absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">12</span>
-                  
-                </li>
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                    <div class="flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
-                        <div class="w-full flex flex-col justify-between items-center ">
-                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
-                                Lorem Lorem Lorem Lorem Lorem Lorem Lorem</span>
-                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
-                            <span class="text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">14:56</span>
-                        </div>
-                    </div>
-                    <span class="absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">12</span>
-                  
-                </li>
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                    <div class="flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
-                        <div class="w-full flex flex-col justify-between items-center ">
-                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
-                                Lorem Lorem Lorem Lorem Lorem Lorem Lorem</span>
-                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
-                            <span class="text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">14:56</span>
-                        </div>
-                    </div>
-                    <span class="absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">12</span>
-                  
-                </li>
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                    <div class="flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
-                        <div class="w-full flex flex-col justify-between items-center ">
-                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
-                                Lorem Lorem Lorem Lorem Lorem Lorem Lorem</span>
-                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
-                            <span class="text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">14:56</span>
-                        </div>
-                    </div>
-                    <span class="absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">12</span>
-                  
-                </li>
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                    <div class="flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
-                        <div class="w-full flex flex-col justify-between items-center ">
-                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
-                                Lorem Lorem Lorem Lorem Lorem Lorem Lorem</span>
-                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
-                            <span class="text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">14:56</span>
-                        </div>
-                    </div>
-                    <span class="absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">12</span>
-                  
-                </li>
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                    <div class="flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
-                        <div class="w-full flex flex-col justify-between items-center ">
-                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
-                                Lorem Lorem Lorem Lorem Lorem Lorem Lorem</span>
-                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
-                            <span class="text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">14:56</span>
-                        </div>
-                    </div>
-                    <span class="absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">12</span>
-                  
-                </li>
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                    <div class="flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
-                        <div class="w-full flex flex-col justify-between items-center ">
-                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
-                                Lorem Lorem Lorem Lorem Lorem Lorem Lorem</span>
-                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
-                            <span class="text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">14:56</span>
-                        </div>
-                    </div>
-                    <span class="absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">12</span>
-                  
-                </li>
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                    <div class="flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
-                        <div class="w-full flex flex-col justify-between items-center ">
-                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
-                                Lorem Lorem Lorem Lorem Lorem Lorem Lorem</span>
-                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
-                            <span class="text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">14:56</span>
-                        </div>
-                    </div>
-                    <span class="absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">12</span>
-                  
-                </li>
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                    <div class="flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
-                        <div class="w-full flex flex-col justify-between items-center ">
-                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
-                                Lorem Lorem Lorem Lorem Lorem Lorem Lorem</span>
-                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
-                            <span class="text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">14:56</span>
-                        </div>
-                    </div>
-                    <span class="absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">12</span>
-                  
-                </li>
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                    <div class="flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
-                        <div class="w-full flex flex-col justify-between items-center ">
-                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
-                                Lorem Lorem Lorem Lorem Lorem Lorem Lorem</span>
-                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
-                            <span class="text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">14:56</span>
-                        </div>
-                    </div>
-                    <span class="absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">12</span>
-                  
-                </li>
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                    <div class="flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
-                        <div class="w-full flex flex-col justify-between items-center ">
-                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
-                                Lorem Lorem Lorem Lorem Lorem Lorem Lorem</span>
-                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
-                            <span class="text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">14:56</span>
-                        </div>
-                    </div>
-                    <span class="absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">12</span>
-                  
-                </li>
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                    <div class="flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
-                        <div class="w-full flex flex-col justify-between items-center ">
-                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
-                                Lorem Lorem Lorem Lorem Lorem Lorem Lorem</span>
-                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
-                            <span class="text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">14:56</span>
-                        </div>
-                    </div>
-                    <span class="absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">12</span>
-                  
-                </li>
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                    <div class="flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
-                        <div class="w-full flex flex-col justify-between items-center ">
-                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
-                                Lorem Lorem Lorem Lorem Lorem Lorem Lorem</span>
-                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
-                            <span class="text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">14:56</span>
-                        </div>
-                    </div>
-                    <span class="absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">12</span>
-                  
-                </li>
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                    <div class="flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
-                        <div class="w-full flex flex-col justify-between items-center ">
-                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
-                                Lorem Lorem Lorem Lorem Lorem Lorem Lorem</span>
-                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
-                            <span class="text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">14:56</span>
-                        </div>
-                    </div>
-                    <span class="absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">12</span>
-                  
-                </li>
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                    <div class="flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
-                        <div class="w-full flex flex-col justify-between items-center ">
-                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
-                                Lorem Lorem Lorem Lorem Lorem Lorem Lorem</span>
-                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
-                            <span class="text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">14:56</span>
-                        </div>
-                    </div>
-                    <span class="absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">12</span>
-                  
-                </li>
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                    <div class="flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
-                        <div class="w-full flex flex-col justify-between items-center ">
-                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
-                                Lorem Lorem Lorem Lorem Lorem Lorem Lorem</span>
-                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
-                            <span class="text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">14:56</span>
-                        </div>
-                    </div>
-                    <span class="absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">12</span>
-                  
-                </li>
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                    <div class="flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
-                        <div class="w-full flex flex-col justify-between items-center ">
-                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
-                                Lorem Lorem Lorem Lorem Lorem Lorem Lorem</span>
-                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
-                            <span class="text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">14:56</span>
-                        </div>
-                    </div>
-                    <span class="absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">12</span>
-                  
-                </li>
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                    <div class="flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
-                        <div class="w-full flex flex-col justify-between items-center ">
-                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
-                                Lorem Lorem Lorem Lorem Lorem Lorem Lorem</span>
-                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
-                            <span class="text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">14:56</span>
-                        </div>
-                    </div>
-                    <span class="absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">12</span>
-                  
-                </li>
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                    <div class="flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
-                        <div class="w-full flex flex-col justify-between items-center ">
-                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
-                                Lorem Lorem Lorem Lorem Lorem Lorem Lorem</span>
-                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
-                            <span class="text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">14:56</span>
-                        </div>
-                    </div>
-                    <span class="absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">12</span>
-                  
-                </li>
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                    <div class="flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
-                        <div class="w-full flex flex-col justify-between items-center ">
-                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
-                                Lorem Lorem Lorem Lorem Lorem Lorem Lorem</span>
-                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
-                            <span class="text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">14:56</span>
-                        </div>
-                    </div>
-                    <span class="absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">12</span>
-                  
-                </li>
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                    <div class="flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
-                        <div class="w-full flex flex-col justify-between items-center ">
-                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
-                                Lorem Lorem Lorem Lorem Lorem Lorem Lorem</span>
-                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
-                            <span class="text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">14:56</span>
-                        </div>
-                    </div>
-                    <span class="absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">12</span>
-                  
-                </li>
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                    <div class="flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
-                        <div class="w-full flex flex-col justify-between items-center ">
-                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
-                                Lorem Lorem Lorem Lorem Lorem Lorem Lorem</span>
-                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
-                            <span class="text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">14:56</span>
-                        </div>
-                    </div>
-                    <span class="absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">12</span>
-                  
-                </li>
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                    <div class="flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
-                        <div class="w-full flex flex-col justify-between items-center ">
-                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
-                                Lorem Lorem Lorem Lorem Lorem Lorem Lorem</span>
-                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
-                            <span class="text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">14:56</span>
-                        </div>
-                    </div>
-                    <span class="absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">12</span>
-                  
-                </li>
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                    <div class="flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
-                        <div class="w-full flex flex-col justify-between items-center ">
-                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
-                                Lorem Lorem Lorem Lorem Lorem Lorem Lorem</span>
-                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
-                            <span class="text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">14:56</span>
-                        </div>
-                    </div>
-                    <span class="absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">12</span>
-                  
-                </li>
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                    <div class="flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
-                        <div class="w-full flex flex-col justify-between items-center ">
-                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
-                                Lorem Lorem Lorem Lorem Lorem Lorem Lorem</span>
-                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
-                            <span class="text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">14:56</span>
-                        </div>
-                    </div>
-                    <span class="absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">12</span>
-                  
-                </li>
-                <li class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                    <div class="flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
-                        <div class="w-full flex flex-col justify-between items-center ">
-                            <span class="w-full text-[12px] xl:text-[13px] font-semibold leading-[15px] truncate ">Ipsum
-                                Lorem Lorem Lorem Lorem Lorem Lorem Lorem</span>
-                                <p class="w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">Hey, how’s it going going going going going going going going?</p>
-                            <span class="text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">14:56</span>
-                        </div>
-                    </div>
-                    <span class="absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">12</span>
-                  
-                </li>
+                @if(!empty($tickets))
+                @foreach($tickets as $ticket)
+                @php
 
-             
+                    $updatedAt = \Carbon\Carbon::parse($ticket['lastchat']['created_at'])->timezone('Asia/Kolkata');;
 
+                    if ($updatedAt->isToday()) {
+                        $formattedTime = 'Today ' . $updatedAt->format('H:i');
+                    } elseif ($updatedAt->isYesterday()) {
+                        $formattedTime = 'Yesterday ' . $updatedAt->format('H:i');
+                    } else {
+                        $formattedTime = $updatedAt->format('l H:i');
+                    }
+                @endphp
+                <li onclick="loadConversation({{ $ticket->id }})" class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
+                    <div class="chatmsgBx flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
+                        <div class="chatmsg w-full flex flex-col justify-between items-center ">
+                            <span class="chatTitle w-full text-[12px] xl:text-[13px] text-black font-semibold leading-[15px] truncate ">{{ Illuminate\Support\Str::limit($ticket['tracking']['offer_name'], 30) }}</span>
+                                <p class="chatDes w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">{{ $ticket['user']['name'] }}</p>
+                            <span class="chatTime text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">{{$formattedTime}}</span>
+                        </div>
+                    </div>
+                     @if($ticket['unread'] != 0)
+                    <span class="chatCount absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">{{$ticket['unread']}}</span>
+                    @endif
+                </li>
+                @endforeach
+                @else
+                        
 
-           
-
+                @endif
 
             </ul>
         </div>
+
+        <!-- <div id="myDiv" class=" overflow-y-auto  max-h-[115px] md:max-h-[100vh] flex-grow">
+            <ul class="m-[0] overflow-x-hidden relative">
+            @if(!empty($tickets))
+            @foreach($tickets as $ticket)
+                    @php
+
+                        $updatedAt = \Carbon\Carbon::parse($ticket['lastchat']['created_at'])->timezone('Asia/Kolkata');;
+
+                        if ($updatedAt->isToday()) {
+                            $formattedTime = 'Today ' . $updatedAt->format('H:i');
+                        } elseif ($updatedAt->isYesterday()) {
+                            $formattedTime = 'Yesterday ' . $updatedAt->format('H:i');
+                        } else {
+                            $formattedTime = $updatedAt->format('l H:i');
+                        }
+                    @endphp
+
+                <li onclick="loadConversation({{ $ticket->id }})" class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
+                    <div class="chatmsgBx flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
+                        <div class="chatmsg w-full flex flex-col justify-between items-center">
+                            <span class="chatTitle text-black" title="{{ $ticket['tracking']['offer_name']}}">{{ Illuminate\Support\Str::limit($ticket['tracking']['offer_name'], 20) }}</span>
+                                <p class="chatDes">{{ empty($ticket['lastchat']['media']) ? $ticket['lastchat']['message'] : $ticket['lastchat']['media'] }}</p>
+                            <span class="chatTime">{{$formattedTime}}</span>
+                        </div>
+                    </div>
+                    @if($ticket['unread'] != 0)
+                    <span class="chatCount absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">{{$ticket['unread']}}</span>
+                    @endif
+                </li>
+            @endforeach
+            @else
+                    
+
+            @endif
+            </ul>
+        </div> -->
     </aside>
 
      <!-- Global dropdown left Sidebar -->
@@ -409,21 +159,21 @@
         </div>
 
     <!-- Chat Window -->
-    <main class="w-full md:w-2/3 lg:w-3/4 bg-gray-50 flex flex-col relative rounded-[10px] shadow-md">
+    <main class="chatwindowMain w-full md:w-2/3 lg:w-3/4 bg-gray-50 flex flex-col relative rounded-[10px] shadow-md">
         <div
-            class="absolute top-[0] bottom-[0] left-[0] right-[0] m-auto flex items-center justify-center opacity-[25%]">
+            class="chatwindowLogo absolute top-[0] bottom-[0] left-[0] right-[0] m-auto flex items-center justify-center opacity-[25%]">
             <img src="/images/logo.png" alt="img">
         </div>
         <!-- Header -->
-        <div class="px-[10px] py-[10px] border-b flex items-center justify-between gap-3 bg-white z-10">
-            <div class="flex items-center gap-[5px]">
+        <div class="chatwindowHeader px-[10px] py-[10px] border-b flex items-center justify-between gap-3 bg-white z-10">
+            <div class="chatwindowUser flex items-center gap-[5px]">
                 <img src="/images/user.webp" class="rounded-full w-10 h-10" />
                 <div>
-                    <p class="text-[12px] xl:text-[15px] font-semibold m-[0]">Alice Whitman</p>
+                    <p class="text-[12px] xl:text-[15px] text-black font-semibold m-[0]">Alice Whitman</p>
                 </div>
             </div>
 
-            <div class="relative flex items-center">
+            <div class="chatwindowDrop relative flex items-center">
                 <button  onclick="toggleDropdown3(event)"
                     class="p-[0] w-[35px] h-[35px] flex items-center justify-center text-black rounded-[40px] bg-[#f2f2f2] focus:outline-none">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-[15px] h-[15px]" viewBox="0 0 24 24" fill="currentColor"><path d="M3 4H21V6H3V4ZM9 11H21V13H9V11ZM3 18H21V20H3V18Z"></path></svg>
@@ -451,182 +201,33 @@
         <div id="chatMessages"
             class="relative 1111h-[35vh] md:h-[100vh] overflow-y-auto pt-[40px] px-[10px] py-[10px] md:px-[20px] md:py-[20px] xl:px-[30px] xl:py-[30px] space-y-4 z-[1]">
 
-            <div
-                class="absolute top-[8px] w-auto left-[0] right-[0] m-auto text-[13px] font-[600] text-green-800  text-center z-[9]">
-                <div class="w-auto inline-flex shadow-md bg-green-100 text-green-800 px-[10px] py-[5px]  rounded-[4px]">
-                Mukesh Added At This Group
-                </div>
-                </div>
             <div class="text-left">
                 <div
-                    class="relative inline-flex flex-col bg-gray-100 p-[12px] lg:text-[15px]  text-sm  shadow-md rounded-[10px] rounded-tl-[0]">
+                    class="chatwindowMsg relative inline-flex flex-col bg-gray-100 p-[12px] lg:text-[15px]  text-sm  shadow-md rounded-[10px] rounded-tl-[0]">
                     <div class="absolute top-2 left-[-15px] w-0 h-0 border-t-[15px] border-t-transparent border-b-[15px] border-b-transparent border-r-[15px] border-r-gray-100">
                     </div>
 
-                    <p class="text-[12px] xl:text-[13px]">
-                        Here are all the files. Let me know once you’ve had a look. Here are all the files. Let me know
-                        once you’ve had a look. Here are all the files. Let me know once you’ve had a look. Here are all
-                        the files. Let me know once you’ve had a look. Here are all the files. Let me know once you’ve
-                        had a look.
+                    <p class="text-[12px] text-black xl:text-[13px]">
                     </p>
 
-                    <div class="w-full text-end flex justify-end gap-[5px] items-center text-[12px] text-[#000]">
-                        11/July/2025 <div class="text-[12px] text-black font-[600]">10:40 PM</div>
+                    <div class="chatWindowDate w-full text-end text-black flex justify-end gap-[5px] items-center text-[12px] text-[#000]">
+                       <div class="chatWindowTime text-[12px] text-black font-[600]"></div>
                     </div>
                 </div>
             </div>
-
-            <div class="text-left">
-                <div
-                    class="relative inline-block bg-gray-100 p-[12px] lg:text-[15px]  text-sm  shadow-md rounded-[10px] rounded-tl-[0]">
-                    <div
-                        class="absolute top-2 left-[-15px] w-0 h-0 border-t-[15px] border-t-transparent border-b-[15px] border-b-transparent border-r-[15px] border-r-gray-100">
-                    </div>
-                    <p class="text-[12px] xl:text-[13px]">
-                        Here are all the files. Let me know once you’ve had a look. once you’ve had a look. once you’ve
-                        had a look.
-                    </p>
-
-                    <div class="w-full text-end flex justify-end gap-[5px] items-center text-[12px] text-[#000]">
-                        11/July/2025 <div class="text-[12px] text-black font-[600]">10:40 PM</div>
-                    </div>
-                </div>
-            </div>
-
-
 
 
             <div class="text-right">
                 <div
-                    class="relative inline-block bg-green-100 text-green-800 text-sm p-[12px] lg:text-[15px] rounded-[10px] rounded-tl-[0] shadow-md">
+                    class="chatwindowMsg relative inline-block bg-green-100 text-green-800 text-sm p-[12px] lg:text-[15px] rounded-[10px] rounded-tl-[0] shadow-md">
                     <div
                         class="absolute top-2 right-[-15px] w-0 h-0 border-t-[15px] border-t-transparent border-b-[15px] border-b-transparent border-l-[15px] border-l-green-100">
                     </div>
                     <p class="text-[12px] xl:text-[13px]">
-                        Here are all the files. Let me know once you’ve had a look. Here are all the files.
                     </p>
 
-                    <div class="w-full text-end flex justify-end gap-[5px] items-center text-[12px] text-[#000]">
-                        11/July/2025 <div class="text-[12px] text-black font-[600]">10:40 PM</div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="text-right">
-                <div
-                    class="relative inline-block bg-green-100 text-green-800 text-sm p-[18px] rounded-[10px] rounded-tl-[0] shadow-md">
-                    <div
-                        class="absolute top-2 right-[-15px] w-0 h-0 border-t-[15px] border-t-transparent border-b-[15px] border-b-transparent border-l-[15px] border-l-green-100">
-                    </div>
-                    <p class="text-[12px] xl:text-[13px]">Here are all the files.</p>
-
-                    <div class="w-full text-end flex justify-end gap-[5px] items-center text-[12px] text-[#000]">
-                        11/July/2025 <div class="text-[12px] text-black font-[600]">10:40 PM</div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-right">
-                <div
-                    class="relative inline-block bg-green-100 text-green-800 text-sm p-[18px] rounded-[10px] rounded-tl-[0] shadow-md">
-                    <div
-                        class="absolute top-2 right-[-15px] w-0 h-0 border-t-[15px] border-t-transparent border-b-[15px] border-b-transparent border-l-[15px] border-l-green-100">
-                    </div>
-                    <p class="text-[12px] xl:text-[13px]">Here are all the files.</p>
-
-                    <div class="w-full text-end flex justify-end gap-[5px] items-center text-[12px] text-[#000]">
-                        11/July/2025 <div class="text-[12px] text-black font-[600]">10:40 PM</div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-right">
-                <div
-                    class="relative inline-block bg-green-100 text-green-800 text-sm p-[18px] rounded-[10px] rounded-tl-[0] shadow-md">
-                    <div
-                        class="absolute top-2 right-[-15px] w-0 h-0 border-t-[15px] border-t-transparent border-b-[15px] border-b-transparent border-l-[15px] border-l-green-100">
-                    </div>
-                    <p class="text-[12px] xl:text-[13px]">Here are all the files.</p>
-
-                    <div class="w-full text-end flex justify-end gap-[5px] items-center text-[12px] text-[#000]">
-                        11/July/2025 <div class="text-[12px] text-black font-[600]">10:40 PM</div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-right">
-                <div
-                    class="relative inline-block bg-green-100 text-green-800 text-sm p-[18px] rounded-[10px] rounded-tl-[0] shadow-md">
-                    <div
-                        class="absolute top-2 right-[-15px] w-0 h-0 border-t-[15px] border-t-transparent border-b-[15px] border-b-transparent border-l-[15px] border-l-green-100">
-                    </div>
-                    <p class="text-[12px] xl:text-[13px]">Here are all the files.</p>
-
-                    <div class="w-full text-end flex justify-end gap-[5px] items-center text-[12px] text-[#000]">
-                        11/July/2025 <div class="text-[12px] text-black font-[600]">10:40 PM</div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-right">
-                <div
-                    class="relative inline-block bg-green-100 text-green-800 text-sm p-[18px] rounded-[10px] rounded-tl-[0] shadow-md">
-                    <div
-                        class="absolute top-2 right-[-15px] w-0 h-0 border-t-[15px] border-t-transparent border-b-[15px] border-b-transparent border-l-[15px] border-l-green-100">
-                    </div>
-                    <p class="text-[12px] xl:text-[13px]">Here are all the files.</p>
-
-                    <div class="w-full text-end flex justify-end gap-[5px] items-center text-[12px] text-[#000]">
-                        11/July/2025 <div class="text-[12px] text-black font-[600]">10:40 PM</div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-right">
-                <div
-                    class="relative inline-block bg-green-100 text-green-800 text-sm p-[18px] rounded-[10px] rounded-tl-[0] shadow-md">
-                    <div
-                        class="absolute top-2 right-[-15px] w-0 h-0 border-t-[15px] border-t-transparent border-b-[15px] border-b-transparent border-l-[15px] border-l-green-100">
-                    </div>
-                    <p class="text-[12px] xl:text-[13px]">Here are all the files.</p>
-
-                    <div class="w-full text-end flex justify-end gap-[5px] items-center text-[12px] text-[#000]">
-                        11/July/2025 <div class="text-[12px] text-black font-[600]">10:40 PM</div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-right">
-                <div
-                    class="relative inline-block bg-green-100 text-green-800 text-sm p-[18px] rounded-[10px] rounded-tl-[0] shadow-md">
-                    <div
-                        class="absolute top-2 right-[-15px] w-0 h-0 border-t-[15px] border-t-transparent border-b-[15px] border-b-transparent border-l-[15px] border-l-green-100">
-                    </div>
-                    <p class="text-[12px] xl:text-[13px]">Here are all the files.</p>
-
-                    <div class="w-full text-end flex justify-end gap-[5px] items-center text-[12px] text-[#000]">
-                        11/July/2025 <div class="text-[12px] text-black font-[600]">10:40 PM</div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-right">
-                <div
-                    class="relative inline-block bg-green-100 text-green-800 text-sm p-[18px] rounded-[10px] rounded-tl-[0] shadow-md">
-                    <div
-                        class="absolute top-2 right-[-15px] w-0 h-0 border-t-[15px] border-t-transparent border-b-[15px] border-b-transparent border-l-[15px] border-l-green-100">
-                    </div>
-                    <p class="text-[12px] xl:text-[13px]">Here are all the files.</p>
-
-                    <div class="w-full text-end flex justify-end gap-[5px] items-center text-[12px] text-[#000]">
-                        11/July/2025 <div class="text-[12px] text-black font-[600]">10:40 PM</div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-right">
-                <div
-                    class="relative inline-block bg-green-100 text-green-800 text-sm p-[18px] rounded-[10px] rounded-tl-[0] shadow-md">
-                    <div
-                        class="absolute top-2 right-[-15px] w-0 h-0 border-t-[15px] border-t-transparent border-b-[15px] border-b-transparent border-l-[15px] border-l-green-100">
-                    </div>
-                    <p class="text-[12px] xl:text-[13px]">Here are all the files.</p>
-
-                    <div class="w-full text-end flex justify-end gap-[5px] items-center text-[12px] text-[#000]">
-                        11/July/2025 <div class="text-[12px] text-black font-[600]">10:40 PM</div>
+                    <div class="chatWindowDate w-full text-end flex justify-end gap-[5px] items-center text-[12px] text-[#000]">
+                         <div class="text-[12px] text-black font-[600]"></div>
                     </div>
                 </div>
             </div>
@@ -674,5 +275,75 @@ $('#msgInput').summernote({
     placeholder: 'Write your message here...',
     toolbar: [],
 })
+</script>
+
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var tickets = "{{ $tickets }}"
+
+        if(tickets.length > 0){
+            var ticketId = "{{ $tickets[0]['id'] }}"
+        }
+        loadConversation(ticketId);
+    });
+
+    function loadConversation(ticketId) {
+        fetch(`/ticketMessages/${ticketId}`)
+            .then(response => response.json())
+            .then(data => {
+                const chatWindow = document.getElementById('chatMessages');
+                const headerUser = document.querySelector('.chatwindowUser p');
+                const logo = document.querySelector('.chatwindowLogo img');
+
+                // Update chat header
+                headerUser.textContent = data.ticket.tracking.offer_name;
+
+                // Clear chat area
+                chatWindow.innerHTML = '';
+
+                // Add each message
+                data.messages.forEach(msg => {
+                    const msgWrapper = document.createElement('div');
+                    msgWrapper.classList.add(msg.from == "admin" ? 'text-right' : 'text-left');
+
+                    const bubble = document.createElement('div');
+                    bubble.className = msg.from == "admin"
+                        ? 'chatwindowMsg relative inline-block bg-green-100 text-green-800 text-black text-sm p-[12px] lg:text-[15px] rounded-[10px] rounded-tl-[0] shadow-md'
+                        : 'chatwindowMsg relative inline-flex flex-col bg-gray-100 p-[12px] text-black lg:text-[15px] text-sm shadow-md rounded-[10px] rounded-tl-[0]';
+
+                    // Arrow div
+                    const arrow = document.createElement('div');
+                    arrow.className = msg.from == "admin"
+                        ? 'absolute top-2 right-[-15px] w-0 h-0 border-t-[15px] border-t-transparent border-b-[15px] border-b-transparent border-l-[15px] border-l-green-100'
+                        : 'absolute top-2 left-[-15px] w-0 h-0 border-t-[15px] border-t-transparent border-b-[15px] border-b-transparent border-r-[15px] border-r-gray-100';
+                    bubble.appendChild(arrow);
+
+                    // Message text
+                    const msgText = document.createElement('p');
+                    msgText.className = 'text-[12px] xl:text-[13px]';
+                    msgText.textContent = msg.message || msg.media;
+                    bubble.appendChild(msgText);
+
+                    const timestamp = document.createElement('div');
+                    timestamp.className = 'chatWindowDate w-full text-end text-black flex justify-end gap-[5px] items-center text-[12px] text-[#000]';
+
+                    const time = new Date(msg.created_at);
+
+                    const day = time.getDate();
+                    const month = time.toLocaleString('default', { month: 'long' });
+                    const year = time.getFullYear();
+                    const formattedDate = `${day}/${month}/${year}`;
+                    const formattedTime = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+                    timestamp.innerHTML = `${formattedDate} <div class="text-[12px] text-black font-[600]">${formattedTime}</div>`;
+                    bubble.appendChild(timestamp);
+
+                    msgWrapper.appendChild(bubble);
+                    chatWindow.appendChild(msgWrapper);
+                });
+            });
+    }
 </script>
 @stop

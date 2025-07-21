@@ -1,0 +1,33 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('tickets_chats', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('ticket_id');
+            $table->text('message')->nullable();
+            $table->text('media')->nullable();
+            $table->string('from');
+            $table->tinyInteger('is_read_user')->default(0);
+            $table->tinyInteger('is_read_admin')->default(0);
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('tickets_chats');
+    }
+};
