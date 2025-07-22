@@ -7,6 +7,7 @@ use App\Models\App;
 use App\Models\Contact;
 use App\Models\Template;
 use App\Models\Setting;
+use App\Models\Tickets;
 use App\Models\Tracking;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
@@ -250,6 +251,10 @@ class DashboardController extends Controller
 
     public function tickets(){
         $pageTitle = 'Tickets';
-        return view('dashboard/tickets',compact('pageTitle'));
+
+        $tickets = Tickets::with(['tracking:id,offer_name','lastchat:id,ticket_id,created_at,updated_at','user:id,name'])->orderBy('updated_at','DESC')->get();
+
+
+        return view('dashboard/tickets',compact('pageTitle','tickets'));
     }
 }

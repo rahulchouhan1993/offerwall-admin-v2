@@ -5,6 +5,7 @@ use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\AppsController;
+use App\Http\Controllers\TicketsController;
 
 //Users Routes
 Route::match(['post','get'],'/',[UsersController::class,'login'])->name('login');
@@ -65,6 +66,9 @@ Route::middleware('auth')->group(function () {
 
     //Tickets
     Route::get('/tickets/{id?}',[DashboardController::class, 'tickets'])->name('tickets');
+
+    Route::get('/ticketMessages/{ticketId}', [TicketsController::class, 'getChatConversation'])->name('getChatConversation');
+
 
     // Chart Data
     Route::get('/chart-data', [ChartController::class, 'chartData'])->name('chart.data');
