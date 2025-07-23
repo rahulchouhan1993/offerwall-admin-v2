@@ -8,6 +8,9 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 
 
 <div class="flex gap-[10px] md:gap-[15px] lg:gap-[20px] p-[20px] flex-col md:flex-row h-[85vh] bg-[#EEF0F8]">
@@ -18,24 +21,24 @@
             <div class="flex gap-[8px] items-center justify-between">
                 <h2 class="text-lg text-black font-semibold mb-[0]">Chats</h2>
                 <div class="relative">
-                    <button onclick="toggleDropdown2(event)"
+                    <!-- <button onclick="toggleDropdown2(event)"
                         class="w-[35px] h-[35px] text-black hover:text-black focus:outline-none px-2">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                             <path
                                 d="M12 3C10.9 3 10 3.9 10 5C10 6.1 10.9 7 12 7C13.1 7 14 6.1 14 5C14 3.9 13.1 3 12 3ZM12 17C10.9 17 10 17.9 10 19C10 20.1 10.9 21 12 21C13.1 21 14 20.1 14 19C14 17.9 13.1 17 12 17ZM12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10Z">
                             </path>
                         </svg>
-                    </button>
+                    </button> -->
 
                     <!-- Dropdown Menu (initially hidden) -->
-                    <div
+                    <!-- <div
                         class="dropdownNav absolute top-[24px] right-0 mt-2 w-32 bg-white border rounded shadow-lg hidden z-10">
                         <ul class="text-sm text-gray-700">
                             <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Mute</li>
                             <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Archive</li>
                             <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500">Delete</li>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="flex items-center justify-between gap-[10px] relative mb-[10px]">
@@ -65,11 +68,11 @@
                     $updatedAt = \Carbon\Carbon::parse($ticket['lastchat']['created_at'])->timezone('Asia/Kolkata');;
 
                     if ($updatedAt->isToday()) {
-                        $formattedTime = 'Today ' . $updatedAt->format('H:i');
+                        $formattedTime = 'Today ' . $updatedAt->format('h:i A');
                     } elseif ($updatedAt->isYesterday()) {
-                        $formattedTime = 'Yesterday ' . $updatedAt->format('H:i');
+                        $formattedTime = 'Yesterday ' . $updatedAt->format('h:i A');
                     } else {
-                        $formattedTime = $updatedAt->format('l H:i');
+                        $formattedTime = $updatedAt->format('l h:i A');
                     }
                 @endphp
                 <li onclick="loadConversation({{ $ticket->id }})" class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
@@ -149,12 +152,11 @@
             </ul>
         </div>
 
-
         <div id="globalDropdown3" class="custom-dropdown hidden bg-white border rounded shadow-lg z-10">
             <ul class="text-sm text-gray-700">
-                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Mute</li>
-                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Archive</li>
-                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500">Delete</li>
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" onclick="closeTicket()">Close Ticket</li>
+                <!-- <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Archive</li>
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500">Delete</li> -->
             </ul>
         </div>
 
@@ -169,7 +171,7 @@
             <div class="chatwindowUser flex items-center gap-[5px]">
                 <img src="/images/user.webp" class="rounded-full w-10 h-10" />
                 <div>
-                    <p class="text-[12px] xl:text-[15px] text-black font-semibold m-[0]">Alice Whitman</p>
+                    <p class="text-[12px] xl:text-[15px] text-black font-semibold m-[0]"></p>
                 </div>
             </div>
 
@@ -237,8 +239,9 @@
         </div>
 
         <!-- Input Box (Fixed on Mobile) -->
-        <div
+        <div id="chatInputBar"
             class="flex gap-[6px] md:gap-[10px] p-[10px] md:p-[13px] border-t  mobile-fixed md:relative w-full">
+            <form onsubmit="event.preventDefault(); addMessage();" enctype="multipart/form-data" class="w-full flex items-center gap-2">
             <div class="relative flex items-center">
                 <label for="fileInput" class="cursor-pointer flex items-center justify-center w-[35px] bg-[#49FB53] py-[10px] w-[100px] border border-[#33c33b] rounded-[4px] text-[14px] font-[500] text-[#000] text-center mb-[0]">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
@@ -251,7 +254,6 @@
                 <input id="fileInput" type="file" class="hidden" />
             </div>
 
-            <form onsubmit="event.preventDefault(); addMessage();" class="w-full flex items-center gap-2">
                 <textarea id="msgInput" placeholder="Type a message..."
                     class="w-full flex-1 py-[15px] px-[30px] border-none bg-[#f2f2f2] rounded-[80px] text-[11px] md:text-[15px] text-black focus:outline-none"></textarea>
                 <button type="submit"
@@ -264,8 +266,12 @@
                     </svg></button>
             </form>
         </div>
-    </main>
 
+        <div id="chatClosedMessage" class="chatwindowAreaBx hidden text-center text-sm text-gray-600 p-4 w-full border-t bg-gray-100 z-[999]">
+            This ticket has been closed.
+        </div>
+    </main>
+    
 </div>
 
 
@@ -281,24 +287,46 @@ $('#msgInput').summernote({
 <script>
 
     document.addEventListener("DOMContentLoaded", function () {
-        var tickets = "{{ $tickets }}"
+        var tickets = @json($tickets); // Correct way to pass PHP array to JS
 
-        if(tickets.length > 0){
-            var ticketId = "{{ $tickets[0]['id'] }}"
+        const dropdownButton = document.querySelector('button[onclick="toggleDropdown3(event)"]');
+
+
+        if (tickets.length > 0) {
+            var ticketId = tickets[0].id;
+            loadConversation(ticketId);
         }
-        loadConversation(ticketId);
+        else{
+            if (dropdownButton) {
+                dropdownButton.style.display = 'none'; // Hide the button
+                // OR, if using Tailwind:
+                // dropdownButton.classList.add('hidden');
+            }
+        }
     });
 
     function loadConversation(ticketId) {
+        window.currentTicketId = ticketId;
+
         fetch(`/ticketMessages/${ticketId}`)
             .then(response => response.json())
             .then(data => {
                 const chatWindow = document.getElementById('chatMessages');
                 const headerUser = document.querySelector('.chatwindowUser p');
                 const logo = document.querySelector('.chatwindowLogo img');
+                const inputBar = document.getElementById('chatInputBar');
+                const closedMessage = document.getElementById('chatClosedMessage');
 
                 // Update chat header
                 headerUser.textContent = data.ticket.tracking.offer_name;
+
+                if (data.ticket.status == 2) {
+                    inputBar.style.display = 'none';
+                    closedMessage.style.display = 'block';
+                } else {
+                    inputBar.style.display = 'flex';
+                    closedMessage.style.display = 'none';
+                }
 
                 // Clear chat area
                 chatWindow.innerHTML = '';
@@ -323,7 +351,7 @@ $('#msgInput').summernote({
                     // Message text
                     const msgText = document.createElement('p');
                     msgText.className = 'text-[12px] xl:text-[13px]';
-                    msgText.textContent = msg.message || msg.media;
+                    msgText.innerHTML = msg.message || msg.media;
                     bubble.appendChild(msgText);
 
                     const timestamp = document.createElement('div');
@@ -332,10 +360,10 @@ $('#msgInput').summernote({
                     const time = new Date(msg.created_at);
 
                     const day = time.getDate();
-                    const month = time.toLocaleString('default', { month: 'long' });
+                    const month = time.toLocaleString('default', { month: 'short' });
                     const year = time.getFullYear();
-                    const formattedDate = `${day}/${month}/${year}`;
-                    const formattedTime = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                    const formattedDate = `${day} ${month} ${year}`;
+                    const formattedTime = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
 
                     timestamp.innerHTML = `${formattedDate} <div class="text-[12px] text-black font-[600]">${formattedTime}</div>`;
                     bubble.appendChild(timestamp);
@@ -343,7 +371,86 @@ $('#msgInput').summernote({
                     msgWrapper.appendChild(bubble);
                     chatWindow.appendChild(msgWrapper);
                 });
+                chatWindow.scrollTop = chatWindow.scrollHeight;
             });
+    }
+
+    function addMessage() {
+        const message = document.getElementById('msgInput').value.trim();
+        const ticketId = window.currentTicketId;
+        const fileInput = document.getElementById('fileInput');
+        const file = fileInput.files[0];
+
+        // Send text message (if exists)
+        if (message) {
+            $.ajax({
+                url: '{{ route("sendMessage") }}',
+                method: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    message: message,
+                    ticket_id: ticketId
+                },
+                success: function (response) {
+                    $('#msgInput').summernote('reset');
+                    toastr.success(response.message || 'Message Sent');
+                    document.getElementById('msgInput').value = ''; 
+                    loadConversation(ticketId);
+                },
+                error: function (xhr) {
+                    alert('Message failed to send');
+                    console.log(xhr.responseText);
+                }
+            });
+        }
+
+        // Send file message (if file exists)
+        if (file) {
+            const formData = new FormData();
+            formData.append('_token', '{{ csrf_token() }}');
+            formData.append('ticket_id', ticketId);
+            formData.append('media', file);
+
+            $.ajax({
+                url: '{{ route("sendMessage") }}',
+                method: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    fileInput.value = '';
+                    toastr.success('File Sent');
+                    loadConversation(ticketId);
+                },
+                error: function (xhr) {
+                    alert('File failed to send');
+                    console.log(xhr.responseText);
+                }
+            });
+        }
+    }
+
+    function closeTicket() {
+        $.ajax({
+            url: '{{ route("closeTicket") }}',
+            method: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}',
+                ticket_id: window.currentTicketId // Laravel CSRF protection
+            },
+            success: function(response) {
+                if (response.success) {
+                   toastr.success(response.message || 'Ticket Closed');
+                    // Optionally update UI (e.g., hide ticket, change label, etc.)
+                } else {
+                   toastr.error(response.message || 'Error');
+                }
+            },
+            error: function(xhr) {
+                console.error(xhr.responseText);
+                alert('Something went wrong.');
+            }
+        });
     }
 </script>
 @stop
