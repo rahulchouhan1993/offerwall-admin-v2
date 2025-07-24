@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\HtmlCleaner;
 use App\Models\Tickets;
 use App\Models\TicketsChats;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,6 +29,57 @@ class TicketsController extends Controller
             'ticket' => $ticket,
             'messages' => $messages
         ]);
+    }
+
+    public function sendMessage(Request $request)
+    {
+        $request->validate([
+            'ticket_id' => 'required|exists:tickets,id',
+            'message'   => 'nullable|string',
+            'media'     => 'nullable|file|max:10240', // Max 10 MB
+        ]);
+
+        $chat = new TicketsChats();
+        $chat->ticket_id = $request->ticket_id;
+        $chat->from = 'admin';
+
+        if ($request->hasFile('media')) {
+            $path = $request->file('media')->store('chat_media', 'public');
+            $url = asset('storage/' . $path);
+            $ext = $request->file('media')->getClientOriginalExtension();
+
+            // Use appropriate icon based on file type (optional: extend as needed)
+            $icon = '📎'; // default
+            if (in_array($ext, ['jpg', 'jpeg', 'png', 'gif'])) $icon = '🖼️';
+            else if (in_array($ext, ['pdf'])) $icon = '📄';
+
+            $chat->message = '<a href="' . $url . '" download>' . $icon . ' Attachment</a>';
+        } else {
+            $cleanMessage = HtmlCleaner::clean($request->input('message'));
+
+            $chat->message = $cleanMessage;
+        }
+
+        $chat->save();
+
+        Tickets::where('id',$request->ticket_id)->update(['updated_at'=>Carbon::now()->format('Y-m-d H:i:s')]);
+
+        return response()->json(['success' => true, 'message' => 'Message sent']);
+    }
+
+
+    public function close(Request $request)
+    {
+        $ticket = Tickets::find($request->ticket_id);
+
+        if (!$ticket) {
+            return response()->json(['success' => false, 'message' => 'Ticket not found']);
+        }
+
+        $ticket->status = 2;
+        $ticket->save();
+
+        return response()->json(['success' => true, 'message' => 'Ticket Closed.']);
     }
     
 }

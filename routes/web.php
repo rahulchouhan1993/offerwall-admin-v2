@@ -69,6 +69,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/ticketMessages/{ticketId}', [TicketsController::class, 'getChatConversation'])->name('getChatConversation');
 
+    Route::post('/sendMessage', [TicketsController::class, 'sendMessage'])->name('sendMessage');
+
+    Route::post('/tickets/close', [TicketsController::class, 'close'])->name('closeTicket');
+
 
     // Chart Data
     Route::get('/chart-data', [ChartController::class, 'chartData'])->name('chart.data');
