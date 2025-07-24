@@ -1,0 +1,37 @@
+<ul class="m-[0] overflow-x-hidden relative">
+    @if(!empty($tickets))
+        @foreach($tickets as $ticket)
+            @php
+                $updatedAt = \Carbon\Carbon::parse($ticket['lastchat']['created_at'])->timezone('Asia/Kolkata');
+                if ($updatedAt->isToday()) {
+                    $formattedTime = 'Today ' . $updatedAt->format('h:i A');
+                } elseif ($updatedAt->isYesterday()) {
+                    $formattedTime = 'Yesterday ' . $updatedAt->format('h:i A');
+                } else {
+                    $formattedTime = $updatedAt->format('l h:i A');
+                }
+            @endphp
+            <li onclick="loadConversation({{ $ticket->id }});" class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer">
+                <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
+                <div class="chatmsgBx flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
+                    <div class="chatmsg w-full flex flex-col justify-between items-center ">
+                        <span class="chatTitle w-full text-[12px] xl:text-[13px] text-black font-semibold leading-[15px] truncate ">
+                            {{ Illuminate\Support\Str::limit($ticket['tracking']['offer_name'], 30) }}
+                        </span>
+                        <p class="chatDes w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">
+                            {{ $ticket['user']['name'] }}
+                        </p>
+                        <span class="chatTime text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">
+                            {{ $formattedTime }}
+                        </span>
+                    </div>
+                </div>
+                @if($ticket['unread'] != 0)
+                    <span class="chatCount absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">
+                        {{ $ticket['unread'] }}
+                    </span>
+                @endif
+            </li>
+        @endforeach
+    @endif
+</ul>

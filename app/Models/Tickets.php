@@ -13,7 +13,7 @@ class Tickets extends Model
 
     public function chats()
     {
-        return $this->hasMany(TicketsChats::class);
+        return $this->hasMany(TicketsChats::class,'ticket_id');
         
     }
 
