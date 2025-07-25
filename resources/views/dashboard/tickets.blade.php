@@ -21,14 +21,14 @@
             <div class="flex gap-[8px] items-center justify-between">
                 <h2 class="text-lg text-black font-semibold mb-[0]">Chats</h2>
                 <div class="relative">
-                    <!-- <button onclick="toggleDropdown2(event)"
+                    <button onclick="toggleDropdown2(event)"
                         class="w-[35px] h-[35px] text-black hover:text-black focus:outline-none px-2">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                             <path
                                 d="M12 3C10.9 3 10 3.9 10 5C10 6.1 10.9 7 12 7C13.1 7 14 6.1 14 5C14 3.9 13.1 3 12 3ZM12 17C10.9 17 10 17.9 10 19C10 20.1 10.9 21 12 21C13.1 21 14 20.1 14 19C14 17.9 13.1 17 12 17ZM12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10Z">
                             </path>
                         </svg>
-                    </button> -->
+                    </button>
 
                     <!-- Dropdown Menu (initially hidden) -->
                     <!-- <div
@@ -60,40 +60,7 @@
 
         </div>
         <div id="myDiv" class=" overflow-y-auto  max-h-[115px] md:max-h-[100vh] flex-grow">
-            <ul class="m-[0] overflow-x-hidden relative">
-                @if(!empty($tickets))
-                @foreach($tickets as $ticket)
-                @php
-
-                    $updatedAt = \Carbon\Carbon::parse($ticket['lastchat']['created_at'])->timezone('Asia/Kolkata');;
-
-                    if ($updatedAt->isToday()) {
-                        $formattedTime = 'Today ' . $updatedAt->format('h:i A');
-                    } elseif ($updatedAt->isYesterday()) {
-                        $formattedTime = 'Yesterday ' . $updatedAt->format('h:i A');
-                    } else {
-                        $formattedTime = $updatedAt->format('l h:i A');
-                    }
-                @endphp
-                <li onclick="loadConversation({{ $ticket->id }})" class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer"> <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                    <div class="chatmsgBx flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
-                        <div class="chatmsg w-full flex flex-col justify-between items-center ">
-                            <span class="chatTitle w-full text-[12px] xl:text-[13px] text-black font-semibold leading-[15px] truncate ">{{ Illuminate\Support\Str::limit($ticket['tracking']['offer_name'], 30) }}</span>
-                                <p class="chatDes w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">{{ $ticket['user']['name'] }}</p>
-                            <span class="chatTime text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">{{$formattedTime}}</span>
-                        </div>
-                    </div>
-                     @if($ticket['unread'] != 0)
-                    <span class="chatCount absolute right-[10px] top-[28px] text-green-800 text-xs rounded-full flex items-center justify-center w-[17px] h-[17px] bg-green-100 font-[600]">{{$ticket['unread']}}</span>
-                    @endif
-                </li>
-                @endforeach
-                @else
-                        
-
-                @endif
-
-            </ul>
+            @include('dashboard.ticket-list', ['tickets' => $tickets])
         </div>
 
         <!-- <div id="myDiv" class=" overflow-y-auto  max-h-[115px] md:max-h-[100vh] flex-grow">
@@ -146,9 +113,9 @@
 
         <div id="globalDropdown2" class="custom-dropdown hidden bg-white border rounded shadow-lg z-10">
             <ul class="text-sm text-gray-700">
-                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Mute</li>
-                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Archive</li>
-                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500">Delete</li>
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" onclick="filterTickets('opened')">Opened</li>
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" onclick="filterTickets('in_process')">In Process</li>
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500" onclick="filterTickets('closed')">Closed</li>
             </ul>
         </div>
 
@@ -251,7 +218,7 @@
                     </svg>
                     <!-- <span class="text-[0] md:text-[15px]">Attach</span> -->
                 </label>
-                <input id="fileInput" type="file" class="hidden" />
+                <input id="fileInput" type="file" class="hidden" name="attachment"/>
             </div>
 
                 <textarea id="msgInput" placeholder="Type a message..."
@@ -274,7 +241,20 @@
     
 </div>
 
-
+<div id="closeTicketModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center">
+    <div class="bg-white rounded-lg shadow-lg max-w-sm w-full p-6 text-center">
+        <h2 class="text-lg font-semibold mb-4 text-gray-800">Are you sure you want to close this ticket?</h2>
+        <p class="text-sm text-gray-600 mb-6">You won't be able to send or receive messages once it's closed and this action can't be revert.</p>
+        <div class="flex justify-center gap-4">
+            <button onclick="confirmCloseTicket()" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded">
+                Yes, Close
+            </button>
+            <button onclick="hideCloseModal()" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>
 <script>
 $('#msgInput').summernote({
     height: 50,
@@ -285,6 +265,7 @@ $('#msgInput').summernote({
 
 
 <script>
+    let currentTicketFilter = null;
 
     document.addEventListener("DOMContentLoaded", function () {
         var tickets = @json($tickets); // Correct way to pass PHP array to JS
@@ -316,6 +297,8 @@ $('#msgInput').summernote({
                 const logo = document.querySelector('.chatwindowLogo img');
                 const inputBar = document.getElementById('chatInputBar');
                 const closedMessage = document.getElementById('chatClosedMessage');
+
+                refreshTicketList();
 
                 // Update chat header
                 headerUser.textContent = data.ticket.tracking.offer_name;
@@ -375,26 +358,54 @@ $('#msgInput').summernote({
             });
     }
 
-    function addMessage() {
-        const message = document.getElementById('msgInput').value.trim();
-        const ticketId = window.currentTicketId;
-        const fileInput = document.getElementById('fileInput');
-        const file = fileInput.files[0];
+    function refreshTicketList() {
+        var url = '/refresh-tickets';
+        if(currentTicketFilter){
+            url = '/refresh-tickets?status='+currentTicketFilter;
+        }
+        fetch(url)
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('myDiv').innerHTML = html;
+            });
+    }
 
-        // Send text message (if exists)
-        if (message) {
+    function addMessage() {
+        const ticketId = window.currentTicketId;
+
+        // Get the HTML content from Summernote
+        let content = $('#msgInput').summernote('code').trim();
+
+        // Convert <img> tags to <a> download links
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = content;
+
+        const images = tempDiv.querySelectorAll('img');
+        images.forEach(img => {
+            const src = img.getAttribute('src');
+            if (src) {
+                const a = document.createElement('a');
+                a.setAttribute('href', src);
+                a.innerHTML = '🖼️ Attachment';
+
+                img.parentNode.replaceChild(a, img);
+            }
+        });
+
+        const finalMessage = tempDiv.innerHTML.trim();
+
+        if (finalMessage) {
             $.ajax({
                 url: '{{ route("sendMessage") }}',
                 method: 'POST',
                 data: {
                     _token: '{{ csrf_token() }}',
-                    message: message,
+                    message: finalMessage,
                     ticket_id: ticketId
                 },
                 success: function (response) {
                     $('#msgInput').summernote('reset');
                     toastr.success(response.message || 'Message Sent');
-                    document.getElementById('msgInput').value = ''; 
                     loadConversation(ticketId);
                 },
                 error: function (xhr) {
@@ -403,34 +414,73 @@ $('#msgInput').summernote({
                 }
             });
         }
+    }
 
-        // Send file message (if file exists)
-        if (file) {
-            const formData = new FormData();
-            formData.append('_token', '{{ csrf_token() }}');
-            formData.append('ticket_id', ticketId);
-            formData.append('media', file);
 
-            $.ajax({
-                url: '{{ route("sendMessage") }}',
-                method: 'POST',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    fileInput.value = '';
-                    toastr.success('File Sent');
-                    loadConversation(ticketId);
-                },
-                error: function (xhr) {
-                    alert('File failed to send');
-                    console.log(xhr.responseText);
-                }
+    document.getElementById('fileInput').addEventListener('change', function () {
+        const file = this.files[0];
+        if (!file) return;
+
+        const formData = new FormData();
+        formData.append('attachment', file);
+
+        // CSRF token if using Laravel
+        formData.append('_token', '{{ csrf_token() }}');
+
+        fetch('/upload-attachment', {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                const imageUrl = data.url;
+                const fileName = file.name;
+
+                // Insert a downloadable link with an icon into the Summernote editor
+                const icon = '<svg xmlns="http://www.w3.org/2000/svg" class="inline w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M3 3a1 1 0 011-1h3.586a1 1 0 01.707.293l8.414 8.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-3.586a1 1 0 01-.707-.293L3.293 5.707A1 1 0 013 5V3z"/></svg>';
+
+                $('#msgInput').summernote('pasteHTML', `<img src="${imageUrl}" alt="${fileName}" style="max-width:50%; height:auto; margin-bottom:10px;" /><br/>`);    
+            } else {
+                alert('File upload failed');
+            }
+        })
+        .catch(err => {
+            console.error('Upload error:', err);
+            alert('Upload failed.');
+        });
+    });
+
+
+    function filterTickets(status) {
+        currentTicketFilter = status;
+        fetch(`/refresh-tickets?status=${status}`)
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('myDiv').innerHTML = html;
+            })
+            .catch(err => {
+                alert('Failed to load tickets.');
+                console.error(err);
             });
-        }
     }
 
     function closeTicket() {
+        document.getElementById('closeTicketModal').classList.remove('hidden');
+        document.getElementById('closeTicketModal').classList.add('flex');
+    }
+
+    function hideCloseModal() {
+        document.getElementById('closeTicketModal').classList.remove('flex');
+        document.getElementById('closeTicketModal').classList.add('hidden');
+    }
+
+    function confirmCloseTicket() {
+        hideCloseModal();
+
+        // 👇 Put your real close logic here (e.g., AJAX or redirect)
+        console.log('Ticket closed');
+
         $.ajax({
             url: '{{ route("closeTicket") }}',
             method: 'POST',
@@ -442,6 +492,9 @@ $('#msgInput').summernote({
                 if (response.success) {
                    toastr.success(response.message || 'Ticket Closed');
                     // Optionally update UI (e.g., hide ticket, change label, etc.)
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1000);
                 } else {
                    toastr.error(response.message || 'Error');
                 }
