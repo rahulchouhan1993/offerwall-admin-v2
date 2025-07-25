@@ -6,6 +6,7 @@ use App\Helpers\HtmlCleaner;
 use App\Models\Tickets;
 use App\Models\TicketsChats;
 use Carbon\Carbon;
+use DOMDocument;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -42,24 +43,29 @@ class TicketsController extends Controller
         $chat = new TicketsChats();
         $chat->ticket_id = $request->ticket_id;
         $chat->from = 'admin';
+        
+        $cleanMessage = HtmlCleaner::clean($request->input('message'));
 
-        // if ($request->hasFile('media')) {
-        //     $path = $request->file('media')->store('chat_media', 'public');
-        //     $url = asset('storage/' . $path);
-        //     $ext = $request->file('media')->getClientOriginalExtension();
+        $dom = new DOMDocument();
+        libxml_use_internal_errors(true); // Suppress HTML5 warnings
 
-        //     // Use appropriate icon based on file type (optional: extend as needed)
-        //     $icon = '📎'; // default
-        //     if (in_array($ext, ['jpg', 'jpeg', 'png', 'gif'])) $icon = '🖼️';
-        //     else if (in_array($ext, ['pdf'])) $icon = '📄';
+        $dom->loadHTML(mb_convert_encoding($cleanMessage, 'HTML-ENTITIES', 'UTF-8'));
 
-        //     $chat->message = '<a href="' . $url . '" download>' . $icon . ' Attachment</a>';
-        // } else {
-            $cleanMessage = HtmlCleaner::clean($request->input('message'));
+        $anchors = $dom->getElementsByTagName('a');
+        foreach ($anchors as $a) {
+            if (!$a->hasAttribute('target')) {
+                $a->setAttribute('target', '_blank');
+            }
+        }
 
-            $chat->message = $cleanMessage;
-        // }
+        // Extract only the inner HTML from <body> to avoid <html><body> wrapper
+        $body = $dom->getElementsByTagName('body')->item(0);
+        $finalHtml = '';
+        foreach ($body->childNodes as $child) {
+            $finalHtml .= $dom->saveHTML($child);
+        }
 
+        $chat->message = $finalHtml;
         $chat->save();
 
         Tickets::where('id',$request->ticket_id)->update(['updated_at'=>Carbon::now()->format('Y-m-d H:i:s')]);
