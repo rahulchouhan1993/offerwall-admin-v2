@@ -380,18 +380,6 @@ $('#msgInput').summernote({
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = content;
 
-        const images = tempDiv.querySelectorAll('img');
-        images.forEach(img => {
-            const src = img.getAttribute('src');
-            if (src) {
-                const a = document.createElement('a');
-                a.setAttribute('href', src);
-                a.innerHTML = '🖼️ Attachment';
-
-                img.parentNode.replaceChild(a, img);
-            }
-        });
-
         const finalMessage = tempDiv.innerHTML.trim();
 
         if (finalMessage) {
@@ -440,7 +428,7 @@ $('#msgInput').summernote({
                 // Insert a downloadable link with an icon into the Summernote editor
                 const icon = '<svg xmlns="http://www.w3.org/2000/svg" class="inline w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M3 3a1 1 0 011-1h3.586a1 1 0 01.707.293l8.414 8.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-3.586a1 1 0 01-.707-.293L3.293 5.707A1 1 0 013 5V3z"/></svg>';
 
-                $('#msgInput').summernote('pasteHTML', `<img src="${imageUrl}" alt="${fileName}" style="max-width:50%; height:auto; margin-bottom:10px;" /><br/>`);    
+                $('#msgInput').summernote('pasteHTML', `<a href="${imageUrl}" target="_blank">Attachment</a><br/>`);    
             } else {
                 alert('File upload failed');
             }
