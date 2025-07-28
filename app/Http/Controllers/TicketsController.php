@@ -94,13 +94,13 @@ class TicketsController extends Controller
 
         if(request()->query('status') == "opened"){
             $query->whereDoesntHave('chats', function ($q) {
-                $q->where('is_read_admin', 1);
+                $q->where('from', 'admin');
             });
         }
 
         if(request()->query('status') == "in_process"){
             $query->whereHas('chats', function ($q) {
-                $q->where('is_read_admin', 1); // at least one seen chat
+                $q->where('from', 'admin'); // at least one seen chat
             })->where('status', '!=', 2);
         }
 
