@@ -13,7 +13,7 @@
             @endphp
             <li onclick="loadConversation({{ $ticket->id }});" class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer">
                 <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
-                <div class="chatmsgBx flex-1 w-[calc(100%-20px)] pr-[60px] md:pr-[50px] lg:pr-[55px] xl:pr-[60px]">
+                <div class="chatmsgBx flex-1 w-[calc(100%-20px)] pr-[100px] md:pr-[98px] lg:pr-[94px] xl:pr-[104px]">
                     <div class="chatmsg w-full flex flex-col justify-between items-center ">
                         <span class="chatTitle w-full text-[12px] xl:text-[13px] text-black font-semibold leading-[15px] truncate ">
                             {{ Illuminate\Support\Str::limit($ticket['tracking']['offer_name'], 30) }}

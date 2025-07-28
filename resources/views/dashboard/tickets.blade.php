@@ -103,7 +103,7 @@
 
      <!-- Global dropdown left Sidebar -->
         <div id="globalDropdown" class="custom-dropdown hidden bg-white border rounded shadow-lg z-10">
-            <ul class="text-sm text-gray-700">
+            <ul class="text-sm text-gray-700 mb-[0]">
                 <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Mute</li>
                 <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Archive</li>
                 <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500">Delete</li>
@@ -112,7 +112,7 @@
 
 
         <div id="globalDropdown2" class="custom-dropdown hidden bg-white border rounded shadow-lg z-10">
-            <ul class="text-sm text-gray-700">
+            <ul class="text-sm text-gray-700 mb-[0]">
                 <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" onclick="filterTickets('opened')">Opened</li>
                 <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" onclick="filterTickets('in_process')">In Process</li>
                 <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500" onclick="filterTickets('closed')">Closed</li>
@@ -120,7 +120,7 @@
         </div>
 
         <div id="globalDropdown3" class="custom-dropdown hidden bg-white border rounded shadow-lg z-10">
-            <ul class="text-sm text-gray-700">
+            <ul class="text-sm text-gray-700 mb-[0]">
                 <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" onclick="closeTicket()">Close Ticket</li>
                 <!-- <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Archive</li>
                 <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500">Delete</li> -->
@@ -130,8 +130,9 @@
     <!-- Chat Window -->
     <main class="chatwindowMain w-full md:w-2/3 lg:w-3/4 bg-gray-50 flex flex-col relative rounded-[10px] shadow-md">
         <div
-            class="chatwindowLogo absolute top-[0] bottom-[0] left-[0] right-[0] m-auto flex items-center justify-center opacity-[25%]">
-            <img src="/images/logo.png" alt="img">
+            class="chatwindowLogo absolute top-[0] bottom-[0] left-[0] right-[0] m-auto flex flex-col items-center justify-center gap-[25px] ">
+            <div class="min-w-[150px] px-[8px] py-[8px] rounded-[4px] text-[15px] bg-[#f8d7da] text-[#ff001b] text-center border-[1px] border-[#f1aeb5]">No Ticket</div>
+            <img class="opacity-[25%]" src="/images/logo.png" alt="img">
         </div>
         <!-- Header -->
         <div class="chatwindowHeader px-[10px] py-[10px] border-b flex items-center justify-between gap-3 bg-white z-10">
