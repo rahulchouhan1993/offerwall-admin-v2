@@ -36,26 +36,26 @@ class DashboardController extends Controller
         // App Statistics
         $activeApps = Tracking::where('status',1);
         if ($startDate) {
-            $activeApps->whereDate('click_time', '>=', $startDate);
+            //$activeApps->whereDate('click_time', '>=', $startDate);
         }
         if ($endDate) {
-            $activeApps->whereDate('click_time', '<=', $endDate);
+            //$activeApps->whereDate('click_time', '<=', $endDate);
         }
         if ($affiliateId) {
-            $activeApps->where('user_id', $affiliateId);
+            //$activeApps->where('user_id', $affiliateId);
         }
         $activeApps = $activeApps->distinct('user_id')->count();
     
         // Affiliate Statistics
         $allAffiliatesCount = Tracking::where('status',1);
         if ($startDate) {
-            $allAffiliatesCount->whereDate('click_time', '>=', $startDate);
+            //$allAffiliatesCount->whereDate('click_time', '>=', $startDate);
         }
         if ($endDate) {
-            $allAffiliatesCount->whereDate('click_time', '<=', $endDate);
+            //$allAffiliatesCount->whereDate('click_time', '<=', $endDate);
         }
         if ($affiliateId) {
-            $allAffiliatesCount->where('user_id', $affiliateId); // probably should match id
+            //$allAffiliatesCount->where('user_id', $affiliateId);
         }
         $allAffiliatesCount = $allAffiliatesCount->distinct('app_id')->count();
     
