@@ -2,13 +2,11 @@
     @if(!empty($tickets))
         @foreach($tickets as $ticket)
             @php
-                $updatedAt = \Carbon\Carbon::parse($ticket['lastchat']['created_at'])->timezone('Asia/Kolkata');
+                $updatedAt = \Carbon\Carbon::parse($ticket['lastchat']['created_at']);
                 if ($updatedAt->isToday()) {
                     $formattedTime = 'Today ' . $updatedAt->format('h:i A');
-                } elseif ($updatedAt->isYesterday()) {
-                    $formattedTime = 'Yesterday ' . $updatedAt->format('h:i A');
                 } else {
-                    $formattedTime = $updatedAt->format('l h:i A');
+                    $formattedTime = $updatedAt->format('D h:i A');
                 }
             @endphp
             <li onclick="loadConversation({{ $ticket->id }});" class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer">

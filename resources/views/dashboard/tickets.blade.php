@@ -69,7 +69,7 @@
             @foreach($tickets as $ticket)
                     @php
 
-                        $updatedAt = \Carbon\Carbon::parse($ticket['lastchat']['created_at'])->timezone('Asia/Kolkata');;
+                        $updatedAt = \Carbon\Carbon::parse($ticket['lastchat']['created_at']);
 
                         if ($updatedAt->isToday()) {
                             $formattedTime = 'Today ' . $updatedAt->format('H:i');
@@ -113,7 +113,8 @@
 
         <div id="globalDropdown2" class="custom-dropdown hidden bg-white border rounded shadow-lg z-10">
             <ul class="text-sm text-gray-700 mb-[0]">
-                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" onclick="filterTickets('opened')">Opened</li>
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" onclick="filterTickets('all')">All</li>
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" onclick="filterTickets('opened')">Open</li>
                 <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" onclick="filterTickets('in_process')">In Process</li>
                 <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500" onclick="filterTickets('closed')">Closed</li>
             </ul>
@@ -129,20 +130,24 @@
 
     <!-- Chat Window -->
     <main class="chatwindowMain w-full md:w-2/3 lg:w-3/4 bg-gray-50 flex flex-col relative rounded-[10px] shadow-md">
+        @if(count($tickets) == 0)
         <div
             class="chatwindowLogo absolute top-[0] bottom-[0] left-[0] right-[0] m-auto flex flex-col items-center justify-center gap-[25px] ">
             <div class="min-w-[150px] px-[8px] py-[8px] rounded-[4px] text-[15px] bg-[#f8d7da] text-[#ff001b] text-center border-[1px] border-[#f1aeb5]">No Ticket</div>
             <img class="opacity-[25%]" src="/images/logo.png" alt="img">
         </div>
+        @endif
         <!-- Header -->
-        <div class="chatwindowHeader px-[10px] py-[10px] border-b flex items-center justify-between gap-3 bg-white z-10">
+        
+        <div class="chatwindowHeader px-[10px] py-[10px] border-b flex items-center justify-between h-20 gap-3 bg-white z-10">
+            @if(count($tickets) > 0)
             <div class="chatwindowUser flex items-center gap-[5px]">
                 <img src="/images/user.webp" class="rounded-full w-10 h-10" />
                 <div>
                     <p class="text-[12px] xl:text-[15px] text-black font-semibold m-[0]"></p>
                 </div>
             </div>
-
+            @endif
             <div class="chatwindowDrop relative flex items-center">
                 <button  onclick="toggleDropdown3(event)"
                     class="p-[0] w-[35px] h-[35px] flex items-center justify-center text-black rounded-[40px] bg-[#f2f2f2] focus:outline-none">
@@ -166,11 +171,12 @@
             </div>
 
         </div>
+        
 
         <!-- Messages Area with Scroll Fix -->
         <div id="chatMessages"
             class="relative 1111h-[35vh] md:h-[100vh] overflow-y-auto pt-[40px] px-[10px] py-[10px] md:px-[20px] md:py-[20px] xl:px-[30px] xl:py-[30px] space-y-4 z-[1]">
-
+            @if(count($tickets) > 0)
             <div class="text-left">
                 <div
                     class="chatwindowMsg relative inline-flex flex-col bg-gray-100 p-[12px] lg:text-[15px]  text-sm  shadow-md rounded-[10px] rounded-tl-[0]">
@@ -201,12 +207,13 @@
                     </div>
                 </div>
             </div>
-
+            @endif
 
 
         </div>
 
         <!-- Input Box (Fixed on Mobile) -->
+         @if(count($tickets) > 0)
         <div id="chatInputBar"
             class="flex gap-[6px] md:gap-[10px] p-[10px] md:p-[13px] border-t  mobile-fixed md:relative w-full">
             <form onsubmit="event.preventDefault(); addMessage();" enctype="multipart/form-data" class="w-full flex items-center gap-2">
@@ -234,6 +241,7 @@
                     </svg></button>
             </form>
         </div>
+        @endif
 
         <div id="chatClosedMessage" class="chatwindowAreaBx hidden text-center text-sm text-gray-600 p-4 w-full border-t bg-gray-100 z-[999]">
             This ticket has been closed.
@@ -344,10 +352,10 @@ $('#msgInput').summernote({
                     const time = new Date(msg.created_at);
 
                     const day = time.getDate();
-                    const month = time.toLocaleString('default', { month: 'short' });
+                    const month = time.toLocaleString('default', { month: 'short', timeZone: 'UTC' });
                     const year = time.getFullYear();
                     const formattedDate = `${day} ${month} ${year}`;
-                    const formattedTime = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
+                    const formattedTime = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true, timeZone: 'UTC'  });
 
                     timestamp.innerHTML = `${formattedDate} <div class="text-[12px] text-black font-[600]">${formattedTime}</div>`;
                     bubble.appendChild(timestamp);
