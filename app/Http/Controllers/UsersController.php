@@ -258,6 +258,22 @@ class UsersController extends Controller
 
                 if ($response->successful()) {
                     $affilliateDetails = $response->json();
+                    if(!empty($affilliateDetails['partner']['name'])){
+                        $expname = explode(' ',$affilliateDetails['partner']['name']);
+                        if($expname[0]!=''){
+                            $affiliate->name = $expname[0];
+                        }
+                        if($expname[1]!=''){
+                            $affiliate->last_name = $expname[1];
+                        }
+                        if(!empty($expname[2])){
+                            $affiliate->last_name.=' '.$expname[2];
+                        }
+                        if(!empty($expname[3])){
+                            $affiliate->last_name.=' '.$expname[3];
+                        }
+                        
+                    }
                     if(!empty($affilliateDetails['partner']['address_1'])){
                         $affiliate->address_1 = $affilliateDetails['partner']['address_1'];
                     }
