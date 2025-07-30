@@ -7,7 +7,7 @@
     $pendingTickets = TicketsChats::where('is_read_admin',0)->where('from','user')->count();
 @endphp
 <div class="bg-[#210D0F] pl-[20px] pr-[20px] 2xl:pl-[20px] 2xl:pr-[20px] py-[10px] 2xl:py-[10px] pt-[2px] sidebar">
-   <div class="mb-[20px] 2xl:mb-[50px]">
+   <div class="mb-[20px] 2xl:mb-[50px] md:sticky md:top-[90px]">
       <a href="{{ route('admin.dashboard.index') }}"
          class="group flex items-center gap-[10px] px-[10px] py-[10px] text-[16px] font-[400] text-[#FFFFFD] hover:text-[#4EF953] @if(Route::currentRouteName()=='admin.dashboard.index') active @endif">
          <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
