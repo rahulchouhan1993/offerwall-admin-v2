@@ -29,6 +29,28 @@
     @endif
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <style>
+      .ticket-active {
+            background: linear-gradient(90deg, #f0faff 0%, #d6f0ff 100%);
+            border-left: 4px solid #1d9bf0; /* Nice blue accent */
+            font-weight: 500;
+            box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.25s ease-in-out;
+        }
+
+        .ticket-active .chatTitle {
+            color: #1d9bf0; /* Matching accent color for title */
+        }
+
+        .ticket-active .chatDes {
+            color: #444;
+        }
+
+        #myDiv li {
+            transition: background 0.25s ease-in-out, border-left 0.25s ease-in-out;
+        }
+
+    </style>
 </head>
 
 <body class="font-sans antialiased dark:bg-black dark:text-white/50">

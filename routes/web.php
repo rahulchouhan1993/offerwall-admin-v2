@@ -83,4 +83,10 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/upload-attachment', [TicketsController::class, 'uploadAttachment']);
 
+    Route::get('/users', [UsersController::class, 'users'])->name('users');
+
+    Route::get('/mark-unread/{ticketId}', [TicketsController::class, 'markUnread'])->name('markUnread');
+
+
+
 });
