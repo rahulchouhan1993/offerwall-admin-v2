@@ -92,7 +92,8 @@ class TicketsController extends Controller
 
     public function refreshTickets()
     {
-        $query = Tickets::with(['lastchat', 'user', 'tracking'])->orderBy('updated_at','DESC');
+        $query = Tickets::with(['lastchat', 'user', 'tracking'])->orderByRaw('CASE WHEN status = 2 THEN 1 ELSE 0 END ASC')
+        ->orderBy('updated_at', 'DESC');
 
         if(request()->query('status') == "opened"){
             $query->whereDoesntHave('chats', function ($q) {
