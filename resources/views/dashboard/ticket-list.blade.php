@@ -23,12 +23,13 @@
                             <span class="chatTime text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">
                                 {{ $formattedTime }}
                             </span>
-                            @if($ticket->status == 2)
+                           
+                        </div>
+                        @if($ticket->status == 2)
                                 <span style="background-color: #dc2626; color: #fff; padding: 1px 5px; border-radius: 4px; font-size: 10px; display: inline-block; position: absolute; right: 8px; bottom: 2px; font-weight: 600;">
                                     Closed
                                 </span>
                             @endif
-                        </div>
                     </div>
                 </div>
                 @if($ticket['unread'] != 0)
