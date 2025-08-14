@@ -133,7 +133,7 @@
         @if(count($tickets) == 0)
         <div
             class="chatwindowLogo absolute top-[0] bottom-[0] left-[0] right-[0] m-auto flex flex-col items-center justify-center gap-[25px] ">
-            <div class="min-w-[150px] px-[8px] py-[8px] rounded-[4px] text-[15px] bg-[#f8d7da] text-[#ff001b] text-center border-[1px] border-[#f1aeb5]">No Tickets Available....</div>
+            <div class="min-w-[150px] px-[8px] py-[8px] rounded-[4px] text-[15px] bg-[#f8d7da] text-[#ff001b] text-center border-[1px] border-[#f1aeb5]">No Tickets Found....</div>
             <img class="opacity-[25%]" src="/images/logo.png" alt="img">
         </div>
         @endif
