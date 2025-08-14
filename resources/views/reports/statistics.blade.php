@@ -106,9 +106,9 @@
           </div>
        </div>
        </form>
-       <div class="my-[20px]">
+       <!-- <div class="my-[20px]">
           <canvas id="statisticsGraph"></canvas>
-       </div> 
+       </div>  -->
       @php 
          $headingArray = ['hour' => 'Hour','day' => 'Day','month' => 'Month','country' => 'Country','browser' => 'Browsers','device' => 'Devices','device_model' => 'Device Model','os' => 'Operating System','offer' => 'Offer'];
          $exportedData = [

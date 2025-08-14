@@ -24,7 +24,7 @@
                                 {{ $formattedTime }}
                             </span>
                             @if($ticket->status == 2)
-                                <span style="background-color:#dc2626; color:#fff; padding:2px 6px; border-radius:4px; font-size:11px; display:inline-block;">
+                                <span style="background-color: #dc2626; color: #fff; padding: 1px 5px; border-radius: 4px; font-size: 10px; display: inline-block; position: absolute; right: 8px; bottom: 2px; font-weight: 600;">
                                     Closed
                                 </span>
                             @endif

@@ -7,6 +7,7 @@ body.active .head-logo{width:70px;}
 body.active .sidebar{width:70px;padding-left:5px;padding-right:5px;}
 body.active .sidebar a,body.active .sidebar h2{font-size:0;transition:all ease .3s;justify-content:center;}
 .sidebar a.active{color:#4EF953;}
+a:hover { text-decoration: none!important;}
 .loginBx{height:100vh;background:url(../../public/images/loginbanner.jpg) 0 0 no-repeat;background-size:cover;}
 .head-logo{transition:width 0.25s ease,background 0.25s ease;-webkit-transition:width 0.25s ease,background 0.25s ease;height:80px;}
 .dashboardContainer{-webkit-transition:width 0.25s ease,margin 0.25s ease;transition:width 0.25s ease,margin 0.25s ease;width:calc(100% - 290px);min-height:calc(100vh - 70px);display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;}
