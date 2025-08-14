@@ -4,7 +4,7 @@
 <div class="bg-[#f2f2f2] p-[15px] lg:p-[35px]">
     <div class="bg-[#fff] p-[15px] md:p-[20px] rounded-[10px] mb-[20px]">
         <div class="flex flex-col justify-between gap-[25px] w-[100%]  mb-[15px]">
-          <h2 class="text-[20px] text-[#1A1A1A] font-[600]">My Users</h2>
+          <h2 class="text-[20px] text-[#1A1A1A] font-[600]">Users</h2>
           <form method="get">
           <div class="w-full flex flex-col gap-[10px]">
             <div class="w-[100%] flex flex-col lg:flex-row items-start lg:items-center justify-start gap-[10px]">
