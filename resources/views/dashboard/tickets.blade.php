@@ -123,17 +123,17 @@
         <div id="globalDropdown3" class="custom-dropdown hidden bg-white border rounded shadow-lg z-10">
             <ul class="text-sm text-gray-700 mb-[0]">
                 <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" onclick="closeTicket()">Close Ticket</li>
-                <!-- <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Archive</li>
-                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500">Delete</li> -->
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" onclick="markUnread()">Mark as unread</li>
+                <!-- <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500">Delete</li> -->
             </ul>
         </div>
 
     <!-- Chat Window -->
-    <main class="chatwindowMain w-full md:w-2/3 lg:w-3/4 bg-gray-50 flex flex-col relative rounded-[10px] shadow-md">
+    <main id="chatwindowMain" style="display: none;" class="chatwindowMain w-full md:w-2/3 lg:w-3/4 bg-gray-50 flex flex-col relative rounded-[10px] shadow-md">
         @if(count($tickets) == 0)
         <div
             class="chatwindowLogo absolute top-[0] bottom-[0] left-[0] right-[0] m-auto flex flex-col items-center justify-center gap-[25px] ">
-            <div class="min-w-[150px] px-[8px] py-[8px] rounded-[4px] text-[15px] bg-[#f8d7da] text-[#ff001b] text-center border-[1px] border-[#f1aeb5]">No Ticket Available....</div>
+            <div class="min-w-[150px] px-[8px] py-[8px] rounded-[4px] text-[15px] bg-[#f8d7da] text-[#ff001b] text-center border-[1px] border-[#f1aeb5]">No Tickets Available....</div>
             <img class="opacity-[25%]" src="/images/logo.png" alt="img">
         </div>
         @endif
@@ -145,6 +145,7 @@
                 <img src="/images/user.webp" class="rounded-full w-10 h-10" />
                 <div>
                     <p class="text-[12px] xl:text-[15px] text-black font-semibold m-[0]"></p>
+                    
                 </div>
             </div>
             @endif
@@ -276,27 +277,24 @@ $('#msgInput').summernote({
 <script>
     let currentTicketFilter = null;
 
-    document.addEventListener("DOMContentLoaded", function () {
-        var tickets = @json($tickets); // Correct way to pass PHP array to JS
+    
 
-        const dropdownButton = document.querySelector('button[onclick="toggleDropdown3(event)"]');
+    function loadConversation(ticketId,element = null) {
 
+        document.getElementById("chatwindowMain").style.removeProperty("display");
 
-        if (tickets.length > 0) {
-            var ticketId = tickets[0].id;
-            loadConversation(ticketId);
-        }
-        else{
-            if (dropdownButton) {
-                dropdownButton.style.display = 'none'; // Hide the button
-                // OR, if using Tailwind:
-                // dropdownButton.classList.add('hidden');
-            }
-        }
-    });
-
-    function loadConversation(ticketId) {
         window.currentTicketId = ticketId;
+
+        // Remove highlight from all
+        document.querySelectorAll('#myDiv li').forEach(li => li.classList.remove('ticket-active'));
+
+        // Highlight the clicked one OR the one matching ticketId
+        if (element) {
+            element.classList.add('ticket-active');
+        } else {
+            let li = document.querySelector(`#ticket-${ticketId}`);
+            if (li) li.classList.add('ticket-active');
+        }
 
         fetch(`/ticketMessages/${ticketId}`)
             .then(response => response.json())
@@ -311,6 +309,7 @@ $('#msgInput').summernote({
 
                 // Update chat header
                 headerUser.textContent = data.ticket.tracking.offer_name;
+                
 
                 if (data.ticket.status == 2) {
                     inputBar.style.display = 'none';
@@ -322,6 +321,18 @@ $('#msgInput').summernote({
 
                 // Clear chat area
                 chatWindow.innerHTML = '';
+                
+                 // Add "Ticket Opened" banner
+                const openBanner = document.createElement('div');
+                openBanner.className = 'groupAdded w-full text-[13px] font-[600] text-[#49fb53] text-center z-[9]';
+                openBanner.innerHTML = `
+                    <div class="w-auto inline-flex shadow-md bg-white px-[10px] py-[5px] rounded-[4px] mx-auto">
+                        We recently received a proof regarding the completion of your offer (id: ` + data.ticket.tracking.offer_id + ` name: ` + data.ticket.tracking.offer_name + `) from one of our users  ` + data.ticket.user.email + `, related to click (ID: ` + data.ticket.tracking.click_id + `; Date and Time: ` + data.ticket.tracking.click_time + `)
+                    </div>
+
+                   
+                `;
+                chatWindow.appendChild(openBanner);
 
                 // Add each message
                 data.messages.forEach(msg => {
@@ -376,6 +387,9 @@ $('#msgInput').summernote({
             .then(response => response.text())
             .then(html => {
                 document.getElementById('myDiv').innerHTML = html;
+
+                let li = document.querySelector(`#ticket-${window.currentTicketId}`);
+                if (li) li.classList.add('ticket-active');
             });
     }
 
@@ -499,6 +513,27 @@ $('#msgInput').summernote({
             error: function(xhr) {
                 console.error(xhr.responseText);
                 alert('Something went wrong.');
+            }
+        });
+    }
+
+    function markUnread() {
+        $.ajax({
+            url: '/mark-unread/' + window.currentTicketId,
+            type: 'GET',
+            data: {
+                _token: '{{ csrf_token() }}'
+            },
+            success: function(response) {
+                if (response.success) {
+                    console.log("Last message marked unread");
+                    location.reload();
+                } else {
+                    console.error("Failed to update");
+                }
+            },
+            error: function(xhr) {
+                console.error("AJAX Error:", xhr.responseText);
             }
         });
     }

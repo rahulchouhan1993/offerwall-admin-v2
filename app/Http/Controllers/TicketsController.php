@@ -15,9 +15,11 @@ class TicketsController extends Controller
 
     public function getChatConversation(Request $request, $ticketId)
     {
-        $ticket = Tickets::with(['tracking:id,offer_name', 'lastchat'])
+        $ticket = Tickets::with(['tracking:id,offer_name,offer_id,click_id,click_time', 'user:id,name,email' , 'lastchat'])
             ->where('id', $ticketId)
             ->first();
+
+            $ticket->tracking->click_time = Carbon::parse($ticket->tracking->click_time)->format('h:i:s A, M jS,Y');
 
         $messages = TicketsChats::where('ticket_id', $ticketId)
             ->orderBy('created_at', 'ASC')
@@ -95,7 +97,7 @@ class TicketsController extends Controller
         if(request()->query('status') == "opened"){
             $query->whereDoesntHave('chats', function ($q) {
                 $q->where('from', 'admin');
-            });
+            })->where('status','!=',2);
         }
 
         if(request()->query('status') == "in_process"){
@@ -134,6 +136,22 @@ class TicketsController extends Controller
         }
 
         return response()->json(['success' => false], 400);
+    }
+
+
+    public function markUnread($id){
+        $lastChat = \App\Models\TicketsChats::where('ticket_id', $id)
+        ->orderBy('id', 'desc')->where('from','user')
+        ->first();
+
+        if ($lastChat) {
+            $lastChat->is_read_admin = 0;
+            $lastChat->save();
+
+            return response()->json(['success' => true]);
+        }
+
+        return response()->json(['success' => false]);
     }
     
 }

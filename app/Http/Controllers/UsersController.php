@@ -300,4 +300,11 @@ class UsersController extends Controller
         
         return redirect()->back()->with('error','Something went wrong, please try again.');
     }
+
+
+    public function users(){
+        $users = User::where('role','user')->orderBy('created_at','DESC')->get();
+        $pageTitle = 'Users';
+        return view('users.users',compact('pageTitle','users'));
+    }
 }

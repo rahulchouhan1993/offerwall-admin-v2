@@ -9,19 +9,26 @@
                     $formattedTime = $updatedAt->format('D h:i A');
                 }
             @endphp
-            <li onclick="loadConversation({{ $ticket->id }});" class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer">
+            <li  id="ticket-{{ $ticket->id }}" data-id="{{ $ticket->id }}" onclick="loadConversation({{ $ticket->id }}, this);" class="group relative py-[10px] hover:bg-gray-100 border-b border-b-[#f2f2f2] flex items-center gap-[5px] md:gap-[8px] cursor-pointer">
                 <img src="/images/user.webp" class="rounded-full w-[20px] h-[20px] xl:w-[30px] xl:h-[30px]" />
                 <div class="chatmsgBx flex-1 w-[calc(100%-20px)] pr-[100px] md:pr-[98px] lg:pr-[94px] xl:pr-[104px]">
                     <div class="chatmsg w-full flex flex-col justify-between items-center ">
                         <span class="chatTitle w-full text-[12px] xl:text-[13px] text-black font-semibold leading-[15px] truncate ">
-                            {{ Illuminate\Support\Str::limit($ticket['tracking']['offer_name'], 30) }}
+                            {{ Illuminate\Support\Str::limit($ticket['tracking']['offer_name'], 20) }}
                         </span>
                         <p class="chatDes w-full text-[11px] xl:text-[12px] text-gray-500 truncate m-[0] ">
                             {{ $ticket['user']['name'] }}
                         </p>
-                        <span class="chatTime text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">
-                            {{ $formattedTime }}
-                        </span>
+                        <div class="chatMeta flex flex-col items-end">
+                            <span class="chatTime text-[11px] xl:text-[11px] font-bold text-green-800 absolute right-[10px] top-[10px]">
+                                {{ $formattedTime }}
+                            </span>
+                            @if($ticket->status == 2)
+                                <span style="background-color:#dc2626; color:#fff; padding:2px 6px; border-radius:4px; font-size:11px; display:inline-block;">
+                                    Closed
+                                </span>
+                            @endif
+                        </div>
                     </div>
                 </div>
                 @if($ticket['unread'] != 0)
