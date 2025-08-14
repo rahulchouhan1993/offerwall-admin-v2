@@ -357,16 +357,6 @@ function closeOfferModal() {
 
                 // Clear chat area
                 chatWindow.innerHTML = '';
-                
-                 // Add "Ticket Opened" banner
-                const openBanner = document.createElement('div');
-                openBanner.className = 'groupAdded w-full text-[13px] font-[600] text-[#49fb53] text-center z-[9]';
-                openBanner.innerHTML = `
-                    <div class="w-auto inline-flex shadow-md bg-white px-[10px] py-[5px] rounded-[4px] mx-auto">
-                        We recently received a proof regarding the completion of your offer (id: ` + data.ticket.tracking.offer_id + ` name: ` + data.ticket.tracking.offer_name + `) from one of our users  ` + data.ticket.user.email + `, related to click (ID: ` + data.ticket.tracking.click_id + `; Date and Time: ` + data.ticket.tracking.click_time + `)
-                    </div>
-                `;
-                chatWindow.appendChild(openBanner);
 
                 // Add each message
                 data.messages.forEach(msg => {
