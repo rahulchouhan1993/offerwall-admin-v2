@@ -124,10 +124,29 @@
             <ul class="text-sm text-gray-700 mb-[0]">
                 <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" onclick="closeTicket()">Close Ticket</li>
                 <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" onclick="markUnread()">Mark as unread</li>
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" 
+                    onclick="viewInfo()">
+                    View Info
+                </li>
                 <!-- <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500">Delete</li> -->
             </ul>
         </div>
 
+
+        <div id="offerInfoModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+            <div class="bg-white rounded-lg shadow-lg p-6 w-96 relative">
+                <h2 class="text-lg text-black font-bold mb-4">Offer Details</h2>
+                <p><strong class="text-black">Offer ID:</strong> <span id="modalOfferId" class="text-black"></span></p>
+                <p><strong class="text-black">Offer Name:</strong> <span id="modalOfferName" class="text-black"></span></p>
+                <p><strong class="text-black">Click ID:</strong> <span id="modalClickId" class="text-black"></span></p>
+                <p><strong class="text-black">Click Time:</strong> <span id="modalClickTime" class="text-black"></span></p>
+                
+                <!-- Close button -->
+                <button onclick="closeOfferModal()" class="absolute top-2 right-2 text-gray-500 hover:text-black">
+                    ✖
+                </button>
+            </div>
+        </div>
     <!-- Chat Window -->
     <main id="chatwindowMain" style="display: none;" class="chatwindowMain w-full md:w-2/3 lg:w-3/4 bg-gray-50 flex flex-col relative rounded-[10px] shadow-md">
         @if(count($tickets) == 0)
@@ -271,6 +290,14 @@ $('#msgInput').summernote({
     placeholder: 'Write your message here...',
     toolbar: [],
 })
+
+function viewInfo() {
+    document.getElementById('offerInfoModal').classList.remove('hidden');
+}
+
+function closeOfferModal() {
+    document.getElementById('offerInfoModal').classList.add('hidden');
+}
 </script>
 
 
@@ -304,6 +331,11 @@ $('#msgInput').summernote({
                 const logo = document.querySelector('.chatwindowLogo img');
                 const inputBar = document.getElementById('chatInputBar');
                 const closedMessage = document.getElementById('chatClosedMessage');
+                const offerId = document.getElementById('modalOfferId');
+                const offerName = document.getElementById('modalOfferName');
+                const clickId = document.getElementById('modalClickId');
+                const clickTime = document.getElementById('modalClickTime');
+
 
                 refreshTicketList();
 
@@ -318,21 +350,13 @@ $('#msgInput').summernote({
                     inputBar.style.display = 'flex';
                     closedMessage.style.display = 'none';
                 }
+                offerId.textContent = data.ticket.tracking.offer_id;
+                offerName.textContent = data.ticket.tracking.offer_name;
+                clickId.textContent = data.ticket.tracking.click_id;
+                clickTime.textContent = data.ticket.tracking.click_time;
 
                 // Clear chat area
                 chatWindow.innerHTML = '';
-                
-                 // Add "Ticket Opened" banner
-                const openBanner = document.createElement('div');
-                openBanner.className = 'groupAdded w-full text-[13px] font-[600] text-[#49fb53] text-center z-[9]';
-                openBanner.innerHTML = `
-                    <div class="w-auto inline-flex shadow-md bg-white px-[10px] py-[5px] rounded-[4px] mx-auto">
-                        We recently received a proof regarding the completion of your offer (id: ` + data.ticket.tracking.offer_id + ` name: ` + data.ticket.tracking.offer_name + `) from one of our users  ` + data.ticket.user.email + `, related to click (ID: ` + data.ticket.tracking.click_id + `; Date and Time: ` + data.ticket.tracking.click_time + `)
-                    </div>
-
-                   
-                `;
-                chatWindow.appendChild(openBanner);
 
                 // Add each message
                 data.messages.forEach(msg => {
