@@ -302,9 +302,29 @@ class UsersController extends Controller
     }
 
 
-    public function users(){
-        $users = User::where('role','user')->orderBy('created_at','DESC')->get();
+    public function users(Request $request)
+    {
+        $query = User::where('role', 'user');
+
+        // Search filter
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                ->orWhere('email', 'like', "%{$search}%")
+                ->orWhere('gender', 'like', "%{$search}%")
+                ->orWhere('age', 'like', "%{$search}%");
+            });
+        }
+
+        // Order & paginate
+        $users = $query->orderBy('created_at', 'DESC')->paginate(10); // 10 per page
+
+        // Keep search value in pagination links
+        $users->appends($request->all());
+
         $pageTitle = 'Users';
-        return view('users.users',compact('pageTitle','users'));
+
+        return view('users.users', compact('pageTitle', 'users'));
     }
 }

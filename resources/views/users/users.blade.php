@@ -3,6 +3,21 @@
 
 <div class="bg-[#f2f2f2] p-[15px] lg:p-[35px]">
     <div class="bg-[#fff] p-[15px] md:p-[20px] rounded-[10px] mb-[20px]">
+        <div class="flex flex-col justify-between gap-[25px] w-[100%]  mb-[15px]">
+          <h2 class="text-[20px] text-[#1A1A1A] font-[600]">My Users</h2>
+          <form method="get">
+          <div class="w-full flex flex-col gap-[10px]">
+            <div class="w-[100%] flex flex-col lg:flex-row items-start lg:items-center justify-start gap-[10px]">
+            <label class="min-w-[160px] w-[100%] md:w-[10%] text-[14px] font-[500] text-[#898989] "> Search</label>
+            <input type="text" name="search" value="{{ request('search') }}" class="getUsersOfAffiliate w-[100%] lg:w-[90%] flex px-[15px] py-[15px] rounded-[5px] bg-[#F6F6F6] text-[14px] text-[#4D4D4D] font-[600] hover:outline-none focus:outline-none">
+            </div>
+       
+         <div class="flex justify-end">
+          <button type="submit" class="w-[90px] xl:w-[120px] bg-[#49FB53] px-[20px] py-[11px] w-[100px] rounded-[4px] text-[14px] font-[500] text-[#000] text-center">Search</button>
+      </div>
+         </div>
+          </form>
+       </div>
        <div class="flex flex-col justify-between items-center gap-[5px] w-[100%] mt-[30px] ">
           <div class="w-[100%] overflow-x-scroll tableScroll">
              <table class="w-[100%] border-collapse border-spacing-0 rounded-[10px] border-separate border border-[#E6E6E6]">
@@ -47,7 +62,14 @@
              </table>
           </div>
        </div>
+       <div class="mt-[15px]">
+          {{ $users->links() }}
+      </div>
     </div>
  </div>
- 
+<script>
+
+
+</script>
+
 @stop
