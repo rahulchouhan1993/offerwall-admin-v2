@@ -252,7 +252,9 @@ class DashboardController extends Controller
     public function tickets(){
         $pageTitle = 'Tickets';
 
-        $tickets = Tickets::with(['tracking:id,offer_name','lastchat:id,ticket_id,created_at,updated_at','user:id,name'])->orderBy('updated_at','DESC')->get();
+        $tickets = Tickets::with(['tracking:id,offer_name','lastchat:id,ticket_id,created_at,updated_at','user:id,name'])->orderByRaw('CASE WHEN status = 2 THEN 1 ELSE 0 END ASC')
+        ->orderBy('updated_at', 'DESC')
+        ->get();
 
 
         return view('dashboard/tickets',compact('pageTitle','tickets'));
